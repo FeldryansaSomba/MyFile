@@ -1,8 +1,15 @@
 import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { colors } from '../../../utils'
+import ButtonLoading from './ButtonLoading'
 
-const Button = ({title, width, height, fontSize, onPress, type, borderRadius}) => {
+const Button = ({title, width, height, fontSize, onPress, type, borderRadius, loading, props}) => {
+
+  //Loading
+if(loading) {
+  return <ButtonLoading {...props}/>
+}
+
   return (
     <TouchableOpacity style={styles.button(width,height, type, borderRadius)} onPress={onPress}>
       <Text style={styles.text(fontSize)}>{title}</Text>
