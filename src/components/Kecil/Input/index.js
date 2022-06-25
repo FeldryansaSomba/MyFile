@@ -3,19 +3,30 @@ import React from 'react'
 import { colors } from '../../../utils'
 
 const Input = ({textArea, label, width, height, fontSize, placeholder, value, secureTextEntry,
-                onChangeText }) => {
+                onChangeText, disabled, keyboardType }) => {
     if(textArea) {
         return (
             <View style={styles.container}>
             <Text style={styles.label(fontSize)}>{label} :</Text>
-            <TextInput style={styles.inputTextArea(fontSize, width)} multiline={true} numberOfLines={3} onChangeText={onChangeText}/>
+            <TextInput 
+            style={styles.inputTextArea(fontSize, width)} 
+            multiline={true} 
+            numberOfLines={3} 
+            onChangeText={onChangeText}
+            editable={disabled ? false : true}/>
             </View>
         )
     }
   return (
     <View style={styles.container}>
       <Text style={styles.label(fontSize)}>{label} :</Text>
-      <TextInput style={styles.input(width, height, fontSize)} value={value} secureTextEntry={secureTextEntry} onChangeText={onChangeText}/>
+      <TextInput 
+      style={styles.input(width, height, fontSize)} 
+      value={value} 
+      secureTextEntry={secureTextEntry} 
+      onChangeText={onChangeText}
+      editable={disabled ? false : true}
+      keyboarType={keyboardType}/>
     </View>
   )
 }

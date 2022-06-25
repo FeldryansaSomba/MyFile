@@ -85,6 +85,7 @@ class BuatAkunCS extends Component {
             width={responsiveWidth(285)} 
             height={responsiveHeight(36)} 
             fontSize={RFValue(16, heightMobileUI)}
+            secureTextEntry
             value={password}
             onChangeText={(password) => this.setState({password})}/>
 

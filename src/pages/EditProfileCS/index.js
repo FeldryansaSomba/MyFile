@@ -1,7 +1,7 @@
 import { StyleSheet, View, ScrollView, TouchableOpacity, Image } from 'react-native'
 import React, { Component } from 'react'
 import { dummeProfile } from '../../data'
-import { colors, responsiveHeight, responsiveWidth } from '../../utils'
+import { colors, responsiveHeight, responsiveWidth, getData } from '../../utils'
 import { IconKembali } from '../../assets'
 import { Button, Input } from '../../components'
 import { RFValue } from "react-native-responsive-fontsize";
@@ -12,12 +12,33 @@ export default class EditProfileCS extends Component {
         super(props)
 
         this.state = {
-            profile: dummeProfile
+            uid: '',
+            profile: dummeProfile,
+            nama: '',
+            noHp: '',
+            email: '',
         }
     }
+
+    componentDidMount() {
+        this.getUserData();
+    }
+
+    getUserData = () => {
+        getData('user').then(res => {
+          const data = res
+            this.setState({
+                uid: data.uid,
+                nama: data.nama,
+                noHp: data.noHp,
+                email: data.email,
+            })
+        })
+      }
+
   render() {
     const { navigation } = this.props
-    const { profile } = this.state
+    const { profile, nama, noHp, email } = this.state
     return (
       <View style={styles.pages}>
         <TouchableOpacity style={styles.icon}>
@@ -43,21 +64,26 @@ export default class EditProfileCS extends Component {
         <View style={styles.input}>
         <Input 
         label={"Nama"} 
-        value={profile.nama} 
+        value={nama}
+        onChangeText={(nama) => this.setState({nama})} 
         width={responsiveWidth(313)} 
         height={responsiveHeight(33)} 
         fontSize={RFValue(16, heightMobileUI)}/>
 
         <Input 
         label={"No Telepon"} 
-        value={profile.noHP} 
+        value={noHp}
+        onChangeText={(noHp) => this.setState({noHp})} 
         width={responsiveWidth(313)} 
         height={responsiveHeight(33)} 
-        fontSize={RFValue(16, heightMobileUI)}/>
+        fontSize={RFValue(16, heightMobileUI)}
+        keyboardType="number-pad"/>
 
         <Input 
         label={"Email"} 
-        value={profile.email} 
+        value={email}
+        onChangeText={(email) => this.setState({email})}
+        disabled 
         width={responsiveWidth(313)} 
         height={responsiveHeight(33)} 
         fontSize={RFValue(16, heightMobileUI)}/>

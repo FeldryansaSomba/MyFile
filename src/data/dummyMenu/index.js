@@ -18,6 +18,6 @@ export const dummyMenu = [
         id: 3,
         nama: 'Keluar',
         gambar: <IconKeluar/>,
-        halaman: 'MasukPelangganCS'
+        halaman: 'MasukCS'
     },
 ]

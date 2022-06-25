@@ -6,6 +6,7 @@ import FotoProfile3 from './Profile3.png'
 import Gambar1 from './Gambar1.svg'
 import Gambar2 from './Gambar2.svg'
 import Logo from './Logo.svg'
+import DefaultImage from './default.jpg'
 
 export {
     LogoSplash, 
@@ -15,5 +16,6 @@ export {
     FotoProfile3,
     Gambar1,
     Gambar2,
-    Logo
+    Logo,
+    DefaultImage
 }
