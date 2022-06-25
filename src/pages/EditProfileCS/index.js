@@ -1,19 +1,24 @@
-import { StyleSheet, View, ScrollView, TouchableOpacity, Image } from 'react-native'
+import { StyleSheet, View, ScrollView, TouchableOpacity, Image, Alert } from 'react-native'
 import React, { Component } from 'react'
-import { dummeProfile } from '../../data'
 import { colors, responsiveHeight, responsiveWidth, getData } from '../../utils'
-import { IconKembali } from '../../assets'
+import { DefaultImage, IconKembali } from '../../assets'
 import { Button, Input } from '../../components'
 import { RFValue } from "react-native-responsive-fontsize";
 import { heightMobileUI } from '../../utils/constant'
+import {launchImageLibrary} from 'react-native-image-picker';
+import { updateProfile } from '../../actions/ProfileAction'
+import { connect } from 'react-redux'
 
-export default class EditProfileCS extends Component {
+class EditProfileCS extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
             uid: '',
-            profile: dummeProfile,
+            avatar: false,
+            avatarForDB: '',
+            avatarLama: '',
+            updateAvatar: false,
             nama: '',
             noHp: '',
             email: '',
@@ -24,6 +29,16 @@ export default class EditProfileCS extends Component {
         this.getUserData();
     }
 
+    componentDidUpdate(prevProps) {
+        const { updateProfileResult } = this.props
+
+        if(updateProfileResult && prevProps.updateProfileResult !== updateProfileResult)
+        {
+            Alert.alert("Sukses", "Berhasil memperbaharui profil")
+            this.props.navigation.replace('MainApp')
+        }
+    }
+
     getUserData = () => {
         getData('user').then(res => {
           const data = res
@@ -32,13 +47,42 @@ export default class EditProfileCS extends Component {
                 nama: data.nama,
                 noHp: data.noHp,
                 email: data.email,
+                avatar: data.avatar,
+                avatarLama: data.avatar,
             })
         })
       }
 
+      getImage = () => {
+        launchImageLibrary({quality: 1, maxHeight: 500, maxWidth: 500, includeBase64: true}, (response) => {
+            if(response.didCancel || response.errorCode || response.errorMessage) {
+                Alert.alert("Error", "Anda tidak memilih foto")
+            }else {
+                const source = response.assets[0].uri;
+                const fileString = `data:${response.assets[0].type};base64,${response.assets[0].base64}`;
+
+                this.setState({
+                    avatar: source,
+                    avatarForDB: fileString,
+                    updateAvatar: true
+                })
+            }
+        })
+      }
+
+      onSubmit = () => {
+        const { nama, noHp } = this.state
+        if(nama && noHp) {
+            //dispatch update profile
+            this.props.dispatch(updateProfile(this.state))
+        } else {
+            Alert.alert("Error", "Nama dan No Telepon harus diisi")
+        }
+      }
+
   render() {
-    const { navigation } = this.props
-    const { profile, nama, noHp, email } = this.state
+    const { navigation, updateProfileLoading } = this.props
+    const { avatar, nama, noHp, email } = this.state
     return (
       <View style={styles.pages}>
         <TouchableOpacity style={styles.icon}>
@@ -47,9 +91,10 @@ export default class EditProfileCS extends Component {
 
         {/* Foto Profile */}
         <View style={styles.container}>
-        <Image source={profile.avatar} style={styles.avatar}/>
+        <Image source={avatar ? {uri: avatar} : DefaultImage} style={styles.avatar}/>
         <View style={styles.wrapperGanti}>
             <Button
+            onPress={() => this.getImage()}
             title={'Ganti Foto'} 
             width={responsiveWidth(85)} 
             height={responsiveHeight(19)} 
@@ -90,12 +135,14 @@ export default class EditProfileCS extends Component {
         </View>
 
         <View style={styles.button}>
-        <Button 
+        <Button
+        loading={updateProfileLoading}
+        onPress={() => this.onSubmit()}
         title={'Simpan'} 
         width={responsiveWidth(282)} 
         height={responsiveHeight(36)} 
         fontSize={RFValue(16, heightMobileUI)} 
-        borderRadius={10}
+        borderRadius={5}
         type='secondary'/>
         </View>
         </ScrollView>
@@ -103,6 +150,14 @@ export default class EditProfileCS extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => ({
+    updateProfileLoading: state.ProfileReducer.updateProfileLoading,
+    updateProfileResult: state.ProfileReducer.updateProfileResult,
+    updateProfileError: state.ProfileReducer.updateProfileError,
+})
+
+export default connect(mapStateToProps, null) (EditProfileCS) 
 
 const styles = StyleSheet.create({
     pages: {

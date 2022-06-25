@@ -1,5 +1,5 @@
 import FIREBASE from '../config/FIREBASE'
-import { storeData } from '../utils';
+import { dispatchLoading, storeData, dispatchError, dispatchSuccess } from '../utils';
 
 export const REGISTER_USER = "REGISTER_USER";
 export const LOGIN_USER = "LOGIN_USER";
@@ -7,14 +7,8 @@ export const LOGIN_USER = "LOGIN_USER";
 export const registerUser = (data, password) => {
     return(dispatch) => {
          //LOADING
-         dispatch({
-            type: "REGISTER_USER",
-            payload: {
-                loading: true,
-                data: false,
-                errorMessage: false
-            }
-        })
+         dispatchLoading(dispatch, REGISTER_USER)
+         
         FIREBASE
         .auth()
         .createUserWithEmailAndPassword(data.email, password)
@@ -31,14 +25,7 @@ export const registerUser = (data, password) => {
         .set(dataBaru);
 
         //Success
-        dispatch({
-            type: "REGISTER_USER",
-            payload: {
-                loading: false,
-                data: dataBaru,
-                errorMessage: false
-            }
-         })
+        dispatchSuccess(dispatch, REGISTER_USER, dataBaru)
 
          // Simpan ke local storage(Async Storage)
          storeData('user', dataBaru)
@@ -47,14 +34,8 @@ export const registerUser = (data, password) => {
         .catch((error) => {
          
             // Error
-            dispatch({
-               type: "REGISTER_USER",
-               payload: {
-                   loading: false,
-                   data: false,
-                   errorMessage: error.message
-               }
-            })
+            dispatchError(dispatch, REGISTER_USER, error.message)
+
             alert(error.message)
             });
     }
@@ -63,14 +44,7 @@ export const registerUser = (data, password) => {
 export const loginUser = (email, password) => {
     return (dispatch) => {
         //LOADING
-        dispatch({
-            type: "LOGIN_USER",
-            payload: {
-                loading: true,
-                data: false,
-                errorMessage: false
-            }
-        });
+        dispatchLoading(dispatch, LOGIN_USER)
 
         FIREBASE
         .auth()
@@ -82,20 +56,13 @@ export const loginUser = (email, password) => {
             .then((resDB) => {
 
             if(resDB.val()) {
-                //Success
-            dispatch({
-                type: "LOGIN_USER",
-                payload: {
-                    loading: false,
-                    data: resDB.val(),
-                    errorMessage: false
-                }
-             })
+            //Success
+            dispatchSuccess(dispatch, LOGIN_USER, resDB.val())
     
-             // Simpan ke local storage(Async Storage)
-             storeData('user', resDB.val())
+            // Simpan ke local storage(Async Storage)
+            storeData('user', resDB.val())
             }else {
-                // Error
+            // Error
             dispatch({
                 type: "LOGIN_USER",
                 payload: {
@@ -111,14 +78,8 @@ export const loginUser = (email, password) => {
         })
         .catch((error) => {
             // Error
-            dispatch({
-                type: "LOGIN_USER",
-                payload: {
-                    loading: false,
-                    data: false,
-                    errorMessage: error.message
-                }
-             })
+             dispatchError(dispatch, LOGIN_USER, error.message)
+
              alert(error.message)
         })
     }
