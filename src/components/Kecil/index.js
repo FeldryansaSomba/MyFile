@@ -5,5 +5,6 @@ import Input from "./Input";
 import Button from "./Button";
 import CardPesananCS from "./CardPesananCS";
 import Linking from "./Linking";
+import CardFilter from "./CardFilter";
 
-export { Gap, CardProduk, CardMenu, Input, Button, CardPesananCS, Linking };
+export { Gap, CardProduk, CardMenu, Input, Button, CardPesananCS, Linking, CardFilter };

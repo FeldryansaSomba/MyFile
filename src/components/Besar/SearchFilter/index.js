@@ -9,11 +9,8 @@ export default class SearchFilter extends Component {
       <View style={styles.wrapper}>
       <View style={styles.container}>
         <IconSearch/>
-        <TextInput placeholder='Cari produk. . .' style={styles.input}/>
+        <TextInput placeholder='Cari produk anda. . .' style={styles.input}/>
       </View>
-      <TouchableOpacity>
-      <IconFilter/>
-      </TouchableOpacity>
       </View>
     )
   }
@@ -27,7 +24,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         borderRadius: 8,
-        width: responsiveWidth(250)
+        width: responsiveWidth(310)
     },
     wrapper: {
         flexDirection: 'row',

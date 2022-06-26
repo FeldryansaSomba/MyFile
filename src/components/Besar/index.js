@@ -7,6 +7,7 @@ import ListMenu from "./ListMenu";
 import BottomPesan from "./BottomPesan";
 import ProdukSlider from "./ProdukSlider";
 import ListPesananCS from "./ListPesananCS";
+import Filter from "./Filter";
 
 export { BottomNavigatorCS, 
         TabItemCS, 
@@ -16,5 +17,6 @@ export { BottomNavigatorCS,
         ListMenu, 
         BottomPesan, 
         ProdukSlider,
-        ListPesananCS
+        ListPesananCS,
+        Filter
     }
