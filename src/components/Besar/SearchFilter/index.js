@@ -2,19 +2,48 @@ import { StyleSheet, View, TextInput, TouchableOpacity } from 'react-native'
 import React, { Component } from 'react'
 import { IconFilter, IconSearch } from '../../../assets'
 import { colors, responsiveWidth } from '../../../utils'
+import { saveKeywordProduk } from '../../../actions/ProdukAction'
+import { connect } from 'react-redux'
 
-export default class SearchFilter extends Component {
+class SearchFilter extends Component {
+  constructor(props) {
+    super(props)
+  
+    this.state = {
+       search: ""
+    }
+  }
+
+  selesaiCari = () => {
+    const {page, dispatch} = this.props
+    const {search} = this.state
+    //jalankan action save keyword
+    dispatch(saveKeywordProduk(search))
+
+    //kembalikan state ke string kosong
+    this.setState({
+      search: ''
+    })
+  }
   render() {
+    const {search} = this.state
     return (
       <View style={styles.wrapper}>
       <View style={styles.container}>
         <IconSearch/>
-        <TextInput placeholder='Cari produk anda. . .' style={styles.input}/>
+        <TextInput 
+        placeholder='Cari produk anda. . .' 
+        style={styles.input}
+        value={search}
+        onChangeText={(search) => this.setState({search})}
+        onSubmitEditing={() => this.selesaiCari()}/>
       </View>
       </View>
     )
   }
 }
+
+export default connect()(SearchFilter)
 
 const styles = StyleSheet.create({
     container: {

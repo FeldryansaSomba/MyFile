@@ -4,20 +4,29 @@ import { CardFilter } from '../../Kecil'
 import { connect } from 'react-redux'
 import { colors } from '../../../utils'
 
-const Filter = ({getFilterLoading, getFilterResult}) => {
+const Filter = ({getFilterLoading, getFilterResult, getFilterError}) => {
   return (
     <View style={styles.container}>
         { getFilterResult ? ( 
             Object.keys(getFilterResult).map((key) => {
-            return <CardFilter filter={getFilterResult[key]} key={key}/>
+            return <CardFilter filter={getFilterResult[key]} key={key} id={key}/>
         })
         ) : getFilterLoading ? (
+
             <View style={styles.loading}>
                 <ActivityIndicator color={colors.pertama}/>
             </View>
+
+        ) : getFilterError ? (
+
+            <Text>{getFilterError}</Text>
+
         ) : (
-            <Text>Text Kosong</Text>
+
+            <Text>Data tidak ada</Text>
+
         )}
+        
     </View>
   )
 }
@@ -25,6 +34,7 @@ const Filter = ({getFilterLoading, getFilterResult}) => {
 const mapStatetoProps = (state) => ({
     getFilterLoading: state.FilterReducer.getFilterLoading,
     getFilterResult: state.FilterReducer.getFilterResult,
+    getFilterError: state.FilterReducer.getFilterError,
 })
 
 export default connect(mapStatetoProps, null)(Filter)

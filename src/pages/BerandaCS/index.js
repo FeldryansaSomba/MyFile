@@ -2,25 +2,18 @@ import { Text, StyleSheet, View, ScrollView } from 'react-native'
 import React, { Component } from 'react'
 import { colors } from '../../utils/colors'
 import { Gap, ListProduk, SearchFilter, Filter } from '../../components'
-import { dummyMebel } from '../../data'
 import { connect } from 'react-redux'
-import { getUser } from '../../actions/UserAction'
+import { getProduk } from '../../actions/ProdukAction'
 import { getFilter } from '../../actions/FilterAction'
 
 class BerandaCS extends Component {
 
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      produks: dummyMebel
-    }
-  }
-
   componentDidMount() {
     this._unsubscribe = this.props.navigation.addListener('focus', () => {
+      const {idFilter, keyword} = this.props
       // do something
       this.props.dispatch(getFilter());
+      this.props.dispatch(getProduk(idFilter, keyword));
     });
   }
 
@@ -28,17 +21,28 @@ class BerandaCS extends Component {
     this._unsubscribe();
   }
 
-  render() {
-    const { produks } = this.state
-    const { navigation, dataUser } = this.props
+  componentDidUpdate(prevProps) {
+    const { idFilter, keyword } = this.props
 
-    console.log("Parameter: ", this.props.route.params)
+    if(idFilter && prevProps.idFilter !== idFilter)
+    {
+      this.props.dispatch(getProduk(idFilter, keyword));
+    }
+
+    if(keyword && prevProps.keyword !== keyword)
+    {
+      this.props.dispatch(getProduk(idFilter, keyword));
+    }
+}
+
+  render() {
+    const { navigation, namaProduk, keyword } = this.props
     return (
       <View style={styles.pages}>
         <View style={styles.containerAtas}>
         <Text style={styles.text}>Selamat Berbelanja</Text>
         <Gap height={22}/>
-        <SearchFilter/>
+        <SearchFilter page="BerandaCS"/>
         <Text style={styles.filter}>Filter Produk</Text>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         <Filter />
@@ -46,7 +50,7 @@ class BerandaCS extends Component {
         </View>
         <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.listProduk}>
-        <ListProduk produks={produks} navigation={navigation}/>
+        <ListProduk  navigation={navigation}/>
         </View>
         </ScrollView>
       </View>
@@ -54,11 +58,13 @@ class BerandaCS extends Component {
   }
 }
 
-// const mapStatetoProps = (state) => ({
-//   dataUser: state.UserReducer.dataUser
-// })
+const mapStatetoProps = (state) => ({
+  idFilter: state.ProdukReducer.idFilter,
+  namaProduk: state.ProdukReducer.namaProduk,
+  keyword: state.ProdukReducer.keyword
+})
 
-export default connect()(BerandaCS)
+export default connect(mapStatetoProps, null)(BerandaCS)
 
 const styles = StyleSheet.create({
     pages: {

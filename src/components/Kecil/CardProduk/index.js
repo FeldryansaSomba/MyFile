@@ -4,11 +4,10 @@ import { colors, responsiveHeight, responsiveWidth } from '../../../utils';
 import { connect } from 'react-redux';
 
 const CardProduk = ({produk, navigation, dataUser}) => {
-  console.log(produk.gambar);
   return (
     <View>
       <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('MebelDetailCS', {produk})}>
-      <Image source={produk.gambar[0]} style={styles.gambar}/>
+      <Image source={{uri: produk.gambar[0]}} style={styles.gambar}/>
       <View style={styles.data}>
       <Text style={styles.nama}>{produk.nama}</Text>
       <Text style={styles.harga}>{produk.harga}</Text>

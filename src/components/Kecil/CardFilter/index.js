@@ -1,16 +1,27 @@
-import { StyleSheet, Image, TouchableOpacity, View } from 'react-native'
+import { StyleSheet, Image, TouchableOpacity, Text, View } from 'react-native'
 import React from 'react'
 import { colors, responsiveHeight, responsiveWidth } from '../../../utils'
+import { connect } from 'react-redux'
+import { getProdukByFilter } from '../../../actions/ProdukAction'
 
-const CardFilter = ({filter}) => {
+const CardFilter = ({filter, id, dispatch}) => {
+  const toProdukByFilter = (id, namaProduk) => {
+    //ke produk action
+    dispatch(getProdukByFilter(id, namaProduk));
+  }
   return (
-    <TouchableOpacity style={styles.container}>
+    <>
+    <TouchableOpacity style={styles.container} onPress={() => toProdukByFilter(id, filter.namaProduk)}>
       <Image source={{uri: filter.image}} style={styles.logo}/>
     </TouchableOpacity>
+    {/* <View>
+      <Text>{filter.nama}</Text>
+      </View> */}
+      </>
   )
 }
 
-export default CardFilter
+export default connect()(CardFilter)
 
 const styles = StyleSheet.create({
     container: {

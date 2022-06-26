@@ -1,9 +1,10 @@
-import { GET_FILTER } from '../../actions/FilterAction'
+import { GET_FILTER} from '../../actions/FilterAction'
 
 const initialState = {
     getFilterLoading: false,
     getFilterResult: false,
     getFilterError: false,
+
 }
 
 export default function (state = initialState, action) {

@@ -3,17 +3,18 @@ import { dispatchLoading, dispatchError, dispatchSuccess } from '../utils';
 
 export const GET_FILTER = "GET_FILTER";
 
+
 export const getFilter = () => {
     return (dispatch) => {
 
         dispatchLoading(dispatch, GET_FILTER);
 
-        FIREBASE.database()
+            FIREBASE.database()
                 .ref('filter')
                 .once('value', (querySnapshot) => {
 
                     //Hasil
-                    let data = querySnapshot.val() ? querySnapshot.val() : [];
+                    let data = querySnapshot.val();
 
                     dispatchSuccess(dispatch, GET_FILTER, data)
                 })
@@ -22,5 +23,7 @@ export const getFilter = () => {
                     dispatchError(dispatch, GET_FILTER, error);
                     alert(error)
                 })
+        
     }
 }
+

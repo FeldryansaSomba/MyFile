@@ -2,12 +2,14 @@ import {
     Meja,
     Kursi,
     Rak,
+    Pintu,
+    Meja2,
 } from '../../assets'
 
 export const dummyMebel = [
     {
         id: 1,
-        gambar: [Meja, Kursi],
+        gambar: [Meja, Meja2],
         nama: 'Meja Kayu Jati',
         harga: 350000,
         namaMebel: 'Mebel Jaya',
@@ -51,6 +53,22 @@ export const dummyMebel = [
         tinggi: '1.23 m',
         warna: 'Original',
         kayu: 'Besi',
+        ready: true
+    },
+    {
+        id: 4,
+        gambar: [Pintu],
+        nama: 'Pintu Cempaka',
+        harga: 350000,
+        namaMebel: 'Mebel Berkah',
+        lokasi: 'Pineleng',
+        alamat: 'Samping Kantor Hukum Tua Pineleng',
+        desc: 'Pintu dengan bahan berkualitas',
+        panjang: '1 m',
+        lebar: '1.25 m',
+        tinggi: '2 m',
+        warna: 'Original',
+        kayu: 'Cempaka',
         ready: true
     },
 ]

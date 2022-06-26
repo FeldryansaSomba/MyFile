@@ -2,8 +2,10 @@ import React from 'react';
 import { View, StyleSheet} from 'react-native';
 import TabItemCS from '../TabItemCS';
 import { colors } from '../../../utils/colors';
+import { connect } from 'react-redux';
+import { deleteParameterFilter } from '../../../actions/ProdukAction';
 
-const BottomNavigatorCS = ({ state, descriptors, navigation }) => {
+const BottomNavigatorCS = ({ state, descriptors, navigation, dispatch }) => {
   return (
     <View style={styles.container}>
       {state.routes.map((route, index) => {
@@ -28,6 +30,10 @@ const BottomNavigatorCS = ({ state, descriptors, navigation }) => {
             // The `merge: true` option makes sure that the params inside the tab screen are preserved
             navigation.navigate({ name: route.name, merge: true });
           }
+
+          if(route.name !== "BerandaCS") {
+            dispatch(deleteParameterFilter())
+          }
         };
 
         const onLongPress = () => {
@@ -50,7 +56,7 @@ const BottomNavigatorCS = ({ state, descriptors, navigation }) => {
   );
 }
 
-export default BottomNavigatorCS
+export default connect()(BottomNavigatorCS)
 
 const styles = StyleSheet.create({
   container: {
