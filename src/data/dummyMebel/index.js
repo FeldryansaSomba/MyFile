@@ -45,12 +45,12 @@ export const dummyMebel = [
         namaMebel: 'Mebel Permata',
         lokasi: 'Romboken',
         alamat: 'Jl. Romboken Langoan, Talikuran Kec. Romboken',
-        desc: 'Rak Buku dengan bahan berkualitas',
+        desc: 'Kursi dengan bahan berkualitas',
         panjang: '1 m',
         lebar: '1 m',
         tinggi: '1.23 m',
         warna: 'Original',
-        kayu: 'Cempaka',
+        kayu: 'Besi',
         ready: true
     },
 ]

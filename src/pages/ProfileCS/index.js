@@ -19,7 +19,6 @@ export default class ProfileCS extends Component {
 
   componentDidMount() {
     this._unsubscribe = this.props.navigation.addListener('focus', () => {
-      console.log("Komponen dipasang: ")
       // do something
       this.getUserData();
     });

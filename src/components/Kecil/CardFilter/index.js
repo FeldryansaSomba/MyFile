@@ -5,7 +5,7 @@ import { colors, responsiveHeight, responsiveWidth } from '../../../utils'
 const CardFilter = ({filter}) => {
   return (
     <TouchableOpacity style={styles.container}>
-      <Image source={filter.gambar} style={styles.logo}/>
+      <Image source={{uri: filter.image}} style={styles.logo}/>
     </TouchableOpacity>
   )
 }

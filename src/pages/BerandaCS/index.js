@@ -2,9 +2,10 @@ import { Text, StyleSheet, View, ScrollView } from 'react-native'
 import React, { Component } from 'react'
 import { colors } from '../../utils/colors'
 import { Gap, ListProduk, SearchFilter, Filter } from '../../components'
-import { dummyFilter, dummyMebel } from '../../data'
+import { dummyMebel } from '../../data'
 import { connect } from 'react-redux'
 import { getUser } from '../../actions/UserAction'
+import { getFilter } from '../../actions/FilterAction'
 
 class BerandaCS extends Component {
 
@@ -12,17 +13,23 @@ class BerandaCS extends Component {
     super(props)
 
     this.state = {
-      filters: dummyFilter,
       produks: dummyMebel
     }
   }
 
-  // componentDidMount() {
-  //   this.props.getUser()
-  // }
+  componentDidMount() {
+    this._unsubscribe = this.props.navigation.addListener('focus', () => {
+      // do something
+      this.props.dispatch(getFilter());
+    });
+  }
+
+  componentWillUnmount() {
+    this._unsubscribe();
+  }
 
   render() {
-    const { produks, filters } = this.state
+    const { produks } = this.state
     const { navigation, dataUser } = this.props
 
     console.log("Parameter: ", this.props.route.params)
@@ -34,7 +41,7 @@ class BerandaCS extends Component {
         <SearchFilter/>
         <Text style={styles.filter}>Filter Produk</Text>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        <Filter filters={filters}/>
+        <Filter />
         </ScrollView>
         </View>
         <ScrollView showsVerticalScrollIndicator={false}>
@@ -51,7 +58,7 @@ class BerandaCS extends Component {
 //   dataUser: state.UserReducer.dataUser
 // })
 
-export default BerandaCS
+export default connect()(BerandaCS)
 
 const styles = StyleSheet.create({
     pages: {

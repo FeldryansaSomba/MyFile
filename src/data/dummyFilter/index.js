@@ -1,29 +1,29 @@
-import { Lemari, Pintu, Jendela, Meja, Kursi } from '../../assets'
+import { FIlterMeja, FilterKursi, FilterLemari, FilterPintu, FilterJendela } from '../../assets'
 
 export const dummyFilter = [
 {
     id: 1,
-    nama: "Meja",
-    gambar: Meja,
+    nama: "Filter Meja",
+    gambar: FIlterMeja,
 },
 {
     id: 2,
-    nama: "Kursi",
-    gambar: Kursi,
+    nama: "Filter Kursi",
+    gambar: FilterKursi,
 },
 {
     id: 3,
-    nama: "Lemari",
-    gambar: Lemari,
+    nama: "Filter Lemari",
+    gambar: FilterLemari,
 },
 {
     id: 4,
-    nama: "Pintu",
-    gambar: Pintu,
+    nama: "Filter Pintu",
+    gambar: FilterPintu,
 },
 {
     id: 5,
-    nama: "Jendela",
-    gambar: Jendela,
+    nama: "Filter Jendela",
+    gambar: FilterJendela,
 },
 ]

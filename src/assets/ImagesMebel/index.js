@@ -1,8 +1,10 @@
 import Kursi from './GambarKursi.png'
 import Meja from './GambarMeja.png'
 import Rak from './RakBuku.png'
-import Lemari from './Lemari.png'
-import Pintu from './Pintu.png'
-import Jendela from './Jendela.png'
+import FIlterMeja from './FilterMeja.png'
+import FilterKursi from './FilterKursi.png'
+import FilterLemari from './FilterLemari.png'
+import FilterPintu from './FilterPintu.png'
+import FilterJendela from './FilterJendela.png'
 
-export { Kursi, Meja, Rak, Lemari, Pintu, Jendela };
+export { Kursi, Meja, Rak, FIlterMeja, FilterKursi, FilterLemari, FilterPintu, FilterJendela };
