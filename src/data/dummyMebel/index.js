@@ -21,6 +21,7 @@ export const dummyMebel = [
         tinggi: '1.75 m',
         warna: 'Cokelat',
         kayu: 'Jati',
+        noHp: "08983291093",
         ready: true
     },
     {
@@ -37,6 +38,7 @@ export const dummyMebel = [
         tinggi: '2.5 m',
         warna: 'Hitam',
         kayu: 'Jati',
+        noHp: "08983297658",
         ready: true
     },
     {
@@ -53,6 +55,7 @@ export const dummyMebel = [
         tinggi: '1.23 m',
         warna: 'Original',
         kayu: 'Besi',
+        noHp: "08989898765",
         ready: true
     },
     {
@@ -69,6 +72,7 @@ export const dummyMebel = [
         tinggi: '2 m',
         warna: 'Original',
         kayu: 'Cempaka',
+        noHp: "08983291093",
         ready: true
     },
 ]

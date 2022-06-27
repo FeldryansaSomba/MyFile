@@ -1,4 +1,5 @@
 import { GET_PRODUK, GET_PRODUK_BY_FILTER, DELETE_PARAMETER_FILTER, SAVE_KEYWORD_PRODUK } from '../../actions/ProdukAction'
+import { GET_DETAIL_PRODUK } from '../../actions/DetailProdukAction';
 
 const initialState = {
     getProdukLoading: false,
@@ -7,7 +8,11 @@ const initialState = {
 
     idFilter: false,
     namaProduk: false,
-    keyword: false
+    keyword: false,
+
+    getDetailProdukLoading: false,
+    getDetailProdukResult: false,
+    getDetailProdukError: false,
 }
 
 export default function (state = initialState, action) {
@@ -36,6 +41,13 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 keyword: action.payload.data
+                }
+        case GET_DETAIL_PRODUK:
+            return {
+                ...state,
+                getDetailProdukLoading: action.payload.loading,
+                getDetailProdukResult: action.payload.data,
+                getDetailProdukError: action.payload.errorMessage,
                 }
         default:
             return state;

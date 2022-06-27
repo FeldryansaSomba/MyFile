@@ -47,6 +47,7 @@ class BerandaCS extends Component {
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         <Filter />
         </ScrollView>
+        <Gap height={10}/>
         </View>
         <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.listProduk}>
@@ -81,7 +82,7 @@ const styles = StyleSheet.create({
         color: colors.kedua
     },
     listProduk: {
-      paddingTop: 27,
+      paddingTop: 17,
       marginHorizontal: 48
     },
     filter: {

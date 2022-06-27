@@ -11,8 +11,10 @@ const ListProduk = ({
     navigation
     }) => {
 
+      // console.log("get product result:",getProdukResult);
   return (
     <View>
+      {/* <Text>tes</Text> */}
       { getProdukResult ? ( 
             Object.keys(getProdukResult).map((key) => {
             return <CardProduk key={key} produk={getProdukResult[key]} navigation={navigation}/>

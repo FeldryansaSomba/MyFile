@@ -28,13 +28,39 @@ export const getProduk = (idFilter, keyword) => {
                 dispatchError(dispatch, GET_PRODUK, error);
                 alert(error)
             })
-        }else if (keyword) {
+        }
+        else if (keyword) {
+        //     console.log("keyword :", keyword)
+        //   //Edson
+        //     FIREBASE.database()
+        //     .ref('produks')
+        //     // .orderByChild('lokasi')
+        //     // .equalTo(keyword)
+        //     .once('value', (querySnapshot) => {
+        //         let data = querySnapshot.val();
+        //         console.log("data:",data)
+        //         //filter
+        //         Object.keys(data).map((key) => {
+        //             console.log("key:",key[1]);
+        //         //    Object.keys(key).map((a, b)=>{
+        //         //             console.log("a:",a, b)
+        //         //     })
+        //             // return <CardProduk key={key} produk={getProdukResult[key]} navigation={navigation}/>
+        //         })
+
+        //         // dispatchSuccess(dispatch, GET_PRODUK, data)
+        //     })
+        //     .catch((error) => {
+                
+        //         dispatchError(dispatch, GET_PRODUK, error);
+        //         alert(error)
+        //     })
+          
             FIREBASE.database()
             .ref('produks')
-            .orderByChild('nama')
+            .orderByChild('lokasi')
             .equalTo(keyword)
             .once('value', (querySnapshot) => {
-
                 //Hasil
                 let data = querySnapshot.val();
 
@@ -49,7 +75,7 @@ export const getProduk = (idFilter, keyword) => {
             FIREBASE.database()
                 .ref('produks')
                 .once('value', (querySnapshot) => {
-
+                    console.log("query else:",querySnapshot.val())
                     //Hasil
                     let data = querySnapshot.val();
 

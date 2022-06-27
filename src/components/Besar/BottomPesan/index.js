@@ -5,16 +5,16 @@ import { RFValue } from 'react-native-responsive-fontsize'
 import { heightMobileUI } from '../../../utils/constant'
 import { IconChat, IconKustom } from '../../../assets'
 
-const BottomPesan = ({navigation}) => {
+const BottomPesan = ({onPress, loading}) => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={onPress} loading={loading}>
         <Text style={styles.text}>Beli</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button}>
+      {/* <TouchableOpacity style={styles.button}>
         <Text style={styles.text}>Kustom</Text>
         <IconKustom/>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       <TouchableOpacity style={styles.chat}>
         <IconChat/>
       </TouchableOpacity>
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         backgroundColor: colors.keempat,
-        paddingHorizontal: 29,
+        paddingHorizontal: 30,
         paddingVertical: 8,
         Width: '100%',
         borderTopWidth: 2,
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     },
     button: {
         backgroundColor: colors.pertama,
-        width: responsiveWidth(123),
+        width: responsiveWidth(250),
         height: responsiveHeight(38),
         alignItems: 'center',
         justifyContent: 'center',

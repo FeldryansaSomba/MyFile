@@ -8,7 +8,7 @@ const Input = ({textArea, label, width, height, fontSize, placeholder, value, se
         return (
             <View style={styles.container}>
             <Text style={styles.label(fontSize)}>{label} :</Text>
-            <TextInput 
+            <TextInput placeholder={placeholder}
             style={styles.inputTextArea(fontSize, width)} 
             multiline={true} 
             numberOfLines={3} 
@@ -40,7 +40,8 @@ const styles = StyleSheet.create({
     label: (fontSize) => ({
         fontSize: fontSize ? fontSize : 14,
         fontFamily: 'Montserrat-Medium',
-        marginBottom: 5
+        marginBottom: 5,
+        color: colors.kedua
     }),
     input: (width, height,fontSize) => ({
         fontSize: fontSize ? fontSize : 14,
