@@ -6,44 +6,27 @@ import { ListPesananCS } from '../../components'
 import { RFValue } from "react-native-responsive-fontsize";
 import { heightMobileUI } from '../../utils/constant';
 import { IconChat } from '../../assets'
-import { connect } from 'react-redux'
-import { getListPesanan } from '../../actions/PesananAction'
 
-class PesananCS extends Component {
-  // constructor(props) {
-  //   super(props)
+export default class KerjaMbl extends Component {
+  constructor(props) {
+    super(props)
 
-  //   this.state = {
-  //     pesanans: dummyPesanan
-  //   }
-  // }
-
-  componentDidMount() {
-    getData('user').then((res) => {
-      if(res) {
-        //sudah login
-        this.props.dispatch(getListPesanan(res.uid))
-      }else {
-        //belum login
-        this.props.navigation.replace('PilihUser')
-      }
-    })
-}
-
+    this.state = {
+      pesanans: dummyPesanan
+    }
+  }
   render() {
-    // const { pesanans } = this.state
-    const { getListPesananResult } = this.props
-    // console.log("Pesanans :", this.props.getListPesananResult)
+    const { pesanans } = this.props
     return (
       <>
       <View style={styles.header}>
-        <Text style={styles.text}>Pesanan Saya</Text>
+        <Text style={styles.text}>Pekerjaan Saya</Text>
       </View>
       <View style={styles.page}>
       <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.container}>
-        {/* <ListPesananCS pesanans={pesanans}/> */}
-        <ListPesananCS {...this.props}/>
+        <ListPesananCS pesanans={pesanans}/>
+        {/* <ListPesananCS {...this.props}/> */}
       </View>
       </ScrollView>
 
@@ -55,14 +38,6 @@ class PesananCS extends Component {
     )
   }
 }
-
-const mapStateToProps = (state) => ({
-  getListPesananLoading: state.PesananReducer.getListPesananLoading,
-  getListPesananResult: state.PesananReducer.getListPesananResult,
-  getListPesananError: state.PesananReducer.getListPesananError,
-})
-
-export default connect(mapStateToProps, null)(PesananCS)
 
 const styles = StyleSheet.create({
   header: {

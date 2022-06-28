@@ -8,6 +8,14 @@ import EditProfileCS from "./EditProfileCS";
 import GantiPassCS from "./GantiPassCS";
 import MasukCS from "./MasukCS";
 import BuatAkunCS from "./BuatAkunCS";
+import MasukMebel from "./MasukMebel";
+import BuatAkunMebel from "./BuatAkunMebel";
+import BerandaMbl from "./BerandaMbl";
+import KerjaMbl from "./KerjaMbl";
+import ProfileMbl from "./ProfileMbl";
+import PesananMbl from "./PesananMbl";
+import EditProfilMbl from "./EditProfileMbl";
+import GantiPassMbl from "./GantiPassMbl";
 
 export {
     Splash, 
@@ -19,5 +27,13 @@ export {
     EditProfileCS,
     GantiPassCS,
     MasukCS,
-    BuatAkunCS
+    BuatAkunCS,
+    MasukMebel,
+    BuatAkunMebel,
+    BerandaMbl,
+    PesananMbl,
+    ProfileMbl,
+    KerjaMbl,
+    EditProfilMbl,
+    GantiPassMbl
 }

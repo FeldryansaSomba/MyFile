@@ -5,10 +5,8 @@ import { Logo } from '../../assets'
 import { heightMobileUI } from '../../utils/constant';
 import { RFValue } from "react-native-responsive-fontsize";
 import { Button, Gap, Input } from '../../components';
-import { registerUser } from '../../actions/AuthAction';
-import { connect } from 'react-redux';
 
-class BuatAkunCS extends Component {
+export default class BuatAkunMebel extends Component {
     constructor(props) {
         super(props)
 
@@ -20,40 +18,14 @@ class BuatAkunCS extends Component {
         }
     }
 
-    componentDidUpdate(prevProps) {
-        const { registerResult } = this.props
-
-        if(registerResult && prevProps.registerResult !== registerResult)
-        {
-            this.props.navigation.replace('MainApp')
-        }
-    }
-
-    onContinue = () => {
-        const { nama, noHp, email, password } = this.state
-
-        if(nama && noHp && email && password) {
-            const data = {
-                nama: nama,
-                noHp: noHp,
-                email: email,
-                status: 'user'
-            }
-            console.log("Params: ", data)
-            this.props.dispatch(registerUser(data, password))
-        } else {
-            Alert.alert("Error", "Nama, no. telepon, email, dan kata sandi harus diisi")
-        }
-    }
-
   render() {
     const { nama, noHp, email, password } = this.state
-    const { registerLoading } = this.props
+    const { navigation, registerLoading } = this.props
     return (
         <View style={styles.pages}>
         <ScrollView showsVerticalScrollIndicator={false}>
         <Logo style={styles.logo}/>
-        <Text style={styles.text}>Buat Akun Pelanggan</Text>
+        <Text style={styles.text}>Buat Akun Mebel</Text>
 
         <View style={styles.container}>
             <Input 
@@ -91,7 +63,7 @@ class BuatAkunCS extends Component {
 
             <Gap height={55}/>
             <Button 
-            onPress={() => this.onContinue()}
+            onPress={() => navigation.navigate("MebelApp")}
             loading={registerLoading}
             title={"Daftar"}
             width={responsiveWidth(282)} 
@@ -105,14 +77,6 @@ class BuatAkunCS extends Component {
     )
   }
 }
-
-const mapStatetoProps = (state) => ({
-    registerLoading: state.AuthReducer.registerLoading,
-    registerResult: state.AuthReducer.registerResult,
-    registerError: state.AuthReducer.registerError,
-})
-
-export default connect(mapStatetoProps, null)(BuatAkunCS)
 
 const styles = StyleSheet.create({
     pages: {

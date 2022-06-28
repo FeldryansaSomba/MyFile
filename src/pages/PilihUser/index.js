@@ -24,7 +24,7 @@ export default class PilihUser extends Component {
           borderRadius={5}
           type='secondary'/>
           <Gap height={15}/>
-          <Button 
+          <Button onPress={() => navigation.navigate('MasukMebel')}
           title={"Mebel"}
           width={responsiveWidth(282)} 
           height={responsiveHeight(36)} 

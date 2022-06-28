@@ -12,6 +12,9 @@ import IconKeluar from './IconKeluar.svg'
 import IconKembali from './IconBack.svg'
 import IconChat from './IconChat.svg'
 import IconKustom from './IconKustom.svg'
+import IconKerja from './IconKerja.svg'
+import IconKerjaActive from './IconKerjaActive.svg'
+import IconTambah from './IconTambah.svg'
 
 export {
     IconBeranda, 
@@ -27,5 +30,8 @@ export {
     IconKeluar,
     IconKembali,
     IconChat,
-    IconKustom
+    IconKustom,
+    IconKerja,
+    IconKerjaActive,
+    IconTambah
 }

@@ -1,8 +1,24 @@
 import * as React from 'react';
-import { BerandaCS, BuatAkunCS, EditProfileCS, GantiPassCS, MasukCS, MebelDetailCS, PesananCS, PilihUser, ProfileCS, Splash } from '../pages';
+import { BerandaCS, 
+         BerandaMbl, 
+         BuatAkunCS, 
+         BuatAkunMebel, 
+         EditProfileCS, 
+         EditProfilMbl, 
+         GantiPassCS, 
+         GantiPassMbl, 
+         KerjaMbl, MasukCS, 
+         MasukMebel, 
+         MebelDetailCS, 
+         PesananCS, 
+         PesananMbl, 
+         PilihUser, 
+         ProfileCS, 
+         ProfileMbl, 
+         Splash } from '../pages';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { BottomNavigatorCS } from '../components';
+import { BottomNavigatorCS, BottomNavigatorMbl } from '../components';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -17,9 +33,20 @@ const MainApp = () => {
   );
 }
 
+const MebelApp = () => {
+  return (
+    <Tab.Navigator tabBar={props => <BottomNavigatorMbl {...props} />}>
+      <Tab.Screen name="BerandaMbl" component={BerandaMbl} options={{headerShown: false, title: 'Beranda'}} />
+      <Tab.Screen name="KerjaMbl" component={KerjaMbl} options={{headerShown: false, title: 'Kerja'}} />
+      <Tab.Screen name="PesananMbl" component={PesananMbl} options={{headerShown: false, title: 'Pesanan'}} />
+      <Tab.Screen name="ProfileMbl" component={ProfileMbl} options={{headerShown: false, title: 'Profil'}} />
+    </Tab.Navigator>
+  );
+}
+
 const Router = () => {
   return (
-    <Stack.Navigator initialRouteName='MainApp'>
+    <Stack.Navigator initialRouteName='MebelApp'>
     <Stack.Screen 
       name="Splash" 
       component={Splash}
@@ -28,6 +55,11 @@ const Router = () => {
     <Stack.Screen 
       name="MainApp" 
       component={MainApp}
+      options={{headerShown: false}}
+    />
+    <Stack.Screen 
+      name="MebelApp" 
+      component={MebelApp}
       options={{headerShown: false}}
     />
     <Stack.Screen 
@@ -46,8 +78,18 @@ const Router = () => {
       options={{headerShown: false}}
     />
     <Stack.Screen 
+      name="EditProfilMbl" 
+      component={EditProfilMbl}
+      options={{headerShown: false}}
+    />
+    <Stack.Screen 
       name="GantiPassCS" 
       component={GantiPassCS}
+      options={{headerShown: false}}
+    />
+    <Stack.Screen 
+      name="GantiPassMbl" 
+      component={GantiPassMbl}
       options={{headerShown: false}}
     />
     <Stack.Screen 
@@ -58,6 +100,16 @@ const Router = () => {
     <Stack.Screen 
       name="BuatAkunCS" 
       component={BuatAkunCS}
+      options={{headerShown: false}}
+    />
+    <Stack.Screen 
+      name="MasukMebel" 
+      component={MasukMebel}
+      options={{headerShown: false}}
+    />
+    <Stack.Screen 
+      name="BuatAkunMebel" 
+      component={BuatAkunMebel}
       options={{headerShown: false}}
     />
     </Stack.Navigator>
