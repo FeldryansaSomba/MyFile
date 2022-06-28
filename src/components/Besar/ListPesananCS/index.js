@@ -3,14 +3,18 @@ import React from 'react'
 import { CardPesananCS } from '../../Kecil'
 import { colors } from '../../../utils'
 
-const ListPesananCS = ({pesanans, getListProdukResult, getListPesananLoading, getListPesananError}) => {
+const ListPesananCS = ({pesanans, getListPesananResult, getListPesananLoading, getListPesananError}) => {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
     <View style={styles.container}>
 
-    {/* { getListProdukResult ? ( 
-            Object.keys(getListProdukResult).map((key) => {
-            return <CardPesananCS key={key} produk={getListProdukResult[key]} />
+    { getListPesananResult ? ( 
+            Object.keys(getListPesananResult.produk).map((key) => 
+            {
+            return <CardPesananCS 
+                    key={key} 
+                    pesanan={getListPesananResult.produk[key]} 
+                    id={key}/>
         })
         ) : getListPesananLoading ? (
 
@@ -26,11 +30,11 @@ const ListPesananCS = ({pesanans, getListProdukResult, getListPesananLoading, ge
 
             <Text>Tidak Ada Pesanan</Text>
 
-        )} */}
+        )}
 
-    {pesanans.map((pesanan) => {
+    {/* {pesanans.map((pesanan) => {
         return <CardPesananCS pesanan={pesanan} key={pesanan.id}/>
-    })}
+    })} */}
     </View>
     </ScrollView>
   )

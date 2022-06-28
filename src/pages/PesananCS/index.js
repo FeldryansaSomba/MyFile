@@ -10,13 +10,13 @@ import { connect } from 'react-redux'
 import { getListPesanan } from '../../actions/PesananAction'
 
 class PesananCS extends Component {
-  constructor(props) {
-    super(props)
+  // constructor(props) {
+  //   super(props)
 
-    this.state = {
-      pesanans: dummyPesanan
-    }
-  }
+  //   this.state = {
+  //     pesanans: dummyPesanan
+  //   }
+  // }
 
   componentDidMount() {
     getData('user').then((res) => {
@@ -31,8 +31,9 @@ class PesananCS extends Component {
 }
 
   render() {
-    const { pesanans } = this.state
+    // const { pesanans } = this.state
     const { getListPesananResult } = this.props
+    console.log("Pesanans :", this.props.getListPesananResult)
     return (
       <>
       <View style={styles.header}>
@@ -40,8 +41,8 @@ class PesananCS extends Component {
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.container}>
-        <ListPesananCS pesanans={pesanans}/>
-        {/* <ListPesananCS {...this.props}/> */}
+        {/* <ListPesananCS pesanans={pesanans}/> */}
+        <ListPesananCS {...this.props}/>
       </View>
       </ScrollView>
 

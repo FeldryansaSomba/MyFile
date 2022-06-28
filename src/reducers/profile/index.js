@@ -1,9 +1,13 @@
-import { UPDATE_PROFILE } from '../../actions/ProfileAction'
+import { UPDATE_PROFILE, CHANGE_PASS } from '../../actions/ProfileAction'
 
 const initialState = {
     updateProfileLoading: false,
     updateProfileResult: false,
     updateProfileError: false,
+
+    changePassLoading: false,
+    changePassResult: false,
+    changePassError: false,
 }
 
 export default function (state = initialState, action) {
@@ -14,6 +18,13 @@ export default function (state = initialState, action) {
                 updateProfileLoading: action.payload.loading,
                 updateProfileResult: action.payload.data,
                 updateProfileError: action.payload.errorMessage,
+            };
+        case CHANGE_PASS:
+            return {
+                ...state,
+                changePassLoading: action.payload.loading,
+                changePassResult: action.payload.data,
+                changePassError: action.payload.errorMessage,
             };
             default:
                 return state;

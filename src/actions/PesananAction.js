@@ -12,27 +12,24 @@ export const masukKePesanan = (data) => {
         FIREBASE.database()
                 .ref('pesanans/'+data.uid)
                 .once('value', (querySnapshot) => {
-                    console.log("cek pesanan :", querySnapshot.val())
 
                     if(querySnapshot.val()){
                         //update ke halaman pesanan
                         const pesananUtama = querySnapshot.val();
-                        const noHpBaru = data.noHp
-                        const kustomBaru = data.kustom
-                        const alamatBaru = data.alamat
-                        console.log("cek pesanan :", data.uid)
+                        // const noHpBaru = data.noHp
+                        // const kustomBaru = data.kustom
+                        // const alamatBaru = data.alamat
+
                         FIREBASE
                         .database()
                         .ref('pesanans')
                         .child(data.uid)
                         .update({
-                            
-                            noHpCS: pesananUtama.noHpCS + noHpBaru,
-                            kustomCS: pesananUtama.kustomCS + kustomBaru,
-                            alamatCS: pesananUtama.alamatCS + alamatBaru
+                            // noHpCS: pesananUtama.noHpCS + noHpBaru,
+                            // kustomCS: pesananUtama.kustomCS + kustomBaru,
+                            // alamatCS: pesananUtama.alamatCS + alamatBaru
                         })
                         .then((response) => {
-                            console.log("Simpan pesanan :", response)
                             //simpan ke pesanan
                             dispatch(masukPesanan(data))
                         })
@@ -42,42 +39,40 @@ export const masukKePesanan = (data) => {
                         })
                         
                     }else {
-
-                    }
                         //simpan ke halaman pesanan
-                        const pesanan = {
+                        const pesananUtama = {
                             user: data.uid,
                             tanggal: new Date().toDateString(),
                             // harga: data.harga,
-                            noHp: data.noHp,
-                            kustom: data.kustom,
-                            alamat: data.alamat
-
+                            // noHp: data.noHp,
+                            // kustom: data.kustom,
+                            // alamat: data.alamat
                         }
                         FIREBASE
                         .database()
                         .ref('pesanans')
                         .child(data.uid)
-                        .set(pesanan)
+                        .set(pesananUtama)
                         .then((response) => {
                             //simpan ke pesanan
-                            // dispatch(masukPesanan(data))
+                            dispatch(masukPesanan(data))
                         })
                         .catch((error) => {
                             dispatchError(dispatch, MASUK_KEPESANAN, error);
                             alert(error) 
                         })
-                })
-                .catch((error) => {
-                    dispatchError(dispatch, MASUK_KEPESANAN, error);
-                    alert(error)
-                })
-    }
-}
+                    };
+            })
+            .catch((error) => {
+                dispatchError(dispatch, MASUK_KEPESANAN, error);
+                alert(error)
+            })
+    };
+};
 
 export const masukPesanan = (data) => {
     return(dispatch) => {
-        const pesanan = {
+        const produk = {
             product: data.produk,
             kustom: data.kustom,
             noHp: data.noHp,
@@ -86,8 +81,8 @@ export const masukPesanan = (data) => {
 
         FIREBASE.database()
         .ref('pesanans/' + data.uid)
-        .child('pesanan')
-        .push(pesanan)
+        .child('produk')
+        .push(produk)
         .then((response) => {
      
         dispatchSuccess(dispatch, MASUK_KEPESANAN, response ? response : []);

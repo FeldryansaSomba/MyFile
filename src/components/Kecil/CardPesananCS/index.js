@@ -5,21 +5,21 @@ import { colors, responsiveHeight, responsiveWidth } from '../../../utils'
 const CardPesananCS = ({pesanan}) => {
   return (
     <View style={styles.card}>
-      <Text style={styles.tgl}>{pesanan.tanggalPemesanan}</Text>
-      <Text style={styles.status}>Status : {pesanan.status}</Text>
+      {/* <Text style={styles.tgl}>{pesanan.tanggalPemesanan}</Text> */}
+      <Text style={styles.status}>Status : Proses</Text>
       <View style={styles.container}>
-      <Image source={pesanan.gambar[0]} style={styles.gambar}/>
+      <Image source={{uri: pesanan.product.gambar[0]}} style={styles.gambar}/>
       <View style={styles.data}>
-      <Text style={styles.nama}>{pesanan.nama}</Text>
-      <Text style={styles.harga}>{pesanan.harga}</Text>
-      <Text style={styles.mebel}>{pesanan.namaMebel}</Text>
-      <Text style={styles.lokasi}>{pesanan.lokasi}</Text>
+      <Text style={styles.nama}>{pesanan.product.nama}</Text>
+      <Text style={styles.harga}>{pesanan.product.harga}</Text>
+      <Text style={styles.mebel}>{pesanan.product.namaMebel}</Text>
+      <Text style={styles.lokasi}>{pesanan.product.lokasi}</Text>
       </View>
       </View>
       <View style={styles.wrapper}>
-      <Text style={styles.kustom}>No Hp : {pesanan.noHp}</Text>
+      <Text style={styles.noHp}>No Hp Mebel : {pesanan.product.noHp}</Text>
       <Text style={styles.kustom}>Kustom Produk :</Text>
-      <Text style={styles.kustom}>Panjang 2m, tinggi 2m, lebar 1m, warna putih, kayu jati dan untuk menyesuakan dengan gambar.</Text>
+      <Text style={styles.kustoM}>{pesanan.kustom}</Text>
       </View>
       </View>
   )
@@ -31,11 +31,11 @@ const styles = StyleSheet.create({
     card: {
         backgroundColor: colors.pertama,
         // width: responsiveWidth(275),
-        height: responsiveHeight(250),
+        height: responsiveHeight(220),
         marginBottom: 25,
         borderRadius: 25,
         shadowColor: "#000",
-      shadowOffset: {
+        shadowOffset: {
         width: 0,
         height: 2,
     },
@@ -107,5 +107,16 @@ const styles = StyleSheet.create({
         fontFamily: 'Montserrat-Medium',
         fontSize: 12,
         color: colors.keempat,
+      },
+      kustoM: {
+        fontFamily: 'Montserrat-Medium',
+        fontSize: 12,
+        color: colors.keempat,
+      },
+      noHp: {
+        fontFamily: 'Montserrat-Medium',
+        fontSize: 12,
+        color: colors.keempat,
+        marginBottom: 5
       }
 })

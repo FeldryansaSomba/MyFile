@@ -1,12 +1,57 @@
-import { StyleSheet, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, View, TouchableOpacity, Alert } from 'react-native'
 import React, { Component } from 'react'
-import { colors, responsiveHeight, responsiveWidth } from '../../utils'
+import { colors, getData, responsiveHeight, responsiveWidth } from '../../utils'
 import { IconKembali } from '../../assets'
 import { Button, Input } from '../../components'
+import { connect } from 'react-redux'
+import { changePass } from '../../actions/ProfileAction'
 
-export default class GantiPassCS extends Component {
+class GantiPassCS extends Component {
+  constructor(props) {
+    super(props)
+  
+    this.state = {
+       password: '',
+       newPassword: '',
+       newPasswordKonfirmasi: ''
+    }
+  }
+    onSubmit = () => {
+      const { password, newPassword, newPasswordKonfirmasi } = this.state
+      
+      if(newPassword !== newPasswordKonfirmasi) {
+        Alert.alert('Error', 'Kata Sandi Baru dan Konfirmasi Kata Sandi Baru Harus Sama')
+      } else if (password && newPassword && newPasswordKonfirmasi) {
+
+        //ambil data email dari local storage
+        getData('user').then((res) => {
+          const parameter = {
+            email: res.email,
+            password: password,
+            newPassword: newPassword,
+          }
+          this.props.dispatch(changePass(parameter));
+        })
+
+      } else {
+        Alert.alert('Error', 'Kata Sandi Lama, Kata Sandi Baru, dan Konfirmasi Kata Sandi Baru Harus Diisi')
+      }
+    }
+
+    componentDidUpdate(prevProps) {
+      const { changePassResult } = this.props
+
+      if(changePassResult && prevProps.changePassResult !== changePassResult)
+      {
+        Alert.alert('Sukses', "Berhasil Ganti Kata Sandi Baru")
+          this.props.navigation.replace('MainApp')
+      }
+  }
+    
+  
   render() {
-    const { navigation } = this.props
+    const { navigation, changePassLoading } = this.props
+    const { password, newPassword, newPasswordKonfirmasi } = this.state
     return (
       <View style={styles.pages}>
         <TouchableOpacity style={styles.icon}>
@@ -18,19 +63,25 @@ export default class GantiPassCS extends Component {
         width={responsiveWidth(313)} 
         height={responsiveHeight(33)} 
         fontSize={16}
-        secureTextEntry/>
+        secureTextEntry
+        value={password}
+        onChangeText={(password) => this.setState({password})}/>
         <Input 
         label={"Kata Sandi Baru"} 
         width={responsiveWidth(313)} 
         height={responsiveHeight(33)} 
         fontSize={16}
-        secureTextEntry/>
+        secureTextEntry
+        value={newPassword}
+        onChangeText={(newPassword) => this.setState({newPassword})}/>
         <Input 
         label={" Konfirmasi Kata Sandi Baru"} 
         width={responsiveWidth(313)} 
         height={responsiveHeight(33)} 
         fontSize={16}
-        secureTextEntry/>
+        secureTextEntry
+        value={newPasswordKonfirmasi}
+        onChangeText={(newPasswordKonfirmasi) => this.setState({newPasswordKonfirmasi})}/>
         </View>
 
         <View style={styles.button}>
@@ -39,13 +90,23 @@ export default class GantiPassCS extends Component {
         width={responsiveWidth(282)} 
         height={responsiveHeight(36)} 
         fontSize={16} 
-        borderRadius={10}
-        type='secondary'/>
+        borderRadius={5}
+        type='secondary'
+        onPress={() => this.onSubmit()}
+        loading={changePassLoading}/>
         </View>
       </View>
     )
   }
 }
+
+const mapStateToProps = (state) => ({
+    changePassLoading: state.ProfileReducer.changePassLoading,
+    changePassResult: state.ProfileReducer.changePassResult,
+    changePassError: state.ProfileReducer.changePassError,
+})
+
+export default connect(mapStateToProps, null) (GantiPassCS)
 
 const styles = StyleSheet.create({
     pages: {
