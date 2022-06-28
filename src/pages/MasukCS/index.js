@@ -8,7 +8,6 @@ import { Button, Gap, Input, Linking, } from '../../components';
 import { loginUser } from '../../actions/AuthAction'
 import { connect } from 'react-redux';
 
-
 class MasukCS extends Component {
   constructor(props) {
     super(props)

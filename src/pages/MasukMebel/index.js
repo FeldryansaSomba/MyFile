@@ -5,8 +5,10 @@ import { Logo } from '../../assets'
 import { heightMobileUI } from '../../utils/constant';
 import { RFValue } from "react-native-responsive-fontsize";
 import { Button, Gap, Input, Linking, } from '../../components';
+import { connect } from 'react-redux';
+import { loginMebel } from '../../actions/AuthMblAction';
 
-export default class MasukMebel extends Component {
+class MasukMebel extends Component {
     constructor(props) {
         super(props)
     
@@ -15,9 +17,30 @@ export default class MasukMebel extends Component {
           password: '',
         }
       }
+
+      login = () => {
+        const {email, password} = this.state
+    
+        if(email && password) {
+          //action
+          this.props.dispatch(loginMebel(email, password))
+        }else {
+          Alert.alert("Error", "Email & Kata Sandi harus diisi")
+        }
+      }
+    
+      componentDidUpdate(prevProps) {
+        const { loginMebelResult } = this.props
+    
+        if(loginMebelResult && prevProps.loginMebelResult !== loginMebelResult)
+        {
+            this.props.navigation.replace('MebelApp')
+        }
+    }
+
   render() {
     const {email, password} = this.state
-    const { navigation, loginLoading } = this.props
+    const { navigation, loginMebelLoading } = this.props
     return (
         <View style={styles.pages}>
         <ScrollView showsVerticalScrollIndicator={false}>
@@ -44,8 +67,8 @@ export default class MasukMebel extends Component {
             
             <Gap height={55}/>
             <Button 
-            onPress={() => navigation.navigate("MebelApp")}
-            loading={loginLoading}
+            onPress={() => this.login()}
+            loading={loginMebelLoading}
             title={"Masuk"}
             width={responsiveWidth(282)} 
             height={responsiveHeight(36)} 
@@ -63,6 +86,14 @@ export default class MasukMebel extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => ({
+  loginMebelLoading: state.AuthReducer.loginMebelLoading,
+  loginMebelResult: state.AuthReducer.loginMebelResult,
+  loginMebelError: state.AuthReducer.loginMebelError,
+})
+
+export default connect(mapStateToProps, null) (MasukMebel)
 
 const styles = StyleSheet.create({
     pages: {

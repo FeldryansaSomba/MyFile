@@ -3,13 +3,13 @@ import React from 'react'
 import { colors, responsiveHeight, responsiveWidth } from '../../../utils'
 import { IconTambah } from '../../../assets'
 
-const ButtonJual = ({onPress}) => {
+const ButtonJual = ({navigation}) => {
   return (
     <View style={styles.container}>
         <View style={styles.container2}>
         <Text style={styles.text}>Jual Produk Anda</Text>
         </View>
-        <TouchableOpacity style={styles.button} onPress={onPress}>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('TambahProduk')}>
         <IconTambah/>
         </TouchableOpacity>
     </View>

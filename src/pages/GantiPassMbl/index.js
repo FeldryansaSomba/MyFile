@@ -1,10 +1,12 @@
-import { Text, StyleSheet, View, TouchableOpacity, Alert } from 'react-native'
+import { StyleSheet, View, TouchableOpacity, Alert } from 'react-native'
 import React, { Component } from 'react'
 import { colors, getData, responsiveHeight, responsiveWidth } from '../../utils'
 import { IconKembali } from '../../assets'
 import { Button, Input } from '../../components'
+import { connect } from 'react-redux'
+import { changePassMbl } from '../../actions/ProfileMblAction'
 
-export default class GantiPassMbl extends Component {
+class GantiPassMbl extends Component {
     constructor(props) {
         super(props)
       
@@ -14,8 +16,41 @@ export default class GantiPassMbl extends Component {
            newPasswordKonfirmasi: ''
         }
       }
+
+      onSubmit = () => {
+        const { password, newPassword, newPasswordKonfirmasi } = this.state
+        
+        if(newPassword !== newPasswordKonfirmasi) {
+          Alert.alert('Error', 'Kata Sandi Baru dan Konfirmasi Kata Sandi Baru Harus Sama')
+        } else if (password && newPassword && newPasswordKonfirmasi) {
+  
+          //ambil data email dari local storage
+          getData('userMebel').then((res) => {
+            const parameter = {
+              email: res.email,
+              password: password,
+              newPassword: newPassword,
+            }
+            this.props.dispatch(changePassMbl(parameter));
+          })
+  
+        } else {
+          Alert.alert('Error', 'Kata Sandi Lama, Kata Sandi Baru, dan Konfirmasi Kata Sandi Baru Harus Diisi')
+        }
+      }
+  
+      componentDidUpdate(prevProps) {
+        const { changePassMblResult } = this.props
+  
+        if(changePassMblResult && prevProps.changePassMblResult !== changePassMblResult)
+        {
+          Alert.alert('Sukses', "Berhasil Ganti Kata Sandi Baru")
+            this.props.navigation.replace('MebelApp')
+        }
+    }
+
   render() {
-    const { navigation, changePassLoading } = this.props
+    const { navigation, changePassMblLoading } = this.props
     const { password, newPassword, newPasswordKonfirmasi } = this.state
     return (
         <View style={styles.pages}>
@@ -58,12 +93,20 @@ export default class GantiPassMbl extends Component {
         borderRadius={5}
         type='secondary'
         onPress={() => this.onSubmit()}
-        loading={changePassLoading}/>
+        loading={changePassMblLoading}/>
         </View>
       </View>
     )
   }
 }
+
+const mapStateToProps = (state) => ({
+    changePassMblLoading: state.ProfileReducer.changePassMblLoading,
+    changePassMblResult: state.ProfileReducer.changePassMblResult,
+    changePassMblError: state.ProfileReducer.changePassMblError,
+})
+
+export default connect(mapStateToProps, null) (GantiPassMbl)
 
 const styles = StyleSheet.create({
     pages: {

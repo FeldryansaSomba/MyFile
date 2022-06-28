@@ -11,7 +11,7 @@ export default class BerandaMbl extends Component {
         <View style={styles.containerAtas}>
         <Text style={styles.text}>Selamat Berbelanja</Text>
         <Gap height={22}/>
-        <ButtonJual/>
+        <ButtonJual navigation={navigation}/>
         <Gap height={10}/>
         </View>
         <ScrollView showsVerticalScrollIndicator={false}>

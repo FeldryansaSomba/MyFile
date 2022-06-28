@@ -4,7 +4,7 @@ import { RFValue } from "react-native-responsive-fontsize";
 import { colors, getData, responsiveHeight, responsiveWidth } from '../../utils'
 import { dummeProfile, dummyMenu, dummyMenuMbl } from '../../data'
 import { heightMobileUI } from '../../utils/constant';
-import { ListMenu, ListMenuMbl } from '../../components';
+import { ListMenuMbl } from '../../components';
 import { DefaultImage } from '../../assets';
 
 export default class ProfileMbl extends Component {
@@ -16,6 +16,32 @@ export default class ProfileMbl extends Component {
       menus: dummyMenuMbl
     }
   }
+
+  componentDidMount() {
+    this._unsubscribe = this.props.navigation.addListener('focus', () => {
+      // do something
+      this.getUserData();
+    });
+  }
+
+  componentWillUnmount() {
+    this._unsubscribe();
+  }
+
+  getUserData = () => {
+    getData('userMebel').then(res => {
+      const data = res
+
+      if(data) {
+        this.setState({
+          profile: data
+        })
+      }else {
+        this.props.navigation.replace('MasukMebel')
+      }
+    })
+  }
+
   render() {
     const {profile, menus} = this.state
     return (

@@ -15,7 +15,8 @@ import { BerandaCS,
          PilihUser, 
          ProfileCS, 
          ProfileMbl, 
-         Splash } from '../pages';
+         Splash, 
+         TambahProduk} from '../pages';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomNavigatorCS, BottomNavigatorMbl } from '../components';
@@ -46,7 +47,7 @@ const MebelApp = () => {
 
 const Router = () => {
   return (
-    <Stack.Navigator initialRouteName='MebelApp'>
+    <Stack.Navigator initialRouteName='MasukMebel'>
     <Stack.Screen 
       name="Splash" 
       component={Splash}
@@ -97,19 +98,24 @@ const Router = () => {
       component={MasukCS}
       options={{headerShown: false}}
     />
+      <Stack.Screen 
+        name="MasukMebel" 
+        component={MasukMebel}
+        options={{headerShown: false}}
+      />
     <Stack.Screen 
       name="BuatAkunCS" 
       component={BuatAkunCS}
       options={{headerShown: false}}
     />
     <Stack.Screen 
-      name="MasukMebel" 
-      component={MasukMebel}
+      name="BuatAkunMebel" 
+      component={BuatAkunMebel}
       options={{headerShown: false}}
     />
     <Stack.Screen 
-      name="BuatAkunMebel" 
-      component={BuatAkunMebel}
+      name="TambahProduk" 
+      component={TambahProduk}
       options={{headerShown: false}}
     />
     </Stack.Navigator>

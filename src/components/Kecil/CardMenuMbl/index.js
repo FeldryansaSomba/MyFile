@@ -3,6 +3,7 @@ import React from 'react'
 import { clearStorage, colors, responsiveHeight } from '../../../utils'
 import { RFValue } from "react-native-responsive-fontsize";
 import { heightMobileUI } from '../../../utils/constant';
+import FIREBASE from '../../../config/FIREBASE'
 
 const CardMenuMbl = ({menu, navigation}) => {
   const onSubmit = () => {

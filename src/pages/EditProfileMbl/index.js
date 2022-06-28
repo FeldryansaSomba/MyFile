@@ -6,8 +6,10 @@ import { Button, Input } from '../../components'
 import { RFValue } from "react-native-responsive-fontsize";
 import { heightMobileUI } from '../../utils/constant'
 import {launchImageLibrary} from 'react-native-image-picker';
+import { connect } from 'react-redux'
+import { updateProfileMbl } from '../../actions/ProfileMblAction'
 
-export default class EditProfilMbl extends Component {
+class EditProfilMbl extends Component {
     constructor(props) {
         super(props)
 
@@ -22,8 +24,64 @@ export default class EditProfilMbl extends Component {
             email: '',
         }
     }
+
+    componentDidMount() {
+        this.getUserData();
+    }
+
+    componentDidUpdate(prevProps) {
+        const { updateProfileMblResult } = this.props
+
+        if(updateProfileMblResult && prevProps.updateProfileMblResult !== updateProfileMblResult)
+        {
+            Alert.alert("Sukses", "Berhasil memperbaharui profil")
+            this.props.navigation.replace('MebelApp')
+        }
+    }
+
+    getUserData = () => {
+        getData('userMebel').then(res => {
+          const data = res
+            this.setState({
+                uid: data.uid,
+                nama: data.nama,
+                noHp: data.noHp,
+                email: data.email,
+                avatar: data.avatar,
+                avatarLama: data.avatar,
+            })
+        })
+      }
+
+      getImage = () => {
+        launchImageLibrary({quality: 1, maxHeight: 500, maxWidth: 500, includeBase64: true}, (response) => {
+            if(response.didCancel || response.errorCode || response.errorMessage) {
+                Alert.alert("Error", "Anda tidak memilih foto")
+            }else {
+                const source = response.assets[0].uri;
+                const fileString = `data:${response.assets[0].type};base64,${response.assets[0].base64}`;
+
+                this.setState({
+                    avatar: source,
+                    avatarForDB: fileString,
+                    updateAvatar: true
+                })
+            }
+        })
+      }
+
+      onSubmit = () => {
+        const { nama, noHp } = this.state
+        if(nama && noHp) {
+            //dispatch update profile
+            this.props.dispatch(updateProfileMbl(this.state))
+        } else {
+            Alert.alert("Error", "Nama dan No Telepon harus diisi")
+        }
+      }
+
   render() {
-    const { navigation, updateProfileLoading } = this.props
+    const { navigation, updateProfileMblLoading } = this.props
     const { avatar, nama, noHp, email } = this.state
     return (
         <View style={styles.pages}>
@@ -78,7 +136,7 @@ export default class EditProfilMbl extends Component {
 
         <View style={styles.button}>
         <Button
-        loading={updateProfileLoading}
+        loading={updateProfileMblLoading}
         onPress={() => this.onSubmit()}
         title={'Simpan'} 
         width={responsiveWidth(282)} 
@@ -92,6 +150,14 @@ export default class EditProfilMbl extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => ({
+    updateProfileMblLoading: state.ProfileReducer.updateProfileMblLoading,
+    updateProfileMblResult: state.ProfileReducer.updateProfileMblResult,
+    updateProfileMblError: state.ProfileReducer.updateProfileMblError,
+})
+
+export default connect(mapStateToProps, null) (EditProfilMbl)
 
 const styles = StyleSheet.create({
     pages: {

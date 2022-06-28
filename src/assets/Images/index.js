@@ -7,6 +7,7 @@ import Gambar1 from './Gambar1.svg'
 import Gambar2 from './Gambar2.svg'
 import Logo from './Logo.svg'
 import DefaultImage from './default.jpg'
+import TambahFoto from './TambahFoto.png'
 
 export {
     LogoSplash, 
@@ -17,5 +18,6 @@ export {
     Gambar1,
     Gambar2,
     Logo,
-    DefaultImage
+    DefaultImage,
+    TambahFoto
 }

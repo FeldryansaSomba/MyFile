@@ -5,8 +5,10 @@ import { Logo } from '../../assets'
 import { heightMobileUI } from '../../utils/constant';
 import { RFValue } from "react-native-responsive-fontsize";
 import { Button, Gap, Input } from '../../components';
+import { connect } from 'react-redux';
+import { registerMebel } from '../../actions/AuthMblAction';
 
-export default class BuatAkunMebel extends Component {
+class BuatAkunMebel extends Component {
     constructor(props) {
         super(props)
 
@@ -18,9 +20,34 @@ export default class BuatAkunMebel extends Component {
         }
     }
 
+    componentDidUpdate(prevProps) {
+        const { registerMebelResult } = this.props
+
+        if(registerMebelResult && prevProps.registerMebelResult !== registerMebelResult)
+        {
+            this.props.navigation.replace('MebelApp')
+        }
+    }
+
+    onContinue = () => {
+        const { nama, noHp, email, password } = this.state
+
+        if(nama && noHp && email && password) {
+            const data = {
+                nama: nama,
+                noHp: noHp,
+                email: email,
+                status: 'userMebel'
+            }
+            this.props.dispatch(registerMebel(data, password))
+        } else {
+            Alert.alert("Error", "Nama, no. telepon, email, dan kata sandi harus diisi")
+        }
+    }
+
   render() {
     const { nama, noHp, email, password } = this.state
-    const { navigation, registerLoading } = this.props
+    const { navigation, registerMebelLoading } = this.props
     return (
         <View style={styles.pages}>
         <ScrollView showsVerticalScrollIndicator={false}>
@@ -63,8 +90,8 @@ export default class BuatAkunMebel extends Component {
 
             <Gap height={55}/>
             <Button 
-            onPress={() => navigation.navigate("MebelApp")}
-            loading={registerLoading}
+            onPress={() => this.onContinue()}
+            loading={registerMebelLoading}
             title={"Daftar"}
             width={responsiveWidth(282)} 
             height={responsiveHeight(36)} 
@@ -77,6 +104,14 @@ export default class BuatAkunMebel extends Component {
     )
   }
 }
+
+const mapStatetoProps = (state) => ({
+    registerMebelLoading: state.AuthReducer.registerMebelLoading,
+    registerMebelResult: state.AuthReducer.registerMebelResult,
+    registerMebelError: state.AuthReducer.registerMebelError,
+})
+
+export default connect(mapStatetoProps, null) (BuatAkunMebel)
 
 const styles = StyleSheet.create({
     pages: {
