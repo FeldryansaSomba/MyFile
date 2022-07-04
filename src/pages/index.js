@@ -17,6 +17,8 @@ import PesananMbl from "./PesananMbl";
 import EditProfilMbl from "./EditProfileMbl";
 import GantiPassMbl from "./GantiPassMbl";
 import TambahProduk from "./TambahProduk";
+import ObrolanCS from "./ObrolanCS";
+import ChattingCS from "./ChattingCS";
 
 export {
     Splash, 
@@ -37,5 +39,7 @@ export {
     KerjaMbl,
     EditProfilMbl,
     GantiPassMbl,
-    TambahProduk
+    TambahProduk,
+    ObrolanCS,
+    ChattingCS
 }

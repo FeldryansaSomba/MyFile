@@ -3,6 +3,8 @@ import React from 'react'
 import { colors } from '../../../utils/colors'
 import { IconBeranda,
         IconBerandaActive,
+        IconObrolan,
+        IconObrolanActive,
         IconPesanan, 
         IconPesananActive, 
         IconProfile, 
@@ -14,6 +16,10 @@ const TabItemCS = ({isFocused, onLongPress, onPress, label}) => {
         if(label === "Beranda") {
             return isFocused ? <IconBerandaActive/> : <IconBeranda/>
         }
+
+        if(label === "Obrolan") {
+          return isFocused ? <IconObrolanActive/> : <IconObrolan/>
+      }
 
         if(label === "Pesanan") {
             return isFocused ? <IconPesananActive/> : <IconPesanan/>

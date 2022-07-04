@@ -15,6 +15,9 @@ import IconKustom from './IconKustom.svg'
 import IconKerja from './IconKerja.svg'
 import IconKerjaActive from './IconKerjaActive.svg'
 import IconTambah from './IconTambah.svg'
+import IconObrolan from './IconObrolan.svg'
+import IconObrolanActive from './IconObrolanActive.svg'
+import IconSend from './IconSend.svg'
 
 export {
     IconBeranda, 
@@ -33,5 +36,8 @@ export {
     IconKustom,
     IconKerja,
     IconKerjaActive,
-    IconTambah
+    IconTambah,
+    IconObrolan,
+    IconObrolanActive,
+    IconSend
 }
