@@ -1,5 +1,6 @@
 import { GET_PRODUK, GET_PRODUK_BY_FILTER, DELETE_PARAMETER_FILTER, SAVE_KEYWORD_PRODUK } from '../../actions/ProdukAction'
 import { GET_DETAIL_PRODUK } from '../../actions/DetailProdukAction';
+import { TAMBAH_PRODUK } from '../../actions/AddProdukAction';
 
 const initialState = {
     getProdukLoading: false,
@@ -13,6 +14,10 @@ const initialState = {
     getDetailProdukLoading: false,
     getDetailProdukResult: false,
     getDetailProdukError: false,
+
+    addProdukLoading: false,
+    addProdukResult: false,
+    addProdukError: false,
 }
 
 export default function (state = initialState, action) {
@@ -49,6 +54,13 @@ export default function (state = initialState, action) {
                 getDetailProdukResult: action.payload.data,
                 getDetailProdukError: action.payload.errorMessage,
                 }
+        case TAMBAH_PRODUK:
+            return {
+                ...state,
+                addProdukLoading: action.payload.loading,
+                addProdukResult: action.payload.data,
+                addProdukError: action.payload.errorMessage,
+            };
         default:
             return state;
     }

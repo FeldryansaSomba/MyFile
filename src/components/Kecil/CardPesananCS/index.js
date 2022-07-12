@@ -19,7 +19,14 @@ const CardPesananCS = ({pesanan}) => {
       <View style={styles.wrapper}>
       <Text style={styles.noHp}>No Hp Mebel : {pesanan.product.noHp}</Text>
       <Text style={styles.kustom}>Kustom Produk :</Text>
-      <Text style={styles.kustoM}>{pesanan.kustom}</Text>
+      <Text style={styles.kustoM}>
+        Panjang : {pesanan.panjang}, 
+        Lebar : {pesanan.lebar}, 
+        Tinggi : {pesanan.tinggi}, 
+        Warna : {pesanan.warna}, 
+        Kayu : {pesanan.kayu}
+      </Text>
+      
       </View>
       </View>
   )
@@ -33,7 +40,7 @@ const styles = StyleSheet.create({
         // width: responsiveWidth(275),
         height: responsiveHeight(220),
         marginBottom: 25,
-        borderRadius: 25,
+        borderRadius: 15,
         shadowColor: "#000",
         shadowOffset: {
         width: 0,
@@ -104,13 +111,13 @@ const styles = StyleSheet.create({
         paddingRight: 30
       },
       kustom: {
-        fontFamily: 'Montserrat-Medium',
-        fontSize: 12,
+        fontFamily: 'Montserrat-SemiBold',
+        fontSize: 13,
         color: colors.keempat,
       },
       kustoM: {
         fontFamily: 'Montserrat-Medium',
-        fontSize: 12,
+        fontSize: 13,
         color: colors.keempat,
       },
       noHp: {

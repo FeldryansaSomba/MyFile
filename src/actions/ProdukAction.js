@@ -30,47 +30,42 @@ export const getProduk = (idFilter, keyword) => {
             })
         }
         else if (keyword) {
-        //     console.log("keyword :", keyword)
-        //   //Edson
-        //     FIREBASE.database()
-        //     .ref('produks')
-        //     // .orderByChild('lokasi')
-        //     // .equalTo(keyword)
-        //     .once('value', (querySnapshot) => {
-        //         let data = querySnapshot.val();
-        //         console.log("data:",data)
-        //         //filter
-        //         Object.keys(data).map((key) => {
-        //             console.log("key:",key[1]);
-        //         //    Object.keys(key).map((a, b)=>{
-        //         //             console.log("a:",a, b)
-        //         //     })
-        //             // return <CardProduk key={key} produk={getProdukResult[key]} navigation={navigation}/>
-        //         })
-
-        //         // dispatchSuccess(dispatch, GET_PRODUK, data)
-        //     })
-        //     .catch((error) => {
-                
-        //         dispatchError(dispatch, GET_PRODUK, error);
-        //         alert(error)
-        //     })
-          
+            console.log("keyword :", keyword)
+          //Edson
             FIREBASE.database()
             .ref('produks')
-            .orderByChild('lokasi')
-            .equalTo(keyword)
+            // .orderByChild('lokasi')
+            // .equalTo(keyword)
             .once('value', (querySnapshot) => {
-                //Hasil
-                let data = querySnapshot.val();
+                let Objek = querySnapshot.val();
+                console.log("data:",Objek)
+        
+                filterObjLokasi(Objek, keyword, dispatch)
 
-                dispatchSuccess(dispatch, GET_PRODUK, data)
+
+                // dispatchSuccess(dispatch, GET_PRODUK, data)
             })
             .catch((error) => {
                 
                 dispatchError(dispatch, GET_PRODUK, error);
                 alert(error)
             })
+          
+            // FIREBASE.database()
+            // .ref('produks')
+            // .orderByChild('nama')
+            // .equalTo(keyword)
+            // .once('value', (querySnapshot) => {
+            //     //Hasil
+            //     let data = querySnapshot.val();
+
+            //     dispatchSuccess(dispatch, GET_PRODUK, data)
+            // })
+            // .catch((error) => {
+                
+            //     dispatchError(dispatch, GET_PRODUK, error);
+            //     alert(error)
+            // })
         } else {
             FIREBASE.database()
                 .ref('produks')
@@ -124,3 +119,29 @@ export const saveKeywordProduk = (search) => ({
     }
 })
 
+function filterObjLokasi(Objek, kataKunci, dispatch) { 
+    const hasil = {}; 
+    for (const key in Objek) { 
+      // console.log("key:",key)
+      const { nama } = Objek[key]; 
+      
+      let MyNama = nama.split(" ")
+
+      if (
+        nama === kataKunci ||
+        MyNama[0] === kataKunci|| 
+        MyNama[0]+' ' + MyNama[1] === kataKunci||
+        MyNama[0]+' ' + MyNama[1] + ' ' + MyNama[2] === kataKunci ||
+        MyNama[0]+' ' + MyNama[1] + ' ' + MyNama[2] + ' ' + MyNama[3] === kataKunci
+        ) { 
+        hasil[key] = Objek[key]; 
+      } 
+    } 
+    // console.log({ hasil });
+    // console.log("hasil:",hasil);
+
+    // const {hasil} = hasil
+    // return hasil;
+   return dispatchSuccess(dispatch, GET_PRODUK, hasil)
+
+  }

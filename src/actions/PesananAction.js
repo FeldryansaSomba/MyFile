@@ -74,7 +74,11 @@ export const masukPesanan = (data) => {
     return(dispatch) => {
         const produk = {
             product: data.produk,
-            kustom: data.kustom,
+            panjang: data.panjang,
+            lebar: data.lebar,
+            tinggi: data.tinggi,
+            warna: data.warna,
+            kayu: data.kayu,
             noHp: data.noHp,
             alamat: data.alamat
         }

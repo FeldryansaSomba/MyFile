@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, TextInput } from 'react-native'
 import React from 'react'
 import { colors } from '../../../utils'
 
-const Input = ({textArea, label, width, height, fontSize, placeholder, value, secureTextEntry,
+const Input = ({kustom, textArea, label, width, height, fontSize, placeholder, value, secureTextEntry,
                 onChangeText, disabled, keyboardType }) => {
     if(textArea) {
         return (
@@ -12,6 +12,18 @@ const Input = ({textArea, label, width, height, fontSize, placeholder, value, se
             style={styles.inputTextArea(fontSize, width)} 
             multiline={true} 
             numberOfLines={3} 
+            onChangeText={onChangeText}
+            editable={disabled ? false : true}/>
+            </View>
+        )
+    }
+
+    if(kustom) {
+        return (
+            <View style={styles.container}>
+            <Text style={styles.label(fontSize)}>{label} :</Text>
+            <TextInput placeholder={placeholder}
+            style={styles.kustom(fontSize, width, height)}
             onChangeText={onChangeText}
             editable={disabled ? false : true}/>
             </View>
@@ -62,7 +74,18 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         color: colors.kedua,
         paddingHorizontal: 10,
+        borderRadius: 5,
         paddingVertical: 5,
         textAlignVertical: 'top',
+    }),
+    kustom: (fontSize, width, height) => ({
+        fontSize: fontSize ? fontSize : 14,
+        fontFamily: 'Montserrat-Bold',
+        width: width,
+        height: height,
+        backgroundColor: colors.keempat,
+        paddingHorizontal: 10,
+        paddingVertical: 5,
+        borderRadius: 3
     }),
 })

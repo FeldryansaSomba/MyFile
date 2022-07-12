@@ -1,6 +1,6 @@
 import { Text, StyleSheet, View, TouchableOpacity, Image, ScrollView, Alert } from 'react-native'
 import React, { Component } from 'react'
-import { colors, getData } from '../../utils'
+import { colors, getData, responsiveHeight, responsiveWidth } from '../../utils'
 import { IconKembali } from '../../assets'
 import { RFValue } from "react-native-responsive-fontsize";
 import { heightMobileUI } from '../../utils/constant';
@@ -17,7 +17,11 @@ class MebelDetailCS extends Component {
         this.state = {
             produk: this.props.route.params.produk,
             images: this.props.route.params.produk.gambar,
-            kustom: "",
+            panjang: "",
+            lebar: "",
+            tinggi: "",
+            warna: "",
+            kayu: "",
             noHp: "",
             alamat: "",
             uid: ""
@@ -39,7 +43,7 @@ class MebelDetailCS extends Component {
     }
 
     beliProduk = () => {
-        const {kustom, noHp, alamat} = this.state
+        const {noHp, alamat} = this.state
 
         getData('user').then((res) => {
       
@@ -50,7 +54,7 @@ class MebelDetailCS extends Component {
               })
 
               //validasi form
-              if(kustom && noHp && alamat){
+              if(noHp && alamat){
                 //hubungkan ke action Pesanan
                 this.props.dispatch(masukKePesanan(this.state))
               }else {
@@ -66,7 +70,7 @@ class MebelDetailCS extends Component {
 
   render() {
     const { navigation, savePesananLoading } = this.props
-    const {produk, images, kustom, noHp, alamat} = this.state
+    const {produk, images, panjang, lebar, tinggi, warna, kayu, noHp, alamat} = this.state
     // console.log("paramater : ", this.props.route.params);
     return (
       <View style={styles.page}>
@@ -94,14 +98,62 @@ class MebelDetailCS extends Component {
         <Text style={styles.desc}>Warana : {produk.warna}</Text>
         <Text style={styles.desc}>Kayu : {produk.kayu}</Text>
         </View>
+
+        <Text style={styles.textKustom}>Kustom produk anda (
+        <Text style={{
+        fontFamily: 'Montserrat-Bold',
+        color: colors.kedua,
+        fontSize: RFValue(14, heightMobileUI),}}>
+        opsional
+        </Text>)
+        </Text>
         <View style={styles.container}>
+        {/* Kustom Produk */}
+        <View style={styles.contentKustom}>
+        <View style={{flexWrap: 'wrap', flexDirection: 'row', justifyContent: 'space-around'}}>
         <Input
-        placeholder={'Masukan ukuran yang anda inginkan...'}
-        label={"Kustom produk anda (opsional)"}
-        textArea
+        kustom
+        label={"Panjang"}
+        width={responsiveWidth(100)}
         fontSize={RFValue(14, heightMobileUI)}
-        value={kustom}
-        onChangeText={(kustom) => this.setState({kustom})}/>
+        value={panjang}
+        onChangeText={(panjang) => this.setState({panjang})}/>
+
+        <Input
+        kustom
+        label={"Lebar"}
+        width={responsiveWidth(95)}
+        fontSize={RFValue(14, heightMobileUI)}
+        value={lebar}
+        onChangeText={(lebar) => this.setState({lebar})}/>
+        
+        <Input
+        kustom
+        label={"Tinggi"}
+        width={responsiveWidth(99)}
+        fontSize={RFValue(14, heightMobileUI)}
+        value={tinggi}
+        onChangeText={(tinggi) => this.setState({tinggi})}/>
+
+        <Input
+        kustom
+        label={"Warna"}
+        width={responsiveWidth(95)}
+        fontSize={RFValue(14, heightMobileUI)}
+        value={warna}
+        onChangeText={(warna) => this.setState({warna})}/>
+        </View>
+        <View style={{paddingHorizontal: 18}}>
+        <Input
+        kustom
+        label={"Jenis Kayu"}
+        width={responsiveWidth(125)}
+        fontSize={RFValue(14, heightMobileUI)}
+        value={kayu}
+        onChangeText={(kayu) => this.setState({kayu})}/>
+        </View>
+        </View>
+
         <Input 
         label={"No Hp Anda"}
         fontSize={RFValue(14, heightMobileUI)}
@@ -188,6 +240,20 @@ const styles = StyleSheet.create({
     },
     scrol: {
         marginBottom: 17
+    },
+    contentKustom: {
+      backgroundColor: colors.ketiga,
+      borderRadius: 5,
+      paddingHorizontal: 27,
+      paddingTop: 5,
+      paddingBottom: 20
+    },
+    textKustom: {
+      fontFamily: 'Montserrat-SemiBold',
+      color: colors.kedua,
+      fontSize: RFValue(14, heightMobileUI),
+      paddingLeft: 34,
+      marginBottom: 3
     }
 }
 )
