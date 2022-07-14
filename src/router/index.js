@@ -21,7 +21,10 @@ import { BerandaCS,
          TambahProduk} from '../pages';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { BottomNavigatorCS, BottomNavigatorMbl } from '../components';
+import { BottomNavigatorCS, BottomNavigatorMbl, ContohBottom } from '../components';
+import EdsonHome from '../pages/HalEdson/EdsonHome';
+import EdsonPesanan from '../pages/HalEdson/EdsonPesanan';
+import EdsonProfile from '../pages/HalEdson/EdsonProfile';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -33,6 +36,16 @@ const MainApp = () => {
       <Tab.Screen name="ObrolanCS" component={ObrolanCS} options={{headerShown: false, title: 'Obrolan'}} />
       <Tab.Screen name="PesananCS" component={PesananCS} options={{headerShown: false, title: 'Pesanan'}} />
       <Tab.Screen name="ProfileCS" component={ProfileCS} options={{headerShown: false, title: 'Profil'}} />
+    </Tab.Navigator>
+  );
+}
+
+const EdsonApp = () => {
+  return (
+    <Tab.Navigator tabBar={props => <ContohBottom {...props} />}>
+      <Tab.Screen name="EdsonHome" component={EdsonHome} options={{headerShown: false, title: 'Beranda'}} />
+      <Tab.Screen name="EdsonPesanan" component={EdsonPesanan} options={{headerShown: false, title: 'Pesanan'}} />
+      <Tab.Screen name="EdsonProfile" component={EdsonProfile} options={{headerShown: false, title: 'Profil'}} />
     </Tab.Navigator>
   );
 }
@@ -50,10 +63,15 @@ const MebelApp = () => {
 
 const Router = () => {
   return (
-    <Stack.Navigator initialRouteName='MebelApp'>
+    <Stack.Navigator initialRouteName='PilihUser'>
     <Stack.Screen 
       name="Splash" 
       component={Splash}
+      options={{headerShown: false}}
+    />
+    <Stack.Screen 
+      name="EdsonApp" 
+      component={EdsonApp}
       options={{headerShown: false}}
     />
     <Stack.Screen 

@@ -16,7 +16,7 @@ export default class KerjaMbl extends Component {
     }
   }
   render() {
-    const { pesanans } = this.props
+    const { pesanans, navigation } = this.props
     return (
       <>
       <View style={styles.header}>
@@ -30,8 +30,8 @@ export default class KerjaMbl extends Component {
       </View>
       </ScrollView>
 
-      <TouchableOpacity style={styles.chat}>
-      <IconChat/>
+      <TouchableOpacity style={styles.chat} >
+      <IconChat onPress={() => navigation.navigate('EdsonApp')}/>
       </TouchableOpacity>
       </View>
       </>

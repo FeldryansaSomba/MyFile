@@ -14,7 +14,7 @@ export const getProduk = (idFilter, keyword) => {
         if(idFilter){
             FIREBASE.database()
             .ref('produks')
-            .orderByChild('produk')
+            .orderByChild('uid')
             .equalTo(idFilter)
             .once('value', (querySnapshot) => {
 

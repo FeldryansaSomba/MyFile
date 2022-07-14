@@ -1,31 +1,37 @@
-import { Text, Alert, StyleSheet, View, TouchableOpacity, ScrollView } from 'react-native'
+import { Image, Text, Alert, StyleSheet, View, TouchableOpacity, ScrollView } from 'react-native'
 import React, { Component } from 'react'
-import { colors, responsiveHeight, responsiveWidth } from '../../utils'
+import { colors, responsiveHeight, responsiveWidth, getData } from '../../utils'
 import { IconKembali, TambahFoto } from '../../assets'
 import { Button, Gap, Input } from '../../components'
 import { RFValue } from 'react-native-responsive-fontsize'
 import { heightMobileUI } from '../../utils'
 import { connect } from 'react-redux'
 import { addProduk } from '../../actions/AddProdukAction'
+import {launchImageLibrary} from 'react-native-image-picker';
+import {DefaultImage} from '../../assets'
 
 class TambahProduk extends Component {
     constructor(props) {
+        // console.log("Constructor di tambah produk:",props)
       super(props)
-    
+   
       this.state = {
         uid: '',
-        gambar: '',
-        namaProduk: '',
+        gambar: false,
+        gambarForDB: [],
+        updateGambar: false,
+        gambarLama: [],
+        nama: '',
         harga: '',
-        namaMbl: '',
+        namaMebel: '',
         noHp: '',
         panjang: '',
         lebar: '',
         tinggi: '',
         warna: '',
         kayu: '',
-        penjelasan: '',
-        kecamatan: '',
+        desc: '',
+        lokasi: '',
         alamat: '',
     }
     }
@@ -40,34 +46,77 @@ class TambahProduk extends Component {
     }
 
     onContinue = () => {
-        const { gambar, namaProduk, harga, namaMbl, noHp, panjang, lebar, tinggi, warna, kayu, penjelasan, kecamatan, alamat } = this.state
-
-        if(namaProduk && harga && namaMbl && noHp && panjang && lebar && tinggi && warna && kayu && penjelasan && kecamatan && alamat) {
-            const data = {
-                namaProduk: namaProduk,
-                harga: harga,
-                namaMbl: namaMbl,
-                noHp: noHp,
-                panjang: panjang,
-                lebar: lebar,
-                tinggi: tinggi,
-                warna: warna,
-                kayu: kayu,
-                penjelasan: penjelasan,
-                kecamatan: kecamatan,
-                alamat: alamat,
-                status: 'produk'
-            }
-            console.log("Params: ", data)
-            this.props.dispatch(addProduk(data))
+        const { uid, gambarForDB, nama, harga, namaMebel, noHp, panjang, lebar, tinggi, warna, kayu, desc, lokasi, alamat } = this.state
+        if(nama  ) {
+        // if(nama && harga && namaMebel && noHp && panjang && lebar && tinggi && warna && kayu && desc && lokasi && alamat) {
+            // const data = {
+            //     uid:uid,
+            //     gambar: gambarForDB,
+            //     nama: nama,
+            //     harga: harga,
+            //     namaMebel: namaMebel,
+            //     noHp: noHp,
+            //     panjang: panjang,
+            //     lebar: lebar,
+            //     tinggi: tinggi,
+            //     warna: warna,
+            //     kayu: kayu,
+            //     desc: desc,
+            //     lokasi: lokasi,
+            //     alamat: alamat,
+            //     // status: 'produk'
+            // }
+            // console.log("Params: ", data)
+            this.props.dispatch(addProduk(this.state))
         } else {
             Alert.alert("Error", "Semua Data Harus Diisi")
         }
     }
 
+    componentDidMount() {
+        // this._unsubscribe = this.props.navigation.addListener('focus', () => {
+        //   do something
+          this.getUserData();
+        // });
+      }
+
+    getUserData = () => {
+        getData('userMebel').then(res => {
+          const data = res
+            console.log('data tambah produk:',data)
+          if(data) {
+            this.setState({
+             uid: data.uid
+            })
+          }else {
+            this.props.navigation.replace('MasukMebel')
+          }
+        })
+      }
+
+      getImage = () => {
+        launchImageLibrary({quality: 1, maxHeight: 500, maxWidth: 500, includeBase64: true}, (response) => {
+            if(response.didCancel || response.errorCode || response.errorMessage) {
+                Alert.alert("Error", "Anda tidak memilih foto")
+            }else {
+                const source = response.assets[0].uri;
+                const fileString = `data:${response.assets[0].type};base64,${response.assets[0].base64}`;
+                // const arrayFoto = []
+                // arrayFoto.push(fileString)
+                // console.log("array foto:", arrayFoto)
+                this.setState({
+                  gambar: source,
+                  gambarForDB: fileString,
+                  updateGambar: true
+                })
+            }
+        })
+      }
+
   render() {
-    const { navigation } = this.props
-    const { gambar, namaProduk, harga, namaMbl, noHp, panjang, lebar, tinggi, warna, kayu, penjelasan, kecamatan, alamat } = this.state
+    const { navigation} = this.props
+    // console.log("uid di tambah produk: ", route.params.uid)
+    const { gambar, nama, harga, namaMebel, noHp, panjang, lebar, tinggi, warna, kayu, desc, lokasi, alamat } = this.state
     return (
       <View style={styles.page}>
         <TouchableOpacity style={styles.icon} onPress={() => navigation.goBack()}>
@@ -75,20 +124,32 @@ class TambahProduk extends Component {
         </TouchableOpacity>
         <ScrollView>
         {/* <Image source={TambahFoto} style={styles.foto}/> */}
+
         <View style={styles.contentWrapper}>
             <View style={styles.border}>
-        <TouchableOpacity style={styles.foto}>
-            <Text style={styles.text}>Tambahkan Foto</Text>
-        </TouchableOpacity>
+        <View style={styles.foto}>
+        <Image source={gambar ? {uri: gambar} : DefaultImage} style={styles.avatar}/>
+            {/* <Text style={styles.text}>Tambahkan Foto</Text> */}
         </View>
         </View>
+        <Gap height={10}/>
+        <Button
+            onPress={() => this.getImage()}
+            title={'Tambah Foto'} 
+            width={responsiveWidth(100)} 
+            height={responsiveHeight(25)} 
+            fontSize={RFValue(14, heightMobileUI)} 
+            borderRadius={5}
+            type='secondary'/>
+        </View>
+
         {/* Input data */}
         <View style={styles.container}>
         <Input 
         label={'Nama Produk'}
         height={responsiveHeight(35)}
-        value={namaProduk}
-        onChangeText={(namaProduk) => this.setState({namaProduk})}/>
+        value={nama}
+        onChangeText={(nama) => this.setState({nama})}/>
         <Input 
         label={'Harga'}
         height={responsiveHeight(35)}
@@ -97,8 +158,8 @@ class TambahProduk extends Component {
         <Input 
         label={'Nama Mebel'}
         height={responsiveHeight(35)}
-        value={namaMbl}
-        onChangeText={(namaMbl) => this.setState({namaMbl})}/>
+        value={namaMebel}
+        onChangeText={(namaMebel) => this.setState({namaMebel})}/>
         <Input 
         label={'No Telepon'}
         height={responsiveHeight(35)}
@@ -161,13 +222,13 @@ class TambahProduk extends Component {
         textArea
         label={'Penjelasan Produk'}
         height={responsiveHeight(35)}
-        value={penjelasan}
-        onChangeText={(penjelasan) => this.setState({penjelasan})}/>
+        value={desc}
+        onChangeText={(desc) => this.setState({desc})}/>
         <Input 
         label={'Kecamatan'}
         height={responsiveHeight(35)}
-        value={kecamatan}
-        onChangeText={(kecamatan) => this.setState({kecamatan})}/>
+        value={lokasi}
+        onChangeText={(lokasi) => this.setState({lokasi})}/>
         <Input 
         textArea
         label={'Alamat Lengkap'}
@@ -203,6 +264,12 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: colors.keempat
     },
+    avatar: {
+      width: responsiveWidth(150),
+      height: responsiveHeight(150),
+      borderRadius: 15,
+
+  },
     icon: {
         marginLeft: 28,
         marginTop: 30

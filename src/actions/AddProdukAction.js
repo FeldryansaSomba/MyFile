@@ -10,19 +10,20 @@ export const addProduk = (data) => {
         // const {uid} = data.uid
         const dataBaru = {
             uid: data.uid,
-            namaProduk: data.namaProduk,
+            gambar: [data.updateGambar ? data.gambarForDB : data.gambarLama],
+            nama: data.nama,
             harga: data.harga,
-            namaMbl: data.namaMbl,
+            namaMebel: data.namaMebel,
             noHp: data.noHp,
             panjang: data.panjang,
             lebar: data.lebar,
             tinggi: data.tinggi,
             warna: data.warna,
             kayu: data.kayu,
-            penjelasan: data.penjelasan,
-            kecamatan: data.kecamatan,
+            desc: data.desc,
+            lokasi: data.lokasi,
             alamat: data.alamat,
-            status: 'user',
+            status: 'ready',
         }
 
         FIREBASE.database()
@@ -33,7 +34,7 @@ export const addProduk = (data) => {
                 dispatchSuccess(dispatch, TAMBAH_PRODUK, response ? response : [])
     
                 // Simpan ke local storage(Async Storage)
-                storeData('user')
+                storeData('userMebel')
                 })
                 .catch((error) => {
                 // Error
