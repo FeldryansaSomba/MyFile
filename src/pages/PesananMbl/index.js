@@ -1,22 +1,36 @@
 import { Text, StyleSheet, View, ScrollView, TouchableOpacity } from 'react-native'
 import React, { Component } from 'react'
-import { dummyPesanan } from '../../data'
 import { colors, getData, responsiveHeight } from '../../utils'
-import { ListPesananCS } from '../../components'
+import { ListPesananMbl } from '../../components'
 import { RFValue } from "react-native-responsive-fontsize";
 import { heightMobileUI } from '../../utils/constant';
 import { IconChat } from '../../assets'
+import { connect } from 'react-redux'
+import { getListPesananMbl} from '../../actions/PesananMblAction'
 
-export default class PesananMbl extends Component {
-  constructor(props) {
-    super(props)
+class PesananMbl extends Component {
+  // constructor(props) {
+  //   super(props)
 
-    this.state = {
-      pesanans: dummyPesanan
-    }
-  }
+  //   this.state = {
+  //     pesanans: dummyPesanan
+  //   }
+  // }
+
+  componentDidMount() {
+    getData('user').then((res) => {
+      if(res) {
+        //sudah login
+        this.props.dispatch(getListPesananMbl(res.uid))
+      }else {
+        //belum login
+        this.props.navigation.replace('PilihUser')
+      }
+    })
+}
+
   render() {
-    const { pesanans } = this.props
+    // const { pesanans, navigation, namaProduk, keyword } = this.props
     return (
       <>
       <View style={styles.header}>
@@ -25,8 +39,8 @@ export default class PesananMbl extends Component {
       <View style={styles.page}>
       <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.container}>
-        <ListPesananCS pesanans={pesanans}/>
-        {/* <ListPesananCS {...this.props}/> */}
+        {/* <ListPesananMbl pesanans={pesanans}/> */}
+        <ListPesananMbl {...this.props}/>
       </View>
       </ScrollView>
 
@@ -38,6 +52,14 @@ export default class PesananMbl extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => ({
+  getProdukPesananMblLoading: state.PesananMblReducer.getProdukPesananMblLoading,
+  getProdukPesananMblResult: state.PesananMblReducer.getProdukPesananMblResult,
+  getProdukPesananMblError: state.PesananMblReducer.getProdukPesananMblError,
+})
+
+export default connect(mapStateToProps, null) (PesananMbl)
 
 const styles = StyleSheet.create({
   header: {

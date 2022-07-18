@@ -5,6 +5,7 @@ import ProfileReducer from './profile'
 import FilterReducer from './filter'
 import ProdukReducer from './produk'
 import PesananReducer from './pesananCS'
+import PesananMblReducer from './pesananMbl'
 
 const rootReducer = combineReducers({
     UserReducer,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
     ProfileReducer,
     FilterReducer,
     ProdukReducer,
-    PesananReducer
+    PesananReducer,
+    PesananMblReducer
 });
 
 export default rootReducer

@@ -16,6 +16,7 @@ import ChatItem from "./ChatItem";
 import InputChatCS from "./InputChatCS";
 import ContohBottom from "./ContohBottom";
 import ContohTab from "./ContohTab";
+import ListPesananMbl from "./ListPesananMbl";
 
 export { BottomNavigatorCS, 
         TabItemCS, 
@@ -34,5 +35,6 @@ export { BottomNavigatorCS,
         ChatItem,
         InputChatCS,
         ContohBottom,
-        ContohTab
+        ContohTab,
+        ListPesananMbl
     }
