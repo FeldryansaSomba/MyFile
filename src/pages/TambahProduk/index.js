@@ -47,7 +47,7 @@ class TambahProduk extends Component {
 
     onContinue = () => {
         const { uid, gambarForDB, nama, harga, namaMebel, noHp, panjang, lebar, tinggi, warna, kayu, desc, lokasi, alamat } = this.state
-        if(nama  ) {
+        if(gambarForDB && nama && harga && namaMebel && noHp && panjang && lebar && tinggi && warna && kayu && desc && lokasi && alamat ) {
         // if(nama && harga && namaMebel && noHp && panjang && lebar && tinggi && warna && kayu && desc && lokasi && alamat) {
             // const data = {
             //     uid:uid,

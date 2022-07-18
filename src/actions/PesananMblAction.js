@@ -9,7 +9,7 @@ export const getListPesananMbl = (id) => {
         dispatchLoading(dispatch, GET_PRODUK_PESANANMBL);
 
             FIREBASE.database()
-                .ref('pesanans/'+id)
+                .ref(`pesanans/${uid}`)
                 .once('value', (querySnapshot) => {
 
                     //Hasil

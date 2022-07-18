@@ -18,7 +18,9 @@ class PesananMbl extends Component {
   // }
 
   componentDidMount() {
-    getData('user').then((res) => {
+    this.getUserData();
+
+    getData('userMebel').then((res) => {
       if(res) {
         //sudah login
         this.props.dispatch(getListPesananMbl(res.uid))
@@ -27,6 +29,19 @@ class PesananMbl extends Component {
         this.props.navigation.replace('PilihUser')
       }
     })
+}
+
+getUserData = () => {
+  getData('userMebel').then(res => {
+    const data = res
+    if(data) {
+      this.setState({
+       uid: data.uid
+      })
+    }else {
+      this.props.navigation.replace('MasukMebel')
+    }
+  })
 }
 
   render() {
