@@ -43,6 +43,7 @@ export const masukKePesanan = (data) => {
                         const pesananUtama = {
                             user: data.uid,
                             tanggal: new Date().toDateString(),
+                            namaUser: data.namaUser
                             // harga: data.harga,
                             // noHp: data.noHp,
                             // kustom: data.kustom,
@@ -80,7 +81,8 @@ export const masukPesanan = (data) => {
             warna: data.warna,
             kayu: data.kayu,
             noHp: data.noHp,
-            alamat: data.alamat
+            alamat: data.alamat,
+            namaUser: data.namaUser
         }
 
         FIREBASE.database()

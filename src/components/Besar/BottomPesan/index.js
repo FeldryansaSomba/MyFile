@@ -15,9 +15,9 @@ const BottomPesan = ({onPress, loading}) => {
         <Text style={styles.text}>Kustom</Text>
         <IconKustom/>
       </TouchableOpacity> */}
-      <TouchableOpacity style={styles.chat}>
+      {/* <TouchableOpacity style={styles.chat}>
         <IconChat/>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   )
 }
@@ -26,8 +26,8 @@ export default BottomPesan
 
 const styles = StyleSheet.create({
     container: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
+        // flexDirection: 'row',
+        // justifyContent: 'space-between',
         backgroundColor: colors.keempat,
         paddingHorizontal: 30,
         paddingVertical: 8,
@@ -45,15 +45,15 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         flexDirection: 'row'
     },
-    chat: {
-        backgroundColor: colors.kedua,
-        width: responsiveWidth(45),
-        height: responsiveHeight(38),
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: 6,
-        borderRadius: 10
-    },
+    // chat: {
+    //     backgroundColor: colors.kedua,
+    //     width: responsiveWidth(45),
+    //     height: responsiveHeight(38),
+    //     alignItems: 'center',
+    //     justifyContent: 'center',
+    //     borderRadius: 6,
+    //     borderRadius: 10
+    // },
     text: {
         color: colors.keempat,
         fontFamily: 'Montserrat-SemiBold',

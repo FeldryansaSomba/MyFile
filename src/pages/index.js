@@ -19,6 +19,7 @@ import GantiPassMbl from "./GantiPassMbl";
 import TambahProduk from "./TambahProduk";
 import ObrolanCS from "./ObrolanCS";
 import ChattingCS from "./ChattingCS";
+import DetailPesananMbl from "./DetailPesananMbl";
 
 export {
     Splash, 
@@ -41,5 +42,6 @@ export {
     GantiPassMbl,
     TambahProduk,
     ObrolanCS,
-    ChattingCS
+    ChattingCS,
+    DetailPesananMbl
 }

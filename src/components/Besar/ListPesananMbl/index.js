@@ -3,39 +3,49 @@ import React from 'react'
 import { CardPesananMbl } from '../../Kecil'
 import { colors } from '../../../utils'
 
-const ListPesananMbl = ({getProdukPesananMblLoading, getProdukPesananMblResult, getProdukPesananMblError, navigation }) => {
-    return (
-    <ScrollView showsVerticalScrollIndicator={false}>
-    <View style={styles.container}>
-      
-      { getProdukPesananMblResult ? ( 
-            Object.keys(getProdukPesananMblResult.produk).map((key) => 
-            {
-            return <CardPesananMbl 
-                    key={key} 
-                    pesanan={getProdukPesananMblResult.produk[key]} 
-                    // navigation={navigation}
-                    id={key}
-                    />
-        })
-        ) : getProdukPesananMblLoading ? (
+const ListPesananMbl = (props) => {
 
-            <View style={styles.loading}>
-                <ActivityIndicator color={colors.pertama}/>
-            </View>
+    console.log("props di pesanan mebel:",props)
+    const {getProdukPesananMblLoading, getProdukPesananMblResult, getProdukPesananMblError, navigation } = props.allData;
+//   console.log("props di pesanan mebel:",getProdukPesananMblResult)
 
-        ) : getProdukPesananMblError ? (
-            
-            <Text>{getProdukPesananMblError}</Text>
-            
-        ) : (
 
-            <Text>Tidak Ada Pesanan Masuk</Text>
+return (
+<ScrollView showsVerticalScrollIndicator={false}>
+<View style={styles.container}>
+  
+  { getProdukPesananMblResult ? ( 
+        Object.keys(getProdukPesananMblResult).map((key) => 
+        {
+        return <CardPesananMbl 
+                key={key} 
+                pesanan={getProdukPesananMblResult[key]} 
+                navigation={navigation}
+                id={key}
+                
+                />
+    })
+    ) 
+    :
+    getProdukPesananMblLoading ? (
 
-        )}
-    </View>
-    </ScrollView>
-  )
+        <View style={styles.loading}>
+            <ActivityIndicator color={colors.pertama}/>
+        </View>
+
+    ) : getProdukPesananMblError ? (
+        
+        <Text>{getProdukPesananMblError}</Text>
+        
+    ) : (
+
+        <Text>Tidak Ada Pesanan Masuk</Text>
+
+    )
+    }
+</View>
+</ScrollView>
+)
 }
 
 export default ListPesananMbl

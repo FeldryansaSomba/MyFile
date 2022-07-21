@@ -9,16 +9,8 @@ import { connect } from 'react-redux'
 import { getListPesananMbl} from '../../actions/PesananMblAction'
 
 class PesananMbl extends Component {
-  // constructor(props) {
-  //   super(props)
-
-  //   this.state = {
-  //     pesanans: dummyPesanan
-  //   }
-  // }
 
   componentDidMount() {
-    this.getUserData();
 
     getData('userMebel').then((res) => {
       if(res) {
@@ -31,21 +23,8 @@ class PesananMbl extends Component {
     })
 }
 
-getUserData = () => {
-  getData('userMebel').then(res => {
-    const data = res
-    if(data) {
-      this.setState({
-       uid: data.uid
-      })
-    }else {
-      this.props.navigation.replace('MasukMebel')
-    }
-  })
-}
-
   render() {
-    // const { pesanans, navigation, namaProduk, keyword } = this.props
+    const { pesanans, navigation, namaProduk, keyword } = this.props
     return (
       <>
       <View style={styles.header}>
@@ -55,7 +34,8 @@ getUserData = () => {
       <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.container}>
         {/* <ListPesananMbl pesanans={pesanans}/> */}
-        <ListPesananMbl {...this.props}/>
+        {/* <ListPesananMbl {...this.props}/> */}
+        <ListPesananMbl allData={this.props}/>
       </View>
       </ScrollView>
 

@@ -1,7 +1,7 @@
 import { Text, StyleSheet, View, TouchableOpacity, Image, ScrollView, Alert } from 'react-native'
 import React, { Component } from 'react'
 import { colors, getData, responsiveHeight, responsiveWidth } from '../../utils'
-import { IconKembali } from '../../assets'
+import { IconChat, IconKembali } from '../../assets'
 import { RFValue } from "react-native-responsive-fontsize";
 import { heightMobileUI } from '../../utils/constant';
 import {BottomPesan, Gap, Input, ProdukSlider} from '../../components';
@@ -24,13 +24,15 @@ class MebelDetailCS extends Component {
             kayu: "",
             noHp: "",
             alamat: "",
-            uid: ""
+            uid: "",
+            namaUser: ""
         }
     }
 
     componentDidMount() {
         const { produk } = this.state
         this.props.dispatch(getDetailProduk(produk.produk))
+        // console.log("data produk: ", produk)
     }
     
     componentDidUpdate(prevProps) {
@@ -50,7 +52,8 @@ class MebelDetailCS extends Component {
             if(res) {
                 //Simpan uid local storage ke state
               this.setState({
-                uid: res.uid
+                uid: res.uid,
+                namaUser: res.nama
               })
 
               //validasi form
@@ -81,8 +84,19 @@ class MebelDetailCS extends Component {
         <ProdukSlider images={images}/>
         <View style={styles.scrol}>
         <View style={styles.container}>
+        <View style={styles.contant}>
+        
+        <View style={{flex: 1}}>
         <Text style={styles.nama}>{produk.nama}</Text>
+        </View>
+
+        <TouchableOpacity style={styles.chat} onPress={() => navigation.navigate('ChattingCS')}>
+        <IconChat/>
+        </TouchableOpacity>
+        </View>
+
         <Text style={styles.mebel}>{produk.namaMebel}</Text>
+
         <View style={styles.garis}>
         <Text style={styles.harga}>{produk.harga}</Text>
         <Text style={styles.lokasi}>{produk.lokasi}</Text>
@@ -184,6 +198,9 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, null)(MebelDetailCS)
 
 const styles = StyleSheet.create({
+  contant: {
+    flexDirection: 'row',
+  },
     page: {
         flex: 1,
         backgroundColor: colors.keempat
@@ -192,6 +209,16 @@ const styles = StyleSheet.create({
         marginLeft: 28,
         marginTop: 30
     },
+    chat: {
+      backgroundColor: colors.kedua,
+      width: responsiveWidth(45),
+      height: responsiveHeight(38),
+      alignItems: 'center',
+      justifyContent: 'center',
+      borderRadius: 6,
+      borderRadius: 10,
+      marginTop: 10
+  },
     nama: {
         fontFamily: 'Montserrat-SemiBold',
         color: colors.kedua,

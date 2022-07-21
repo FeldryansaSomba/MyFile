@@ -1,34 +1,41 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { colors, responsiveHeight, responsiveWidth } from '../../../utils'
 
-const CardPesananMbl = ({pesanan}) => {
+const CardPesananMbl = ({pesanan, navigation}) => {
+  console.log("navigation di card:",navigation);
+
+  console.log("data di card:",pesanan);
   return (
-    <View style={styles.card}>
-    {/* <Text style={styles.tgl}>{pesanan.tanggalPemesanan}</Text> */}
-    <Text style={styles.status}>Status : Proses</Text>
+    <TouchableOpacity style={styles.card} 
+    onPress={() => navigation.navigate('DetailPesananMbl', {data:pesanan})}>
+
+
+    {/* <Text style={styles.tgl}>{pesanan.dataPesanan.tanggalPemesanan}</Text>  */}
+    {/* <Text style={styles.status}>{pesanan.dataPesanan.tanggalPemesanan}</Text> */}
+    <Text style={styles.status}>Nama pembeli : { pesanan.dataPesanan.namaUser? pesanan.dataPesanan.namaUser: null }</Text>
     <View style={styles.container}>
-    <Image source={{uri: pesanan.product.gambar[0]}} style={styles.gambar}/>
+    <Image source={{uri: pesanan.dataPesanan.product.gambar[0]}} style={styles.gambar}/>
     <View style={styles.data}>
-    <Text style={styles.nama}>{pesanan.product.nama}</Text>
-    <Text style={styles.harga}>{pesanan.product.harga}</Text>
-    <Text style={styles.mebel}>{pesanan.product.namaMebel}</Text>
-    <Text style={styles.lokasi}>{pesanan.product.lokasi}</Text>
+    <Text style={styles.nama}>{pesanan.dataPesanan.product.nama}</Text>
+    <Text style={styles.harga}>{pesanan.dataPesanan.product.harga}</Text>
+    <Text style={styles.mebel}>{pesanan.dataPesanan.product.namaMebel}</Text>
+    <Text style={styles.lokasi}>{pesanan.dataPesanan.product.lokasi}</Text>
     </View>
     </View>
     <View style={styles.wrapper}>
-    <Text style={styles.noHp}>No Hp Mebel : {pesanan.product.noHp}</Text>
+    <Text style={styles.noHp}>No Hp Pelanggan : {pesanan.dataPesanan.noHp}</Text>
     <Text style={styles.kustom}>Kustom Produk :</Text>
     <Text style={styles.kustoM}>
-      Panjang : {pesanan.panjang}, 
-      Lebar : {pesanan.lebar}, 
-      Tinggi : {pesanan.tinggi}, 
-      Warna : {pesanan.warna}, 
-      Kayu : {pesanan.kayu}
+      Panjang : {pesanan.dataPesanan.panjang}, 
+      Lebar : {pesanan.dataPesanan.lebar}, 
+      Tinggi : {pesanan.dataPesanan.tinggi}, 
+      Warna : {pesanan.dataPesanan.warna}, 
+      Kayu : {pesanan.dataPesanan.kayu}
     </Text>
     
-    </View>
-    </View>
+    </View> 
+    </TouchableOpacity>
   )
 }
 
@@ -60,7 +67,8 @@ elevation: 5,
     fontFamily: 'Montserrat-Bold',
     fontSize: 14,
     color: colors.keempat,
-    marginTop: 5
+    marginTop: 5,
+    marginBottom: 5
   },
   tgl: {
     textAlign: 'center',
@@ -103,7 +111,7 @@ elevation: 5,
     marginBottom: 5
   },
   lokasi: {
-    fontFamily: 'Montserrat-Medium',
+    fontFamily: 'Montserrat-SemiBold',
     fontSize: 12,
     color: colors.keempat,
     marginLeft: 25
@@ -125,8 +133,8 @@ elevation: 5,
     color: colors.keempat,
   },
   noHp: {
-    fontFamily: 'Montserrat-Medium',
-    fontSize: 12,
+    fontFamily: 'Montserrat-SemiBold',
+    fontSize: 13,
     color: colors.keempat,
     marginBottom: 5
   }

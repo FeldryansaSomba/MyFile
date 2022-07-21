@@ -4,6 +4,7 @@ import { BerandaCS,
          BuatAkunCS, 
          BuatAkunMebel, 
          ChattingCS, 
+         DetailPesananMbl, 
          EditProfileCS, 
          EditProfilMbl, 
          GantiPassCS, 
@@ -92,6 +93,11 @@ const Router = () => {
     <Stack.Screen 
       name="MebelDetailCS" 
       component={MebelDetailCS}
+      options={{headerShown: false}}
+    />
+    <Stack.Screen 
+      name="DetailPesananMbl" 
+      component={DetailPesananMbl}
       options={{headerShown: false}}
     />
     <Stack.Screen 
