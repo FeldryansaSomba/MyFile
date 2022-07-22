@@ -88,6 +88,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat-Bold',
     fontSize: RFValue(19, heightMobileUI),
     color: colors.keempat,
+    textTransform: 'capitalize',
     marginBottom: 5
   },
   nohp: {

@@ -1,9 +1,38 @@
 import { Text, StyleSheet, View, ScrollView } from 'react-native'
 import React, { Component } from 'react'
 import { colors } from '../../utils/colors'
-import { Gap, ListProduk,  Filter, ButtonJual } from '../../components'
+import { Gap, ListProdukMbl, ButtonJual } from '../../components'
+import { connect } from 'react-redux'
+import { getProduk } from '../../actions/ProdukAction'
 
-export default class BerandaMbl extends Component {
+class BerandaMbl extends Component {
+
+  componentDidMount() {
+    this._unsubscribe = this.props.navigation.addListener('focus', () => {
+      const {idFilter, keyword} = this.props
+      // do something
+      this.props.dispatch(getProduk(idFilter, keyword));
+    });
+  }
+
+  componentWillUnmount() {
+    this._unsubscribe();
+  }
+
+  componentDidUpdate(prevProps) {
+    const { idFilter, keyword } = this.props
+
+    if(idFilter && prevProps.idFilter !== idFilter)
+    {
+      this.props.dispatch(getProduk(idFilter, keyword));
+    }
+
+    if(keyword && prevProps.keyword !== keyword)
+    {
+      this.props.dispatch(getProduk(idFilter, keyword));
+    }
+}
+
   render() {
     const { navigation, namaProduk, keyword } = this.props
     return (
@@ -16,13 +45,19 @@ export default class BerandaMbl extends Component {
         </View>
         <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.listProduk}>
-        <ListProduk  navigation={navigation}/>
+        <ListProdukMbl  navigation={navigation}/>
         </View>
         </ScrollView>
       </View>
     )
   }
 }
+
+const mapStatetoProps = (state) => ({
+  // namaProduk: state.ProdukReducer.namaProduk,
+})
+
+export default connect(mapStatetoProps, null) (BerandaMbl)
 
 const styles = StyleSheet.create({
   pages: {

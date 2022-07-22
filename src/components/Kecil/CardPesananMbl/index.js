@@ -25,14 +25,13 @@ const CardPesananMbl = ({pesanan, navigation}) => {
     </View>
     <View style={styles.wrapper}>
     <Text style={styles.noHp}>No Hp Pelanggan : {pesanan.dataPesanan.noHp}</Text>
-    <Text style={styles.kustom}>Kustom Produk :</Text>
-    <Text style={styles.kustoM}>
+    {/* <Text style={styles.kustoM}>
       Panjang : {pesanan.dataPesanan.panjang}, 
       Lebar : {pesanan.dataPesanan.lebar}, 
       Tinggi : {pesanan.dataPesanan.tinggi}, 
       Warna : {pesanan.dataPesanan.warna}, 
       Kayu : {pesanan.dataPesanan.kayu}
-    </Text>
+    </Text> */}
     
     </View> 
     </TouchableOpacity>
@@ -49,7 +48,7 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: colors.pertama,
     // width: responsiveWidth(275),
-    height: responsiveHeight(220),
+    height: responsiveHeight(170),
     marginBottom: 25,
     borderRadius: 15,
     shadowColor: "#000",
@@ -65,9 +64,10 @@ elevation: 5,
   status: {
     marginLeft: 30,
     fontFamily: 'Montserrat-Bold',
-    fontSize: 14,
+    fontSize: 15,
     color: colors.keempat,
-    marginTop: 5,
+    textTransform: 'capitalize',
+    marginTop: 8,
     marginBottom: 5
   },
   tgl: {
@@ -91,14 +91,15 @@ elevation: 5,
   },
   nama: {
     fontFamily: 'Montserrat-SemiBold',
-    fontSize: 14,
+    fontSize: 15,
     color: colors.keempat,
+    textTransform: 'capitalize',
     marginLeft: 25,
     marginBottom: 5
   },
   harga: {
     fontFamily: 'Montserrat-Bold',
-    fontSize: 13,
+    fontSize: 14,
     color: colors.keempat,
     marginLeft: 25,
     marginBottom: 16
@@ -112,7 +113,7 @@ elevation: 5,
   },
   lokasi: {
     fontFamily: 'Montserrat-SemiBold',
-    fontSize: 12,
+    fontSize: 13,
     color: colors.keempat,
     marginLeft: 25
   },
@@ -136,6 +137,5 @@ elevation: 5,
     fontFamily: 'Montserrat-SemiBold',
     fontSize: 13,
     color: colors.keempat,
-    marginBottom: 5
   }
 })

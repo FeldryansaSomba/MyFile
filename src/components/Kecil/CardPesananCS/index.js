@@ -79,14 +79,14 @@ const styles = StyleSheet.create({
       },
       nama: {
         fontFamily: 'Montserrat-SemiBold',
-        fontSize: 14,
+        fontSize: 15,
         color: colors.keempat,
         marginLeft: 25,
         marginBottom: 5
       },
       harga: {
         fontFamily: 'Montserrat-Bold',
-        fontSize: 13,
+        fontSize: 14,
         color: colors.keempat,
         marginLeft: 25,
         marginBottom: 16
@@ -99,8 +99,8 @@ const styles = StyleSheet.create({
         marginBottom: 5
       },
       lokasi: {
-        fontFamily: 'Montserrat-Medium',
-        fontSize: 12,
+        fontFamily: 'Montserrat-SemiBold',
+        fontSize: 13,
         color: colors.keempat,
         marginLeft: 25
       },
@@ -116,13 +116,13 @@ const styles = StyleSheet.create({
         color: colors.keempat,
       },
       kustoM: {
-        fontFamily: 'Montserrat-Medium',
+        fontFamily: 'Montserrat-SemiBold',
         fontSize: 13,
         color: colors.keempat,
       },
       noHp: {
-        fontFamily: 'Montserrat-Medium',
-        fontSize: 12,
+        fontFamily: 'Montserrat-SemiBold',
+        fontSize: 13,
         color: colors.keempat,
         marginBottom: 5
       }

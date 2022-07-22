@@ -25,7 +25,8 @@ class MebelDetailCS extends Component {
             noHp: "",
             alamat: "",
             uid: "",
-            namaUser: ""
+            namaUser: "",
+            catatan: ""
         }
     }
 
@@ -73,7 +74,7 @@ class MebelDetailCS extends Component {
 
   render() {
     const { navigation, savePesananLoading } = this.props
-    const {produk, images, panjang, lebar, tinggi, warna, kayu, noHp, alamat} = this.state
+    const {produk, images, panjang, lebar, tinggi, warna, kayu, noHp, alamat, catatan} = this.state
     // console.log("paramater : ", this.props.route.params);
     return (
       <View style={styles.page}>
@@ -128,6 +129,7 @@ class MebelDetailCS extends Component {
         <Input
         kustom
         label={"Panjang"}
+        keyboardType='numeric'
         width={responsiveWidth(100)}
         fontSize={RFValue(14, heightMobileUI)}
         value={panjang}
@@ -136,6 +138,7 @@ class MebelDetailCS extends Component {
         <Input
         kustom
         label={"Lebar"}
+        keyboardType='numeric'
         width={responsiveWidth(95)}
         fontSize={RFValue(14, heightMobileUI)}
         value={lebar}
@@ -144,6 +147,7 @@ class MebelDetailCS extends Component {
         <Input
         kustom
         label={"Tinggi"}
+        keyboardType='numeric'
         width={responsiveWidth(99)}
         fontSize={RFValue(14, heightMobileUI)}
         value={tinggi}
@@ -170,15 +174,22 @@ class MebelDetailCS extends Component {
 
         <Input 
         label={"No Hp Anda"}
+        keyboardType='numeric'
         fontSize={RFValue(14, heightMobileUI)}
         value={noHp}
         onChangeText={(noHp) => this.setState({noHp})}/>
         <Input 
-        label={"Masukan Alamat Anda"}
+        label={"Alamat Lengkap Anda"}
         textArea
         fontSize={RFValue(14, heightMobileUI)}
         value={alamat}
         onChangeText={(alamat) => this.setState({alamat})}/>
+        <Input 
+        label={"Catatan"}
+        textArea
+        fontSize={RFValue(14, heightMobileUI)}
+        value={catatan}
+        onChangeText={(catatan) => this.setState({catatan})}/>
         <Gap height={15}/>
         </View>
         </ScrollView>

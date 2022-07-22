@@ -82,7 +82,8 @@ export const masukPesanan = (data) => {
             kayu: data.kayu,
             noHp: data.noHp,
             alamat: data.alamat,
-            namaUser: data.namaUser
+            namaUser: data.namaUser,
+            catatan: data.catatan
         }
 
         FIREBASE.database()

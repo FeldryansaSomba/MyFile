@@ -5,7 +5,7 @@ import { colors, responsiveHeight, responsiveWidth } from '../../../utils';
 const CardProdukMbl = ({produk, navigation, dataUser}) => {
   return (
     <View>
-      <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('MebelDetailCS', {produk})}>
+      <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('MebelDetailMbl', {produk})}>
       <Image source={{uri: produk.gambar[0]}} style={styles.gambar}/>
       <View style={styles.data}>
       <Text style={styles.nama}>{produk.nama}</Text>
@@ -17,10 +17,6 @@ const CardProdukMbl = ({produk, navigation, dataUser}) => {
     </View>
   )
 }
-
-// const mapStatetoProps = (state) => ({
-//   dataUser: state.UserReducer.dataUser
-// })
 
 export default CardProdukMbl
 

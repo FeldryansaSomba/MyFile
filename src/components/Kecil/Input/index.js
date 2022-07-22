@@ -25,6 +25,7 @@ const Input = ({kustom, textArea, label, width, height, fontSize, placeholder, v
             <TextInput placeholder={placeholder}
             style={styles.kustom(fontSize, width, height)}
             onChangeText={onChangeText}
+            keyboardType={keyboardType}
             editable={disabled ? false : true}/>
             </View>
         )
@@ -38,7 +39,7 @@ const Input = ({kustom, textArea, label, width, height, fontSize, placeholder, v
       secureTextEntry={secureTextEntry} 
       onChangeText={onChangeText}
       editable={disabled ? false : true}
-      keyboarType={keyboardType}/>
+      keyboardType={keyboardType}/>
     </View>
   )
 }

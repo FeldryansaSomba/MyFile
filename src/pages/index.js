@@ -20,6 +20,7 @@ import TambahProduk from "./TambahProduk";
 import ObrolanCS from "./ObrolanCS";
 import ChattingCS from "./ChattingCS";
 import DetailPesananMbl from "./DetailPesananMbl";
+import MebelDetailMbl from "./MebelDetailMbl";
 
 export {
     Splash, 
@@ -43,5 +44,6 @@ export {
     TambahProduk,
     ObrolanCS,
     ChattingCS,
-    DetailPesananMbl
+    DetailPesananMbl,
+    MebelDetailMbl
 }

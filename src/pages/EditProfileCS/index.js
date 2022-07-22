@@ -122,7 +122,7 @@ class EditProfileCS extends Component {
         width={responsiveWidth(313)} 
         height={responsiveHeight(33)} 
         fontSize={RFValue(16, heightMobileUI)}
-        keyboardType="number-pad"/>
+        keyboardType='numeric'/>
 
         <Input 
         label={"Email"} 

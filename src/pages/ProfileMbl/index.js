@@ -87,6 +87,7 @@ const styles = StyleSheet.create({
   nama: {
     fontFamily: 'Montserrat-Bold',
     fontSize: RFValue(19, heightMobileUI),
+    textTransform: 'capitalize',
     color: colors.keempat,
     marginBottom: 5
   },

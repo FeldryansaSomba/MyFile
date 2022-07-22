@@ -153,6 +153,7 @@ class TambahProduk extends Component {
         <Input 
         label={'Harga'}
         height={responsiveHeight(35)}
+        keyboardType='numeric'
         value={harga}
         onChangeText={(harga) => this.setState({harga})}/>
         <Input 
@@ -162,6 +163,7 @@ class TambahProduk extends Component {
         onChangeText={(namaMebel) => this.setState({namaMebel})}/>
         <Input 
         label={'No Telepon'}
+        keyboardType='numeric'
         height={responsiveHeight(35)}
         value={noHp}
         onChangeText={(noHp) => this.setState({noHp})}/>
@@ -175,6 +177,7 @@ class TambahProduk extends Component {
         label={"Panjang"}
         width={responsiveWidth(100)}
         fontSize={RFValue(14, heightMobileUI)}
+        keyboardType='numeric'
         value={panjang}
         onChangeText={(panjang) => this.setState({panjang})}
         />
@@ -182,6 +185,7 @@ class TambahProduk extends Component {
         <Input
         kustom
         label={"Lebar"}
+        keyboardType='numeric'
         width={responsiveWidth(95)}
         fontSize={RFValue(14, heightMobileUI)}
         value={lebar}
@@ -191,6 +195,7 @@ class TambahProduk extends Component {
         <Input
         kustom
         label={"Tinggi"}
+        keyboardType='numeric'
         width={responsiveWidth(99)}
         fontSize={RFValue(14, heightMobileUI)}
         value={tinggi}
