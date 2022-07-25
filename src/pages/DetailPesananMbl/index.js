@@ -12,7 +12,7 @@ import { masukKePesanan } from '../../actions/PesananAction'
 const DetailPesananMbl = (props) => {
 
     const data = props.route.params.data.dataPesanan
-    console.log('Data Pesanan: ', props.route.params)
+    console.log('Data Pesanan: ', props)
   return (
     // <View>
     //   <Image source={{uri: data.product.gambar[0]}} style={styles.gambar}/>
@@ -21,7 +21,7 @@ const DetailPesananMbl = (props) => {
 
 
     <View style={styles.page}>
-        <TouchableOpacity style={styles.icon}>
+        <TouchableOpacity style={styles.icon} onPress={()=> props.navigation.goBack()}>
         <IconKembali />
         </TouchableOpacity>
         <ScrollView showsVerticalScrollIndicator={false}>
@@ -80,6 +80,7 @@ const DetailPesananMbl = (props) => {
         <Gap height={25}/>
         </View>
         </ScrollView>
+        <BottomPesan pesanan title={"Terima"}/>
       </View>
   )
 }

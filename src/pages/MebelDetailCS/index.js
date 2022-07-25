@@ -193,7 +193,7 @@ class MebelDetailCS extends Component {
         <Gap height={15}/>
         </View>
         </ScrollView>
-        <BottomPesan onPress={() => this.beliProduk()} loading={savePesananLoading}/>
+        <BottomPesan title={"Beli"} onPress={() => this.beliProduk()} loading={savePesananLoading}/>
       </View>
     )
   }
