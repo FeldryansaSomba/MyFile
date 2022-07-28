@@ -18,6 +18,7 @@ import ContohBottom from "./ContohBottom";
 import ContohTab from "./ContohTab";
 import ListPesananMbl from "./ListPesananMbl";
 import ListProdukMbl from "./ListProdukMbl";
+import ListKerjaMbl from "./ListKerjaMbl";
 
 export { BottomNavigatorCS, 
         TabItemCS, 
@@ -38,5 +39,6 @@ export { BottomNavigatorCS,
         ContohBottom,
         ContohTab,
         ListPesananMbl,
-        ListProdukMbl
+        ListProdukMbl,
+        ListKerjaMbl
     }

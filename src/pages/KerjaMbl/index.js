@@ -1,20 +1,28 @@
 import { Text, StyleSheet, View, ScrollView, TouchableOpacity } from 'react-native'
 import React, { Component } from 'react'
-import { dummyPesanan } from '../../data'
 import { colors, getData, responsiveHeight } from '../../utils'
-import { ListPesananCS } from '../../components'
+import { ListKerjaMbl } from '../../components'
 import { RFValue } from "react-native-responsive-fontsize";
 import { heightMobileUI } from '../../utils/constant';
 import { IconChat } from '../../assets'
+import { getProsesPesananMbl } from '../../actions/ProsesMblAction'
+import { connect } from 'react-redux'
 
-export default class KerjaMbl extends Component {
-  constructor(props) {
-    super(props)
+class KerjaMbl extends Component {
 
-    this.state = {
-      pesanans: dummyPesanan
-    }
-  }
+  componentDidMount() {
+
+    getData('userMebel').then((res) => {
+      if(res) {
+        //sudah login
+        this.props.dispatch(getProsesPesananMbl(res.uid))
+      }else {
+        //belum login
+        this.props.navigation.replace('PilihUser')
+      }
+    })
+}
+
   render() {
     const { pesanans, navigation } = this.props
     return (
@@ -25,19 +33,28 @@ export default class KerjaMbl extends Component {
       <View style={styles.page}>
       <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.container}>
-        <ListPesananCS pesanans={pesanans}/>
+        {/* <ListPesananCS pesanans={pesanans}/> */}
         {/* <ListPesananCS {...this.props}/> */}
+        <ListKerjaMbl allData={this.props}/>
       </View>
       </ScrollView>
 
-      <TouchableOpacity style={styles.chat} >
+      {/* <TouchableOpacity style={styles.chat} >
       <IconChat onPress={() => navigation.navigate('EdsonApp')}/>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       </View>
       </>
     )
   }
 }
+
+const mapStateToProps = (state) => ({
+  getProsesPesananLoading: state.prosesPesananMbl.getProsesPesananLoading,
+  getProsesPesananResult: state.prosesPesananMbl.getProsesPesananResult,
+  getProsesPesananError: state.prosesPesananMbl.getProsesPesananError,
+})
+
+export default connect(mapStateToProps, null) (KerjaMbl)
 
 const styles = StyleSheet.create({
   header: {

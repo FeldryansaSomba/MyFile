@@ -56,8 +56,8 @@ const MebelApp = () => {
   return (
     <Tab.Navigator tabBar={props => <BottomNavigatorMbl {...props} />}>
       <Tab.Screen name="BerandaMbl" component={BerandaMbl} options={{headerShown: false, title: 'Beranda'}} />
-      {/* <Tab.Screen name="KerjaMbl" component={KerjaMbl} options={{headerShown: false, title: 'Kerja'}} /> */}
       <Tab.Screen name="PesananMbl" component={PesananMbl} options={{headerShown: false, title: 'Pesanan'}} />
+      <Tab.Screen name="KerjaMbl" component={KerjaMbl} options={{headerShown: false, title: 'Kerja'}} />
       <Tab.Screen name="ProfileMbl" component={ProfileMbl} options={{headerShown: false, title: 'Profil'}} />
     </Tab.Navigator>
   );
