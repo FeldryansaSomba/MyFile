@@ -22,6 +22,7 @@ return (
                 pesanan={getProdukPesananMblResult[key]} 
                 navigation={navigation}
                 id={key}
+                dispatch={props.allData.dispatch}
                 
                 />
     })

@@ -6,7 +6,13 @@ const CardProdukMbl = ({produk, navigation, dataUser}) => {
   return (
     <View>
       <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('MebelDetailMbl', {produk})}>
-      <Image source={{uri: produk.gambar[0]}} style={styles.gambar}/>
+      {/* <Image source={{uri: produk.gambar[0]}} style={styles.gambar}/> */}
+      
+      {
+        produk.gambar?
+        <Image source={{uri: produk.gambar[0]}} style={styles.gambar}/>
+        : null
+      }
       <View style={styles.data}>
       <Text style={styles.nama}>{produk.nama}</Text>
       <Text style={styles.harga}>{produk.harga}</Text>

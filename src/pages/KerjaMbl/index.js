@@ -9,19 +9,34 @@ import { getProsesPesananMbl } from '../../actions/ProsesMblAction'
 import { connect } from 'react-redux'
 
 class KerjaMbl extends Component {
+  constructor(props) {
+    super(props)
+   
+  }
 
-  componentDidMount() {
+ 
+  // componentDidMount(){
+  //   if(this.props.route.params.data.idPesanan){
+  //       this.props.dispatch(getProsesPesananMbl(this.props.route.params.data.idPesanan))
+  //   }
+  // }
 
-    getData('userMebel').then((res) => {
-      if(res) {
-        //sudah login
-        this.props.dispatch(getProsesPesananMbl(res.uid))
-      }else {
-        //belum login
-        this.props.navigation.replace('PilihUser')
-      }
-    })
-}
+//   componentDidMount() {
+//     getData('idPesanan').then((res) => {
+//       if(res) {
+//         //sudah login
+//         // console.log("res get data:", res)
+//         this.props.dispatch(getProsesPesananMbl(res))
+//       }else {
+//         //belum login
+//         // this.props.navigation.replace('PilihUser')
+//       }
+//     })
+// }
+//algoritma
+// push id pesanan ke asynstorage
+//
+
 
   render() {
     const { pesanans, navigation } = this.props
@@ -35,7 +50,7 @@ class KerjaMbl extends Component {
       <View style={styles.container}>
         {/* <ListPesananCS pesanans={pesanans}/> */}
         {/* <ListPesananCS {...this.props}/> */}
-        <ListKerjaMbl allData={this.props}/>
+        {/* <ListKerjaMbl allData={this.props.params.data}/> */}
       </View>
       </ScrollView>
 

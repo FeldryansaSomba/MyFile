@@ -70,7 +70,7 @@ export const getProduk = (idFilter, keyword) => {
             FIREBASE.database()
                 .ref('produks')
                 .once('value', (querySnapshot) => {
-                    console.log("query else:",querySnapshot.val())
+                    // console.log("query else:",querySnapshot.val())
                     //Hasil
                     let data = querySnapshot.val();
 

@@ -5,14 +5,14 @@ import { RFValue } from 'react-native-responsive-fontsize'
 import { heightMobileUI } from '../../../utils/constant'
 import { IconChat, IconKustom } from '../../../assets'
 
-const BottomPesan = ({onPress, loading, title, pesanan}) => {
+const BottomPesan = ({onPress, onPressTolak, onPressTerima, loading, title, pesanan}) => {
   if (pesanan) {
     return (
     <View style={styles.container2}>
-      <TouchableOpacity style={styles.button2} onPress={onPress} loading={loading}>
+      <TouchableOpacity style={styles.button2} onPress={onPressTerima} loading={loading}>
         <Text style={styles.text}>Terima</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button2}>
+      <TouchableOpacity style={styles.button2} onPress={onPressTolak}>
         <Text style={styles.text}>Tolak</Text>
       </TouchableOpacity>
       {/* <TouchableOpacity style={styles.chat}>

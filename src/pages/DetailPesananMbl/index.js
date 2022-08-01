@@ -8,11 +8,24 @@ import {BottomPesan, Gap, Input, ProdukSlider} from '../../components';
 import { connect } from 'react-redux';
 import { getDetailProduk } from '../../actions/DetailProdukAction'
 import { masukKePesanan } from '../../actions/PesananAction'
+import { storeData } from '../../utils';
+import { getProsesPesananMbl } from '../../actions/ProsesMblAction';
 
 const DetailPesananMbl = (props) => {
 
     const data = props.route.params.data.dataPesanan
+    const idPesanan = props.route.params.data.idPesanan
+    const idMebel = props.route.params.data.idMebel
+    const idPembeli = props.route.params.data.idPembeli
+    const dispatch = props.route.params.dispatch
     console.log('Data Pesanan: ', props)
+
+    const terimaPesanan = () =>{
+      props.navigation.navigate('KerjaMbl')
+      dispatch(getProsesPesananMbl(idPesanan, idMebel, idPembeli))
+    }
+
+
   return (
     // <View>
     //   <Image source={{uri: data.product.gambar[0]}} style={styles.gambar}/>
@@ -80,7 +93,10 @@ const DetailPesananMbl = (props) => {
         <Gap height={25}/>
         </View>
         </ScrollView>
-        <BottomPesan pesanan title={"Terima"}/>
+        <BottomPesan pesanan  onPressTerima={
+         ()=>terimaPesanan()
+        } 
+        onPressTolak ={()=>props.navigation.navigate('PesananMbl') } title={"Terima"}/>
       </View>
   )
 }
