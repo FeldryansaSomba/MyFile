@@ -5,7 +5,8 @@ import { colors, responsiveHeight, responsiveWidth } from '../../../utils'
 const CardKerjaMbl = ({pesanan, navigation}) => {
 //   console.log("navigation di card:",navigation);
 
-//   console.log("data di card:",pesanan);
+  console.log("data di card kerja:",pesanan);
+  
   return (
     // <TouchableOpacity style={styles.card} 
     // onPress={() => navigation.navigate('DetailPesananMbl', {data:pesanan})}>
@@ -14,7 +15,7 @@ const CardKerjaMbl = ({pesanan, navigation}) => {
     <TouchableOpacity style={styles.card} >
     {/* <Text style={styles.tgl}>{pesanan.dataPesanan.tanggalPemesanan}</Text>  */}
     {/* <Text style={styles.status}>{pesanan.dataPesanan.tanggalPemesanan}</Text> */}
-    <Text style={styles.status}>Nama pembeli : { pesanan.dataPesanan.namaUser? pesanan.dataPesanan.namaUser: null }</Text>
+    {/* <Text style={styles.status}>Nama pembeli : { pesanan.dataPesanan.namaUser? pesanan.dataPesanan.namaUser: null }</Text>
     <View style={styles.container}>
     <Image source={{uri: pesanan.dataPesanan.product.gambar[0]}} style={styles.gambar}/>
     <View style={styles.data}>
@@ -25,9 +26,9 @@ const CardKerjaMbl = ({pesanan, navigation}) => {
     </View>
     </View>
     <View style={styles.wrapper}>
-    <Text style={styles.noHp}>No Hp Pelanggan : {pesanan.dataPesanan.noHp}</Text>
+    <Text style={styles.noHp}>No Hp Pelanggan : {pesanan.dataPesanan.noHp}</Text> */}
     
-    </View> 
+    {/* </View>  */}
     </TouchableOpacity>
   )
 }

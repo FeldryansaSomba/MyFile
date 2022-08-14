@@ -1,9 +1,13 @@
-import { GET_PRODUK_PESANANMBL } from '../../actions/PesananMblAction'
+import { GET_PRODUK_PESANANMBL, GET_TERIMA_PESANANMBL } from '../../actions/PesananMblAction'
 
 const initialState = {
     getProdukPesananMblLoading: false,
     getProdukPesananMblResult: false,
     getProdukPesananMblError: false,
+    
+    getTerimaPesananMblLoading: false,
+    getTerimaPesananMblResult: false,
+    getTerimaPesananMblError: false,
 
 }
 
@@ -16,6 +20,15 @@ export default function (state = initialState, action) {
                 getProdukPesananMblResult: action.payload.data,
                 getProdukPesananMblError: action.payload.errorMessage,
             };
+       
+        case GET_TERIMA_PESANANMBL:
+            return {
+                ...state,
+                getTerimaPesananMblLoading: action.payload.loading,
+                getTerimaPesananMblResult: action.payload.data,
+                getTerimaPesananMblError: action.payload.errorMessage,
+            };
+
             default:
                 return state;
     }

@@ -6,7 +6,7 @@ import { colors } from '../../../utils'
 const ListKerjaMbl = (props) => {
 
     console.log("props di pesanan mebel:",props)
-    const {getProsesPesananLoading, getProsesPesananResult, getProsesPesananError, navigation } = props.allData;
+    const {getTerimaPesananMblLoading, getTerimaPesananMblResult, getTerimaPesananMblError, navigation } = props.allData;
 //   console.log("props di pesanan mebel:",getProsesPesananResult)
 
 
@@ -14,12 +14,12 @@ return (
 <ScrollView showsVerticalScrollIndicator={false}>
 <View style={styles.container}>
   
-  { getProsesPesananResult ? ( 
-        Object.keys(getProsesPesananResult).map((key) => 
+  { getTerimaPesananMblResult ? ( 
+        Object.keys(getTerimaPesananMblResult).map((key) => 
         {
         return <CardKerjaMbl 
                 key={key} 
-                pesanan={getProsesPesananResult[key]} 
+                pesanan={getTerimaPesananMblResult[key]} 
                 navigation={navigation}
                 id={key}
                 
@@ -27,15 +27,15 @@ return (
     })
     ) 
     :
-    getProsesPesananLoading ? (
+    getTerimaPesananMblLoading ? (
 
         <View style={styles.loading}>
             <ActivityIndicator color={colors.pertama}/>
         </View>
 
-    ) : getProsesPesananError ? (
+    ) : getTerimaPesananMblError ? (
         
-        <Text>{getProsesPesananError}</Text>
+        <Text>{getTerimaPesananMblError}</Text>
         
     ) : (
 
