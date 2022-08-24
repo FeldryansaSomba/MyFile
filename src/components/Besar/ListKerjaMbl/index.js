@@ -5,7 +5,7 @@ import { colors } from '../../../utils'
 
 const ListKerjaMbl = (props) => {
 
-    console.log("props di pesanan mebel:",props)
+    // console.log("props di pesanan mebel:",props)
     const {getTerimaPesananMblLoading, getTerimaPesananMblResult, getTerimaPesananMblError, navigation } = props.allData;
 //   console.log("props di pesanan mebel:",getProsesPesananResult)
 

@@ -5,7 +5,7 @@ import { colors, responsiveHeight, responsiveWidth } from '../../../utils'
 const CardKerjaMbl = ({pesanan, navigation}) => {
 //   console.log("navigation di card:",navigation);
 
-  console.log("data di card kerja:",pesanan);
+  // console.log("data di card kerja:",pesanan);
   
   return (
     // <TouchableOpacity style={styles.card} 

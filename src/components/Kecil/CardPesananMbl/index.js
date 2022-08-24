@@ -3,9 +3,9 @@ import React from 'react'
 import { colors, responsiveHeight, responsiveWidth } from '../../../utils'
 
 const CardPesananMbl = ({pesanan, navigation, dispatch}) => {
-  console.log("navigation di card:",navigation);
+  // console.log("navigation di card:",navigation);
 
-  console.log("data di card:",pesanan);
+  // console.log("data di card:",pesanan);
   return (
     <TouchableOpacity style={styles.card} 
     onPress={() => navigation.navigate('DetailPesananMbl', {data:pesanan, dispatch:dispatch})}>

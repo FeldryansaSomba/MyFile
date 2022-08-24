@@ -2,6 +2,7 @@ import FIREBASE from '../config/FIREBASE'
 import { dispatchLoading, dispatchError, dispatchSuccess } from '../utils';
 
 export const GET_PRODUK = "GET_PRODUK";
+export const GET_PRODUK_MBL = "GET_PRODUK_MBL;"
 export const GET_PRODUK_BY_FILTER = "GET_PRODUK_BY_FILTER";
 export const DELETE_PARAMETER_FILTER = "DELETE_PARAMETER_FILTER";
 export const SAVE_KEYWORD_PRODUK = "SAVE_KEYWORD_PRODUK";
@@ -100,6 +101,51 @@ export const getProduk = (idFilter, keyword) => {
     }
 }
 
+export const getProdukMbl = () => {
+    return (dispatch) => {
+
+        dispatchLoading(dispatch, GET_PRODUK_MBL);
+
+        FIREBASE.database()
+                .ref('produks')
+                .child(data.uid)
+                .once('value', (querySnapshot) => {
+
+                    //Hasil
+                    let data = querySnapshot.val();
+
+                    // dispatchSuccess(dispatch, GET_PRODUK_MBL, data)
+                    allLooping(data, id, dispatch);
+                })
+                .catch((error) => {
+                    
+                    dispatchError(dispatch, GET_PRODUK_MBL, error);
+                    alert(error)
+                })
+    }
+  }
+
+  const allLooping = (getProdukMblResult, idMebel, dispatch) =>{
+
+    let newArray = []
+    Object.keys(getProdukMblResult).map((key) => {
+        Object.keys(getProdukMblResult[key].produk).map((key2) => {
+                Object.keys(getProdukMblResult[key].produk[key2]).map((key3) => {
+                     if(getProdukMblResult[key].produk[key2][key3].uid != undefined && getProdukMblResult[key].produk[key2][key3].uid == idMebel ){
+                        newArray.push({
+                        idMebel: getProdukMblResult[key].produk[key2][key3].uid,
+                        dataPesanan: getProdukMblResult[key].produk[key2],
+                    })
+                 } 
+            })
+        })
+    })
+
+    if(newArray!==null){
+        return (dispatchSuccess(dispatch, GET_PRODUK_PESANANMBL, newArray))
+    }
+}
+
 export const getProdukByFilter = (id, namaProduk) => ({
     type: GET_PRODUK_BY_FILTER,
     payload: {
@@ -145,3 +191,4 @@ function filterObjLokasi(Objek, kataKunci, dispatch) {
    return dispatchSuccess(dispatch, GET_PRODUK, hasil)
 
   }
+
