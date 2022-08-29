@@ -11,13 +11,13 @@ const ListProdukMbl = ({
     navigation
     }) => {
 
-      // console.log("get product result:",getProdukResult);
+      console.log("get product result mbl:",getProdukMblResult);
   return (
     <View>
       {/* <Text>tes</Text> */}
-      { getProdukMblResult ? ( 
-            Object.keys(getProdukMblResult).map((key) => {
-            return <CardProdukMbl key={key} produk={getProdukMblResult[key]} navigation={navigation}/>
+      { getProdukMblResult[0] ? ( 
+            Object.keys(getProdukMblResult[0]).map((key) => {
+            return <CardProdukMbl key={key} produk={getProdukMblResult[0][key]} navigation={navigation}/>
         })
         ) : getProdukMblLoading ? (
 

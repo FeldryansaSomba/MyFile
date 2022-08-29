@@ -3,6 +3,8 @@ import React from 'react'
 import { colors, responsiveHeight, responsiveWidth } from '../../../utils';
 
 const CardProdukMbl = ({produk, navigation, dataUser}) => {
+// const CardProdukMbl = (props) => {
+  // console.log("produk:",props)
   return (
     <View>
       <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('MebelDetailMbl', {produk})}>

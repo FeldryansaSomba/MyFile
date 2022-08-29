@@ -4,6 +4,7 @@ import { colors } from '../../utils/colors'
 import { Gap, ListProdukMbl, ButtonJual } from '../../components'
 import { connect } from 'react-redux'
 import { getProdukMbl } from '../../actions/ProdukAction'
+import { getData } from '../../utils'
 
 class BerandaMbl extends Component {
 
@@ -11,9 +12,25 @@ class BerandaMbl extends Component {
     this._unsubscribe = this.props.navigation.addListener('focus', () => {
       // const {idFilter, keyword} = this.props
       // do something
-      this.props.dispatch(getProdukMbl);
+      getData('userMebel').then((res) => {
+          //sudah login
+          // console.log("res:",res)
+          this.props.dispatch(getProdukMbl(res.uid))
+      }).catch((error)=>console.log("error:",error))
     });
   }
+
+  //  getData =()=>{
+  //   getData('userMebel').then((res) => {
+  //     if(res) {
+  //       //sudah login
+  //       this.props.dispatch(getProdukMbl(res.uid))
+  //     }else {
+  //       //belum login
+  //       this.props.navigation.replace('PilihUser')
+  //     }
+  //   })
+  // }
 
   componentWillUnmount() {
     this._unsubscribe();

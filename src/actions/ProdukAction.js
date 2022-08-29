@@ -101,21 +101,20 @@ export const getProduk = (idFilter, keyword) => {
     }
 }
 
-export const getProdukMbl = () => {
+export const getProdukMbl = (d) => {
     return (dispatch) => {
 
         dispatchLoading(dispatch, GET_PRODUK_MBL);
-
         FIREBASE.database()
                 .ref('produks')
-                .child(data.uid)
                 .once('value', (querySnapshot) => {
 
                     //Hasil
                     let data = querySnapshot.val();
 
+                    // console.log("data di get produk mbl:",data)
                     // dispatchSuccess(dispatch, GET_PRODUK_MBL, data)
-                    allLooping(data, id, dispatch);
+                    allLooping(data, d, dispatch);
                 })
                 .catch((error) => {
                     
@@ -129,20 +128,13 @@ export const getProdukMbl = () => {
 
     let newArray = []
     Object.keys(getProdukMblResult).map((key) => {
-        Object.keys(getProdukMblResult[key].produk).map((key2) => {
-                Object.keys(getProdukMblResult[key].produk[key2]).map((key3) => {
-                     if(getProdukMblResult[key].produk[key2][key3].uid != undefined && getProdukMblResult[key].produk[key2][key3].uid == idMebel ){
-                        newArray.push({
-                        idMebel: getProdukMblResult[key].produk[key2][key3].uid,
-                        dataPesanan: getProdukMblResult[key].produk[key2],
-                    })
-                 } 
-            })
-        })
+        if(key == idMebel){
+            newArray.push(getProdukMblResult[key])
+        }
     })
 
     if(newArray!==null){
-        return (dispatchSuccess(dispatch, GET_PRODUK_PESANANMBL, newArray))
+        return (dispatchSuccess(dispatch, GET_PRODUK_MBL, newArray))
     }
 }
 
