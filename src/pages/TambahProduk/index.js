@@ -33,6 +33,7 @@ class TambahProduk extends Component {
         desc: '',
         lokasi: '',
         alamat: '',
+        jenisProduk: '',
     }
     }
 
@@ -46,8 +47,8 @@ class TambahProduk extends Component {
     }
 
     onContinue = () => {
-        const { uid, gambarForDB, nama, harga, namaMebel, noHp, panjang, lebar, tinggi, warna, kayu, desc, lokasi, alamat } = this.state
-        if(gambarForDB && nama && harga && namaMebel && noHp && panjang && lebar && tinggi && warna && kayu && desc && lokasi && alamat ) {
+        const { uid, gambar, nama, harga, namaMebel, noHp, panjang, lebar, tinggi, warna, kayu, desc, lokasi, alamat, jenisProduk } = this.state
+        if(gambar && nama && harga && namaMebel && noHp && panjang && lebar && tinggi && warna && kayu && desc && lokasi && alamat && jenisProduk ) {
         // if(nama && harga && namaMebel && noHp && panjang && lebar && tinggi && warna && kayu && desc && lokasi && alamat) {
             // const data = {
             //     uid:uid,
@@ -116,7 +117,7 @@ class TambahProduk extends Component {
   render() {
     const { navigation} = this.props
     // console.log("uid di tambah produk: ", route.params.uid)
-    const { gambar, nama, harga, namaMebel, noHp, panjang, lebar, tinggi, warna, kayu, desc, lokasi, alamat } = this.state
+    const { jenisProduk, gambar, nama, harga, namaMebel, noHp, panjang, lebar, tinggi, warna, kayu, desc, lokasi, alamat } = this.state
     return (
       <View style={styles.page}>
         <TouchableOpacity style={styles.icon} onPress={() => navigation.goBack()}>
@@ -146,6 +147,11 @@ class TambahProduk extends Component {
         {/* Input data */}
         <View style={styles.container}>
         <Input 
+        label={'Jenis Produk'}
+        height={responsiveHeight(35)}
+        value={jenisProduk}
+        onChangeText={(jenisProduk) => this.setState({jenisProduk})}/>
+        <Input 
         label={'Nama Produk'}
         height={responsiveHeight(35)}
         value={nama}
@@ -156,17 +162,17 @@ class TambahProduk extends Component {
         keyboardType='numeric'
         value={harga}
         onChangeText={(harga) => this.setState({harga})}/>
-        <Input 
+        {/* <Input 
         label={'Nama Mebel'}
         height={responsiveHeight(35)}
         value={namaMebel}
-        onChangeText={(namaMebel) => this.setState({namaMebel})}/>
-        <Input 
+        onChangeText={(namaMebel) => this.setState({namaMebel})}/> */}
+        {/* <Input 
         label={'No Telepon'}
         keyboardType='numeric'
         height={responsiveHeight(35)}
         value={noHp}
-        onChangeText={(noHp) => this.setState({noHp})}/>
+        onChangeText={(noHp) => this.setState({noHp})}/> */}
 
         
         {/* Kustom Produk */}
