@@ -65,7 +65,7 @@ const MebelApp = () => {
 
 const Router = () => {
   return (
-    <Stack.Navigator initialRouteName='PilihUser'>
+    <Stack.Navigator initialRouteName='MainApp'>
     <Stack.Screen 
       name="Splash" 
       component={Splash}

@@ -75,7 +75,9 @@ export const getProduk = (idFilter, keyword) => {
                     //Hasil
                     let data = querySnapshot.val();
 
-                    dispatchSuccess(dispatch, GET_PRODUK, data)
+                    // console.log("data product action:",data)
+                    allLooping2(dispatch, data)
+                    // dispatchSuccess(dispatch, GET_PRODUK, data)
                 })
                 .catch((error) => {
                     
@@ -135,6 +137,18 @@ export const getProdukMbl = (d) => {
 
     if(newArray!==null){
         return (dispatchSuccess(dispatch, GET_PRODUK_MBL, newArray))
+    }
+}
+  const allLooping2 = (dispatch, data) =>{
+    let newArray = []
+    Object.keys(data).map((key) => {
+        Object.keys(data[key]).map((key2) => {
+        //   console.log("data di all looping:",data[key][key2])
+            newArray.push(data[key][key2])
+        })
+    })
+    if(newArray!==null){
+        return (dispatchSuccess(dispatch, GET_PRODUK, newArray))
     }
 }
 
