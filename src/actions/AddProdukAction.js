@@ -29,7 +29,7 @@ export const addProduk = (data) => {
 
         FIREBASE.database()
                 .ref('produks/'+dataBaru.uid)
-                .update(dataBaru)
+                .push(dataBaru)
                 .then((response) => {
                 //Success
                 dispatchSuccess(dispatch, TAMBAH_PRODUK, response ? response : [])

@@ -80,7 +80,7 @@ export const masukPesanan = (data) => {
             tinggi: data.tinggi,
             warna: data.warna,
             kayu: data.kayu,
-            // noHp: data.noHp,
+            noHp: data.noHp,
             alamat: data.alamat,
             namaUser: data.namaUser,
             catatan: data.catatan
