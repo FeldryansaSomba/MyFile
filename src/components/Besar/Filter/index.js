@@ -5,11 +5,16 @@ import { connect } from 'react-redux'
 import { colors } from '../../../utils'
 
 const Filter = ({getFilterLoading, getFilterResult, getFilterError}) => {
+
+    // console.log("get filter result:",getFilterResult)
   return (
     <View style={styles.container}>
         { getFilterResult ? ( 
-            Object.keys(getFilterResult).map((key) => {
-            return <CardFilter filter={getFilterResult[key]} key={key} id={key}/>
+        //     Object.keys(getFilterResult).map((key) => {
+        //     return <CardFilter filter={getFilterResult[key]} key={key} id={key}/>
+        // })
+        getFilterResult.map((nama, key)=>{
+            return <CardFilter filter={nama} key={key} id={key}/>
         })
         ) : getFilterLoading ? (
 

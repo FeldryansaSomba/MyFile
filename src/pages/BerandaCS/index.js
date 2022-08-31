@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { colors } from '../../utils/colors'
 import { Gap, ListProduk, SearchFilter, Filter } from '../../components'
 import { connect } from 'react-redux'
-import { getProduk } from '../../actions/ProdukAction'
+import { getProduk, getProdukByFilter } from '../../actions/ProdukAction'
 import { getFilter } from '../../actions/FilterAction'
 
 class BerandaCS extends Component {
@@ -11,9 +11,11 @@ class BerandaCS extends Component {
   componentDidMount() {
     this._unsubscribe = this.props.navigation.addListener('focus', () => {
       const {idFilter, keyword} = this.props
+      console.log("id filterr:",idFilter)
       // do something
       this.props.dispatch(getFilter());
       this.props.dispatch(getProduk(idFilter, keyword));
+      // this.props.dispatch(getProdukByFilter(filterProduk))
     });
   }
 

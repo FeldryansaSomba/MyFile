@@ -4,6 +4,7 @@ import { CardProduk } from '../../Kecil'
 import { connect } from 'react-redux'
 import { colors } from '../../../utils'
 
+
 const ListProduk = ({
     getProdukLoading, 
     getProdukResult, 
@@ -11,15 +12,12 @@ const ListProduk = ({
     navigation
     }) => {
 
-      console.log("get product result:",getProdukResult);
+
   return (
     <View>
-      {/* <Text>tes</Text> */}
       { getProdukResult ? ( 
             Object.keys(getProdukResult).map((key) => {
-                // return <View><Text>tes</Text></View>
-
-            return <CardProduk key={key} produk={getProdukResult[key]} navigation={navigation}/>
+                    return <CardProduk key={key} produk={getProdukResult[key]} navigation={navigation}/>
         })
         ) : getProdukLoading ? (
 

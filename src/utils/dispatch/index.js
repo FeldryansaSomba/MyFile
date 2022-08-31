@@ -9,13 +9,24 @@ export const dispatchLoading = (dispatch, type) => {
     })
 }
 
-export const dispatchSuccess = (dispatch, type, result) => {
+// export const dispatchSuccess = (dispatch, type, result) => {
+//     return dispatch({
+//         type: type,
+//         payload: {
+//             loading: false,
+//             data: result,
+//             errorMessage: false
+//         }
+//     })
+// }
+export const dispatchSuccess = (dispatch, type, result, idFilter) => {
     return dispatch({
         type: type,
         payload: {
             loading: false,
             data: result,
-            errorMessage: false
+            errorMessage: false,
+            idFilter: idFilter
         }
     })
 }

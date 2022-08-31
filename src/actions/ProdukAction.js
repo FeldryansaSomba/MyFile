@@ -10,19 +10,24 @@ export const SAVE_KEYWORD_PRODUK = "SAVE_KEYWORD_PRODUK";
 export const getProduk = (idFilter, keyword) => {
     return (dispatch) => {
 
+        console.log("id filter:",idFilter)
         dispatchLoading(dispatch, GET_PRODUK);
 
         if(idFilter){
             FIREBASE.database()
             .ref('produks')
-            .orderByChild('produk')
-            .equalTo(idFilter)
+            // .orderByChild('produk')
+            // .equalTo(idFilter)
             .once('value', (querySnapshot) => {
 
+                
                 //Hasil
                 let data = querySnapshot.val();
+                allLooping3(dispatch, data, idFilter)
 
-                dispatchSuccess(dispatch, GET_PRODUK, data)
+                // console.log("data filter:",data)
+
+                // dispatchSuccess(dispatch, GET_PRODUK, data)
             })
             .catch((error) => {
                 
@@ -151,6 +156,21 @@ export const getProdukMbl = (d) => {
         return (dispatchSuccess(dispatch, GET_PRODUK, newArray))
     }
 }
+  const allLooping3 = (dispatch, data, idFilter) =>{
+    let newArray = []
+    console.log("id filter di allooping 3:",idFilter)
+    Object.keys(data).map((key) => {
+        Object.keys(data[key]).map((key2) => {
+            if(idFilter == data[key][key2].jenisProduk.toUpperCase()){
+                newArray.push(data[key][key2])
+            }
+        })
+    })
+    console.log("new array:",newArray)
+    if(newArray!==null){
+        return (dispatchSuccess(dispatch, GET_PRODUK, newArray))
+    }
+}
 
 export const getProdukByFilter = (id, namaProduk) => ({
     type: GET_PRODUK_BY_FILTER,
@@ -159,6 +179,17 @@ export const getProdukByFilter = (id, namaProduk) => ({
         namaProduk: namaProduk
     }
 })
+// export const getProdukByFilter = (filter) =>{
+    
+//     return ({
+//         type: GET_PRODUK_BY_FILTER,
+//         payload: {
+//             idFilter: filter,
+//             // namaProduk: namaProduk
+//         }
+//     })  
+// } 
+
 
 export const deleteParameterFilter = () => ({
     type: DELETE_PARAMETER_FILTER,
@@ -171,30 +202,30 @@ export const saveKeywordProduk = (search) => ({
     }
 })
 
-function filterObjLokasi(Objek, kataKunci, dispatch) { 
-    const hasil = {}; 
-    for (const key in Objek) { 
-      // console.log("key:",key)
-      const { nama } = Objek[key]; 
-      
-      let MyNama = nama.split(" ")
+function filterObjLokasi(data, kataKunci, dispatch){
+    let newArray = [];
+    Object.keys(data).map((key) => {
+        Object.keys(data[key]).map((key2) => {
+            const { nama } = data[key][key2]; 
+             let MyNama = nama.split(" ")
 
-      if (
-        nama === kataKunci ||
-        MyNama[0] === kataKunci|| 
-        MyNama[0]+' ' + MyNama[1] === kataKunci||
-        MyNama[0]+' ' + MyNama[1] + ' ' + MyNama[2] === kataKunci ||
-        MyNama[0]+' ' + MyNama[1] + ' ' + MyNama[2] + ' ' + MyNama[3] === kataKunci
-        ) { 
-        hasil[key] = Objek[key]; 
-      } 
-    } 
-    // console.log({ hasil });
-    // console.log("hasil:",hasil);
+             if (
+                   nama === kataKunci ||
+                   MyNama[0] === kataKunci|| 
+                   MyNama[0]+' ' + MyNama[1] === kataKunci||
+                   MyNama[0]+' ' + MyNama[1] + ' ' + MyNama[2] === kataKunci ||
+                   MyNama[0]+' ' + MyNama[1] + ' ' + MyNama[2] + ' ' + MyNama[3] === kataKunci
+                   ) { 
+                   newArray.push(data[key][key2])
+                } 
+        })
+    })
+    
+   return dispatchSuccess(dispatch, GET_PRODUK, newArray)
 
-    // const {hasil} = hasil
-    // return hasil;
-   return dispatchSuccess(dispatch, GET_PRODUK, hasil)
+}
 
-  }
+
+
+
 
