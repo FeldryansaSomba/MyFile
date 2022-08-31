@@ -22,7 +22,7 @@ class MebelDetailCS extends Component {
             tinggi: "",
             warna: "",
             kayu: "",
-            noHp: "",
+            // noHp: "",
             alamat: "",
             uid: "",
             namaUser: "",
@@ -46,7 +46,7 @@ class MebelDetailCS extends Component {
     }
 
     beliProduk = () => {
-        const {noHp, alamat} = this.state
+        const {alamat} = this.state
 
         getData('user').then((res) => {
       
@@ -58,11 +58,11 @@ class MebelDetailCS extends Component {
               })
 
               //validasi form
-              if(noHp && alamat){
+              if(alamat){
                 //hubungkan ke action Pesanan
                 this.props.dispatch(masukKePesanan(this.state))
               }else {
-                Alert.alert('Error', 'Nomor Handphone dan alamat harus diisi')
+                Alert.alert('Error', 'Alamat anda harus diisi')
               }
             }else {
               Alert.alert('Error', 'Silahkan Login Terlebih Dahulu')
@@ -74,7 +74,7 @@ class MebelDetailCS extends Component {
 
   render() {
     const { navigation, savePesananLoading } = this.props
-    const {produk, images, panjang, lebar, tinggi, warna, kayu, noHp, alamat, catatan} = this.state
+    const {produk, images, panjang, lebar, tinggi, warna, kayu, alamat, catatan} = this.state
     // console.log("paramater : ", this.props.route.params);
     return (
       <View style={styles.page}>
@@ -91,7 +91,7 @@ class MebelDetailCS extends Component {
         <Text style={styles.nama}>{produk.nama}</Text>
         </View>
 
-        <TouchableOpacity style={styles.chat} onPress={() => navigation.navigate('ChattingCS')}>
+        <TouchableOpacity style={styles.chat} >
         <IconChat/>
         </TouchableOpacity>
         </View>
@@ -172,12 +172,12 @@ class MebelDetailCS extends Component {
         </View>
         </View>
 
-        <Input 
+        {/* <Input 
         label={"No Hp Anda"}
         keyboardType='numeric'
         fontSize={RFValue(14, heightMobileUI)}
         value={noHp}
-        onChangeText={(noHp) => this.setState({noHp})}/>
+        onChangeText={(noHp) => this.setState({noHp})}/> */}
         <Input 
         label={"Alamat Lengkap Anda"}
         textArea

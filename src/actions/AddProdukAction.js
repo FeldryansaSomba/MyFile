@@ -23,6 +23,7 @@ export const addProduk = (data) => {
             desc: data.desc,
             lokasi: data.lokasi,
             alamat: data.alamat,
+            jenisProduk: data.jenisProduk,
             status: '',
         }
 

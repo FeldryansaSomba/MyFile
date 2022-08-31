@@ -35,7 +35,7 @@ const MainApp = () => {
   return (
     <Tab.Navigator tabBar={props => <BottomNavigatorCS {...props} />}>
       <Tab.Screen name="BerandaCS" component={BerandaCS} options={{headerShown: false, title: 'Beranda'}} />
-      <Tab.Screen name="ObrolanCS" component={ObrolanCS} options={{headerShown: false, title: 'Obrolan'}} />
+      {/* <Tab.Screen name="ObrolanCS" component={ObrolanCS} options={{headerShown: false, title: 'Obrolan'}} /> */}
       <Tab.Screen name="PesananCS" component={PesananCS} options={{headerShown: false, title: 'Pesanan'}} />
       <Tab.Screen name="ProfileCS" component={ProfileCS} options={{headerShown: false, title: 'Profil'}} />
     </Tab.Navigator>

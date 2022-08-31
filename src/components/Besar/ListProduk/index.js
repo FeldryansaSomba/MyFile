@@ -51,7 +51,7 @@ export default connect(mapStatetoProps, null)(ListProduk)
 const styles = StyleSheet.create({
   loading: {
     flex: 1,
-    marginTop: 30,
+    // marginTop: 30,
     
 }
 })

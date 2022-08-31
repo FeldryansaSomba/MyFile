@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
         color: colors.kedua
     },
     listProduk: {
-      paddingTop: 17,
+      paddingTop: 10,
       marginHorizontal: 48
     },
     filter: {

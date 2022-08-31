@@ -39,9 +39,9 @@ class PesananMbl extends Component {
       </View>
       </ScrollView>
 
-      <TouchableOpacity style={styles.chat}>
+      {/* <TouchableOpacity style={styles.chat}>
       <IconChat/>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       </View>
       </>
     )
