@@ -1,7 +1,8 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import React from 'react'
-import { colors, responsiveHeight, responsiveWidth } from '../../../utils'
+import { colors, heightMobileUI, responsiveHeight, responsiveWidth } from '../../../utils'
 import { IconTambah } from '../../../assets'
+import { RFValue } from 'react-native-responsive-fontsize'
 
 const ButtonJual = ({navigation}) => {
   return (
@@ -31,7 +32,7 @@ const styles = StyleSheet.create({
         },
         text: {
             fontFamily: 'Montserrat-Medium',
-            fontSize: 14,
+            fontSize: RFValue(14, heightMobileUI),
             color: 'white',
             marginLeft: 49,
             borderRadius: 5,

@@ -1,9 +1,10 @@
 import { StyleSheet, View, TextInput, TouchableOpacity } from 'react-native'
 import React, { Component } from 'react'
 import { IconFilter, IconSearch } from '../../../assets'
-import { colors, responsiveWidth } from '../../../utils'
+import { colors, heightMobileUI, responsiveWidth } from '../../../utils'
 import { saveKeywordProduk } from '../../../actions/ProdukAction'
 import { connect } from 'react-redux'
+import { RFValue } from 'react-native-responsive-fontsize'
 
 class SearchFilter extends Component {
   constructor(props) {
@@ -61,7 +62,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     input: {
-        fontSize: 14,
+        fontSize: RFValue(14, heightMobileUI),
         paddingTop: 5,
         paddingBottom: 5,
         paddingHorizontal: 10,

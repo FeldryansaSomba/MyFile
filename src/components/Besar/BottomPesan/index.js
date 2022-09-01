@@ -85,7 +85,6 @@ const styles = StyleSheet.create({
     text: {
         color: colors.keempat,
         fontFamily: 'Montserrat-SemiBold',
-        fontSize: 14,
         // paddingHorizontal: 125,
         paddingVertical: 10,
         fontSize: RFValue(16, heightMobileUI)

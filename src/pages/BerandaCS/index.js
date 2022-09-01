@@ -5,6 +5,8 @@ import { Gap, ListProduk, SearchFilter, Filter } from '../../components'
 import { connect } from 'react-redux'
 import { getProduk, getProdukByFilter } from '../../actions/ProdukAction'
 import { getFilter } from '../../actions/FilterAction'
+import { RFValue } from 'react-native-responsive-fontsize'
+import { heightMobileUI } from '../../utils'
 
 class BerandaCS extends Component {
 
@@ -79,7 +81,7 @@ const styles = StyleSheet.create({
       marginHorizontal: 28
     },
     text: {
-        fontSize: 16,
+        fontSize: RFValue(16, heightMobileUI),
         fontFamily: 'Montserrat-Bold',
         color: colors.kedua
     },
@@ -90,7 +92,7 @@ const styles = StyleSheet.create({
     filter: {
       fontFamily: 'Montserrat-SemiBold',
       color: colors.kedua,
-      fontSize: 15,
+      fontSize: RFValue(15, heightMobileUI),
       marginTop: 16,
       marginBottom: 7
     }

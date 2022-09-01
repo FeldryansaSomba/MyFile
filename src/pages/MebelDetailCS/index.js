@@ -232,6 +232,7 @@ const styles = StyleSheet.create({
   },
     nama: {
         fontFamily: 'Montserrat-SemiBold',
+        textTransform: 'capitalize',
         color: colors.kedua,
         fontSize: RFValue(20, heightMobileUI),
         marginBottom: 4,
@@ -239,6 +240,7 @@ const styles = StyleSheet.create({
     },
     mebel: {
         fontFamily: 'Montserrat-SemiBold',
+        textTransform: 'capitalize',
         color: colors.kedua,
         fontSize: RFValue(16, heightMobileUI),
         marginBottom: 16
@@ -250,6 +252,7 @@ const styles = StyleSheet.create({
     },
     lokasi: {
         fontFamily: 'Montserrat-SemiBold',
+        textTransform: 'capitalize',
         color: colors.kedua,
         fontSize: RFValue(15, heightMobileUI),
     },

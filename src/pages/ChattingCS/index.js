@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
         flex: 1
     },
     date: {
-        fontSize: 14,
+        fontSize: RFValue(14, heightMobileUI),
         fontFamily: 'Montserrat-Medium',
         color: '#817F7F',
         marginTop: 10,

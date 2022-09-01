@@ -1,10 +1,11 @@
 import { StyleSheet, View, TouchableOpacity, Alert } from 'react-native'
 import React, { Component } from 'react'
-import { colors, getData, responsiveHeight, responsiveWidth } from '../../utils'
+import { colors, getData, heightMobileUI, responsiveHeight, responsiveWidth } from '../../utils'
 import { IconKembali } from '../../assets'
 import { Button, Input } from '../../components'
 import { connect } from 'react-redux'
 import { changePass } from '../../actions/ProfileAction'
+import { RFValue } from 'react-native-responsive-fontsize'
 
 class GantiPassCS extends Component {
   constructor(props) {
@@ -62,7 +63,7 @@ class GantiPassCS extends Component {
         label={"Kata Sandi Lama"} 
         width={responsiveWidth(313)} 
         height={responsiveHeight(33)} 
-        fontSize={16}
+        fontSize={RFValue(16, heightMobileUI)}
         secureTextEntry
         value={password}
         onChangeText={(password) => this.setState({password})}/>
@@ -70,7 +71,7 @@ class GantiPassCS extends Component {
         label={"Kata Sandi Baru"} 
         width={responsiveWidth(313)} 
         height={responsiveHeight(33)} 
-        fontSize={16}
+        fontSize={RFValue(16, heightMobileUI)}
         secureTextEntry
         value={newPassword}
         onChangeText={(newPassword) => this.setState({newPassword})}/>
@@ -78,7 +79,7 @@ class GantiPassCS extends Component {
         label={" Konfirmasi Kata Sandi Baru"} 
         width={responsiveWidth(313)} 
         height={responsiveHeight(33)} 
-        fontSize={16}
+        fontSize={RFValue(16, heightMobileUI)}
         secureTextEntry
         value={newPasswordKonfirmasi}
         onChangeText={(newPasswordKonfirmasi) => this.setState({newPasswordKonfirmasi})}/>
@@ -89,7 +90,7 @@ class GantiPassCS extends Component {
         title={'Simpan'} 
         width={responsiveWidth(282)} 
         height={responsiveHeight(36)} 
-        fontSize={16} 
+        fontSize={RFValue(16, heightMobileUI)} 
         borderRadius={5}
         type='secondary'
         onPress={() => this.onSubmit()}

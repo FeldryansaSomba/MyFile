@@ -2,6 +2,7 @@ import { StyleSheet, TouchableOpacity, View, TextInput } from 'react-native'
 import React from 'react'
 import { colors, responsiveHeight, responsiveWidth, widthMobileUI, heightMobileUI } from '../../../utils'
 import { IconSend } from '../../../assets'
+import { RFValue } from 'react-native-responsive-fontsize'
 
 const InputChatCS = () => {
   return (
@@ -35,7 +36,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         padding: 8,
         fontFamily: 'Montserrat-SemiBold',
-        fontSize: 14,
+        fontSize: RFValue(14, heightMobileUI),
         color: colors.kedua,
         flex: 1,
         marginRight: 12,

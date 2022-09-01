@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import { colors, responsiveWidth } from '../../../utils'
+import { colors, heightMobileUI, responsiveWidth } from '../../../utils'
+import { RFValue } from 'react-native-responsive-fontsize'
 
 const ChatMebel = () => {
   return (
@@ -30,12 +31,12 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: 0
     },
     text: {
-        fontSize: 14,
+        fontSize: RFValue(14, heightMobileUI),
         color: colors.kedua,
         fontFamily: 'Montserrat-Medium'
     },
     date: {
-        fontSize: 11,
+        fontSize: RFValue(11, heightMobileUI),
         fontFamily: 'Montserrat-Medium',
         color: '#817F7F',
         marginTop: 5

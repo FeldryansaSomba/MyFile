@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, Image } from 'react-native'
 import React from 'react'
-import { colors, responsiveHeight, responsiveWidth } from '../../../utils'
+import { colors, heightMobileUI, responsiveHeight, responsiveWidth } from '../../../utils'
+import { RFValue } from 'react-native-responsive-fontsize'
 
 const CardPesananCS = ({pesanan}) => {
   return (
@@ -54,14 +55,15 @@ const styles = StyleSheet.create({
       status: {
         marginLeft: 30,
         fontFamily: 'Montserrat-Bold',
-        fontSize: 14,
+        textTransform: 'capitalize',
+        fontSize: RFValue(14, heightMobileUI),
         color: colors.keempat,
         marginTop: 5
       },
       tgl: {
         textAlign: 'center',
         fontFamily: 'Montserrat-SemiBold',
-        fontSize: 14,
+        fontSize: RFValue(14, heightMobileUI),
         color: 'black',
         marginTop: 10
       },
@@ -79,28 +81,31 @@ const styles = StyleSheet.create({
       },
       nama: {
         fontFamily: 'Montserrat-SemiBold',
-        fontSize: 15,
+        fontSize: RFValue(15, heightMobileUI),
+        textTransform: 'capitalize',
         color: colors.keempat,
         marginLeft: 25,
         marginBottom: 5
       },
       harga: {
         fontFamily: 'Montserrat-Bold',
-        fontSize: 14,
+        fontSize: RFValue(14, heightMobileUI),
         color: colors.keempat,
         marginLeft: 25,
         marginBottom: 16
       },
       mebel: {
         fontFamily: 'Montserrat-SemiBold',
-        fontSize: 13,
+        fontSize: RFValue(13, heightMobileUI),
+        textTransform: 'capitalize',
         color: colors.keempat,
         marginLeft: 25,
         marginBottom: 5
       },
       lokasi: {
         fontFamily: 'Montserrat-SemiBold',
-        fontSize: 13,
+        fontSize: RFValue(13, heightMobileUI),
+        textTransform: 'capitalize',
         color: colors.keempat,
         marginLeft: 25
       },
@@ -112,17 +117,17 @@ const styles = StyleSheet.create({
       },
       kustom: {
         fontFamily: 'Montserrat-SemiBold',
-        fontSize: 13,
+        fontSize: RFValue(13, heightMobileUI),
         color: colors.keempat,
       },
       kustoM: {
         fontFamily: 'Montserrat-SemiBold',
-        fontSize: 13,
+        fontSize: RFValue(13, heightMobileUI),
         color: colors.keempat,
       },
       noHp: {
         fontFamily: 'Montserrat-SemiBold',
-        fontSize: 13,
+        fontSize: RFValue(13, heightMobileUI),
         color: colors.keempat,
         marginBottom: 5
       }

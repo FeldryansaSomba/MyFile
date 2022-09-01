@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: colors.keempat,
-    fontSize: 30,
+    fontSize: RFValue(30, heightMobileUI),
     textAlign: 'center',
     fontFamily: 'Montserrat-Bold',
     marginTop: 14,
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   text1: {
-    fontSize: 18,
+    fontSize: RFValue(18, heightMobileUI),
     color: colors.keempat,
     textAlign: 'center',
     marginTop: 74,

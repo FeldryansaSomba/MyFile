@@ -1,7 +1,8 @@
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
-import { colors, responsiveHeight, responsiveWidth } from '../../../utils';
+import { colors, heightMobileUI, responsiveHeight, responsiveWidth } from '../../../utils';
 import { connect } from 'react-redux';
+import { RFValue } from 'react-native-responsive-fontsize';
 
 const CardProduk = ({produk, navigation, dataUser}) => {
  
@@ -61,28 +62,31 @@ elevation: 5,
   },
   nama: {
     fontFamily: 'Montserrat-SemiBold',
-    fontSize: 14,
+    textTransform: 'capitalize',
+    fontSize: RFValue(14, heightMobileUI),
     color: colors.keempat,
     marginLeft: 17,
     marginBottom: 5
   },
   harga: {
     fontFamily: 'Montserrat-Bold',
-    fontSize: 13,
+    fontSize: RFValue(13, heightMobileUI),
     color: colors.keempat,
     marginLeft: 17,
     marginBottom: 16
   },
   mebel: {
     fontFamily: 'Montserrat-SemiBold',
-    fontSize: 13,
+    textTransform: 'capitalize',
+    fontSize: RFValue(13, heightMobileUI),
     color: colors.keempat,
     marginLeft: 17,
     marginBottom: 5
   },
   lokasi: {
     fontFamily: 'Montserrat-Medium',
-    fontSize: 12,
+    textTransform: 'capitalize',
+    fontSize: RFValue(12, heightMobileUI),
     color: colors.keempat,
     marginLeft: 17
   }

@@ -4,7 +4,8 @@ import { colors } from '../../utils/colors'
 import { Gap, ListProdukMbl, ButtonJual } from '../../components'
 import { connect } from 'react-redux'
 import { getProdukMbl } from '../../actions/ProdukAction'
-import { getData } from '../../utils'
+import { getData, heightMobileUI } from '../../utils'
+import { RFValue } from 'react-native-responsive-fontsize'
 
 class BerandaMbl extends Component {
 
@@ -86,7 +87,7 @@ containerAtas: {
   marginHorizontal: 35
 },
 text: {
-    fontSize: 16,
+    fontSize: RFValue(16, heightMobileUI),
     fontFamily: 'Montserrat-Bold',
     color: colors.kedua
 },
@@ -97,7 +98,7 @@ listProduk: {
 filter: {
   fontFamily: 'Montserrat-SemiBold',
   color: colors.kedua,
-  fontSize: 15,
+  fontSize: RFValue(15, heightMobileUI),
   marginTop: 16,
   marginBottom: 7
 }

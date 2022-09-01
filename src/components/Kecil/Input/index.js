@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, TextInput } from 'react-native'
 import React from 'react'
-import { colors } from '../../../utils'
+import { colors, heightMobileUI } from '../../../utils'
+import { RFValue } from 'react-native-responsive-fontsize'
 
 const Input = ({kustom, textArea, label, width, height, fontSize, placeholder, value, secureTextEntry,
                 onChangeText, disabled, keyboardType }) => {
@@ -51,7 +52,7 @@ const styles = StyleSheet.create({
         marginTop: 7,
     },
     label: (fontSize) => ({
-        fontSize: fontSize ? fontSize : 14,
+        fontSize: fontSize ? fontSize : RFValue(14, heightMobileUI),
         fontFamily: 'Montserrat-Medium',
         marginBottom: 5,
         color: colors.kedua

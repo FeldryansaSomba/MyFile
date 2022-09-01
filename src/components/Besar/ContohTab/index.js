@@ -10,6 +10,8 @@ import { IconBeranda,
     IconProfile, 
     IconProfileActive 
     } from '../../../assets'
+import { RFValue } from 'react-native-responsive-fontsize'
+import { heightMobileUI } from '../../../utils'
 
 const ContohTab = ({isFocused, onLongPress, onPress, label}) => {
     const IconMebel = () => {
@@ -47,7 +49,7 @@ const styles = StyleSheet.create({
     text: (isFocused) => ({
         color: isFocused ? colors.kedua : colors.keenam,
         fontFamily: 'Montserrat-Medium',
-        fontSize: 11,
+        fontSize: RFValue(11, heightMobileUI),
         marginTop: 2
     })
 })

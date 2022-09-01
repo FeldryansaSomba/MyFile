@@ -301,7 +301,7 @@ const styles = StyleSheet.create({
     },
     text: {
         fontFamily: 'Montserrat-SemiBold',
-        fontSize: RFValue(18),
+        fontSize: RFValue(18, heightMobileUI),
         color: colors.kedua
     },
     contentWrapper: {
