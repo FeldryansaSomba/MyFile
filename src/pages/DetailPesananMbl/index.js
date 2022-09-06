@@ -22,7 +22,12 @@ const DetailPesananMbl = (props) => {
 
     const terimaPesanan = () =>{
       props.navigation.navigate('KerjaMbl')
-      dispatch(getProsesPesananMbl(idPesanan, idMebel, idPembeli))
+      dispatch(getProsesPesananMbl(idPesanan, idMebel, idPembeli, 'process'))
+    }
+    
+    const tolakPesanan = () =>{
+      props.navigation.navigate('PesananMbl')
+      dispatch(getProsesPesananMbl(idPesanan, idMebel, idPembeli, 'ditolak'))
     }
 
 
@@ -96,7 +101,9 @@ const DetailPesananMbl = (props) => {
         <BottomPesan pesanan  onPressTerima={
          ()=>terimaPesanan()
         } 
-        onPressTolak ={()=>props.navigation.navigate('PesananMbl') } title={"Terima"}/>
+        
+        // onPressTolak ={()=>props.navigation.navigate('PesananMbl') } title={"Terima"}/>
+        onPressTolak ={()=>tolakPesanan()}/>
       </View>
   )
 }

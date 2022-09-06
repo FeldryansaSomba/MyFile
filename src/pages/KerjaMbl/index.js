@@ -28,7 +28,7 @@ class KerjaMbl extends Component {
   render() {
     const { pesanans, navigation } = this.props
 
-    console.log("This.props di kerja mbl:",this.props)
+    // console.log("This.props di kerja mbl:",this.props)
     return (
       <>
       <View style={styles.header}>

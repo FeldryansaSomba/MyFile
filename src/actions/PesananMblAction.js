@@ -27,11 +27,17 @@ export const getListPesananMbl = (id) => {
 
 const allLooping = (getProdukResult, idMebel, dispatch) =>{
 
+    
     let newArray = []
     Object.keys(getProdukResult).map((key) => {
         Object.keys(getProdukResult[key].produk).map((key2) => {
                 Object.keys(getProdukResult[key].produk[key2]).map((key3) => {
-                     if(getProdukResult[key].produk[key2][key3].uid != undefined && getProdukResult[key].produk[key2][key3].uid == idMebel ){
+                     if(
+                        getProdukResult[key].produk[key2][key3].uid != undefined 
+                        && getProdukResult[key].produk[key2][key3].uid == idMebel 
+                        && getProdukResult[key].produk[key2][key3].status == '' || getProdukResult[key].produk[key2][key3].status == 'ditolak' 
+                        
+                        ){
                         newArray.push({
                         idPesanan: key2,
                         idPembeli:getProdukResult[key].user,
@@ -77,6 +83,7 @@ export const getTerimaPesananMbl = (id) => {
 }
 
 const allLooping2 = (getProdukResult, idMebel, process , dispatch) =>{
+    console.log("Get produk by result di kerja:",getProdukResult)
 
     let newArray = []
     Object.keys(getProdukResult).map((key) => {

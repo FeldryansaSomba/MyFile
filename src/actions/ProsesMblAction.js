@@ -4,7 +4,7 @@ import { dispatchLoading, dispatchError, dispatchSuccess } from '../utils';
 // export const PROSES_PESANAN = "PROSES_PESANAN";
 export const GET_PROSES_PESANAN = "GET_LIST_PESANAN";
 
-export const getProsesPesananMbl = (idPesanan, idMebel, idPembeli) => {
+export const getProsesPesananMbl = (idPesanan, idMebel, idPembeli, status) => {
     // console.log("id pesanan:",id)
     return (dispatch) => {
         dispatchLoading(dispatch, GET_PROSES_PESANAN);
@@ -15,7 +15,7 @@ export const getProsesPesananMbl = (idPesanan, idMebel, idPembeli) => {
                     //Hasil
                     let data = querySnapshot.val();
                     // console.log("data di getListPesananMbl:", data)
-                   allLooping(data, idPesanan, idMebel, idPembeli, dispatch);
+                   allLooping(data, idPesanan, idMebel, idPembeli, dispatch, status);
                 //    dispatch(allLooping(data, id))
                     // dispatchSuccess(dispatch, GET_PROSES_PESANAN, data)
                 })
@@ -28,7 +28,7 @@ export const getProsesPesananMbl = (idPesanan, idMebel, idPembeli) => {
     }
 }
 
-const allLooping = (getProsesPesananResult, idPesanan, idMebel, idPembeli, dispatch) =>{
+const allLooping = (getProsesPesananResult, idPesanan, idMebel, idPembeli, dispatch, status) =>{
     // console.log("id Pembeli:", idPembeli)
     // console.log("id Pesanan:", idPesanan)
 
@@ -40,8 +40,8 @@ const allLooping = (getProsesPesananResult, idPesanan, idMebel, idPembeli, dispa
                               allData:   getProsesPesananResult[key].produk[key2], 
                               dispatch:  dispatch,
                               idPembeli: idPembeli,
-                              idPesanan: key2
-                            })
+                              idPesanan: key2,
+                            }, status)
                         }
                     })
             }
@@ -49,7 +49,7 @@ const allLooping = (getProsesPesananResult, idPesanan, idMebel, idPembeli, dispa
 
 }
 
-const updateData = (data)=>{
+const updateData = (data, status)=>{
     // console.log("update data:",data)
 // console.log("id pembeli:", data.idPembeli)
 // console.log("id pesanan:", data.idPesanan)
@@ -73,7 +73,7 @@ const updateData = (data)=>{
             namaMebel: data.allData.product.namaMebel,
             noHp: data.allData.product.noHp,
             panjang: data.allData.product.panjang,
-            status: "process",
+            status: status,
             tinggi: data.allData.product.tinggi,
             uid: data.allData.product.uid,
             warna: data.allData.product.warna
