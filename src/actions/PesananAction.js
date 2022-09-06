@@ -43,9 +43,9 @@ export const masukKePesanan = (data) => {
                         const pesananUtama = {
                             user: data.uid,
                             tanggal: new Date().toDateString(),
-                            namaUser: data.namaUser
+                            namaUser: data.namaUser,
                             // harga: data.harga,
-                            // noHp: data.noHp,
+                            noHp: data.noHp,
                             // kustom: data.kustom,
                             // alamat: data.alamat
                         }

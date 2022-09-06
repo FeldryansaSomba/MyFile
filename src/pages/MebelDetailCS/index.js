@@ -22,7 +22,7 @@ class MebelDetailCS extends Component {
             tinggi: "",
             warna: "",
             kayu: "",
-            // noHp: "",
+            noHp: "",
             alamat: "",
             uid: "",
             namaUser: "",
@@ -54,7 +54,8 @@ class MebelDetailCS extends Component {
                 //Simpan uid local storage ke state
               this.setState({
                 uid: res.uid,
-                namaUser: res.nama
+                namaUser: res.nama,
+                noHp: res.noHp
               })
 
               //validasi form
