@@ -47,30 +47,11 @@ class TambahProduk extends Component {
     }
 
     onContinue = () => {
-        const { uid, gambar, nama, harga, panjang, lebar, tinggi, warna, kayu, desc, lokasi, alamat, jenisProduk } = this.state
+        const { gambar, nama, harga, panjang, lebar, tinggi, warna, kayu, desc, lokasi, alamat, jenisProduk } = this.state
         if(gambar && nama && harga &&  panjang && lebar && tinggi && warna && kayu && desc && lokasi && alamat && jenisProduk ) {
-        // if(nama && harga && namaMebel && noHp && panjang && lebar && tinggi && warna && kayu && desc && lokasi && alamat) {
-            // const data = {
-            //     uid:uid,
-            //     gambar: gambarForDB,
-            //     nama: nama,
-            //     harga: harga,
-            //     namaMebel: namaMebel,
-            //     noHp: noHp,
-            //     panjang: panjang,
-            //     lebar: lebar,
-            //     tinggi: tinggi,
-            //     warna: warna,
-            //     kayu: kayu,
-            //     desc: desc,
-            //     lokasi: lokasi,
-            //     alamat: alamat,
-            //     // status: 'produk'
-            // }
-            // console.log("Params: ", data)
             this.props.dispatch(addProduk(this.state))
         } else {
-            Alert.alert("Error", "Semua Data Harus Diisi")
+            Alert.alert("Error", "Semua Data Harus Diisi!!")
         }
     }
 
@@ -87,7 +68,9 @@ class TambahProduk extends Component {
             console.log('data tambah produk:',data)
           if(data) {
             this.setState({
-             uid: data.uid
+             uid: data.uid,
+             noHp: data.noHp,
+             namaMebel: data.nama
             })
           }else {
             this.props.navigation.replace('MasukMebel')
@@ -117,7 +100,7 @@ class TambahProduk extends Component {
   render() {
     const { navigation} = this.props
     // console.log("uid di tambah produk: ", route.params.uid)
-    const { jenisProduk, gambar, nama, harga, namaMebel, noHp, panjang, lebar, tinggi, warna, kayu, desc, lokasi, alamat } = this.state
+    const { jenisProduk, gambar, nama, harga, panjang, lebar, tinggi, warna, kayu, desc, lokasi, alamat } = this.state
     return (
       <View style={styles.page}>
         <TouchableOpacity style={styles.icon} onPress={() => navigation.goBack()}>
@@ -180,7 +163,7 @@ class TambahProduk extends Component {
         <View style={{flexWrap: 'wrap', flexDirection: 'row', justifyContent: 'space-between'}}>
         <Input
         kustom
-        label={"Panjang"}
+        label={"Panjang (cm)"}
         width={responsiveWidth(100)}
         fontSize={RFValue(14, heightMobileUI)}
         keyboardType='numeric'
@@ -190,7 +173,7 @@ class TambahProduk extends Component {
 
         <Input
         kustom
-        label={"Lebar"}
+        label={"Lebar (cm)"}
         keyboardType='numeric'
         width={responsiveWidth(95)}
         fontSize={RFValue(14, heightMobileUI)}
@@ -200,7 +183,7 @@ class TambahProduk extends Component {
         
         <Input
         kustom
-        label={"Tinggi"}
+        label={"Tinggi (cm)"}
         keyboardType='numeric'
         width={responsiveWidth(99)}
         fontSize={RFValue(14, heightMobileUI)}

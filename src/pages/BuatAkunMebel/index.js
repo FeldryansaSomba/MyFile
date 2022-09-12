@@ -56,7 +56,7 @@ class BuatAkunMebel extends Component {
 
         <View style={styles.container}>
             <Input 
-            label={"Nama"}
+            label={"Nama Mebel"}
             width={responsiveWidth(285)} 
             height={responsiveHeight(36)} 
             fontSize={RFValue(16, heightMobileUI)}

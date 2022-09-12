@@ -108,7 +108,7 @@ class EditProfilMbl extends Component {
         {/* Data Profile */}
         <View style={styles.input}>
         <Input 
-        label={"Nama"} 
+        label={"Nama Mebel"} 
         value={nama}
         onChangeText={(nama) => this.setState({nama})} 
         width={responsiveWidth(313)} 

@@ -3,7 +3,7 @@ import React from 'react'
 import { CardPesananCS } from '../../Kecil'
 import { colors } from '../../../utils'
 
-const ListPesananCS = ({pesanans, getListPesananResult, getListPesananLoading, getListPesananError}) => {
+const ListPesananCS = ({pesanans, getListPesananResult, getListPesananLoading, getListPesananError, navigation}) => {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
     <View style={styles.container}>
@@ -14,6 +14,7 @@ const ListPesananCS = ({pesanans, getListPesananResult, getListPesananLoading, g
             return <CardPesananCS 
                     key={key} 
                     pesanan={getListPesananResult.produk[key]} 
+                    navigation={navigation}
                     id={key}/>
         })
         ) : getListPesananLoading ? (

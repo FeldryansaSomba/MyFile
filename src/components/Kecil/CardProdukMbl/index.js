@@ -18,7 +18,7 @@ const CardProdukMbl = ({produk, navigation, dataUser}) => {
       }
       <View style={styles.data}>
       <Text style={styles.nama}>{produk.nama}</Text>
-      <Text style={styles.harga}>{produk.harga}</Text>
+      <Text style={styles.harga}>Rp. {produk.harga}</Text>
       <Text style={styles.mebel}>{produk.namaMebel}</Text>
       <Text style={styles.lokasi}>{produk.lokasi}</Text>
       </View>
@@ -50,7 +50,7 @@ elevation: 5,
   gambar: {
     width: 102,
     height: 102,
-    marginLeft: 20,
+    marginLeft: 30,
     marginTop: 22
   },
   data: {
@@ -60,14 +60,14 @@ elevation: 5,
   nama: {
     fontFamily: 'Montserrat-SemiBold',
     textTransform: 'capitalize',
-    fontSize: RFValue(14, heightMobileUI),
+    fontSize: RFValue(15, heightMobileUI),
     color: colors.keempat,
     marginLeft: 17,
     marginBottom: 5
   },
   harga: {
     fontFamily: 'Montserrat-Bold',
-    fontSize: RFValue(13, heightMobileUI),
+    fontSize: RFValue(14, heightMobileUI),
     color: colors.keempat,
     marginLeft: 17,
     marginBottom: 16
@@ -75,7 +75,7 @@ elevation: 5,
   mebel: {
     fontFamily: 'Montserrat-SemiBold',
     textTransform: 'capitalize',
-    fontSize: RFValue(13, heightMobileUI),
+    fontSize: RFValue(14, heightMobileUI),
     color: colors.keempat,
     marginLeft: 17,
     marginBottom: 5
@@ -83,7 +83,7 @@ elevation: 5,
   lokasi: {
     fontFamily: 'Montserrat-Medium',
     textTransform: 'capitalize',
-    fontSize: RFValue(12, heightMobileUI),
+    fontSize: RFValue(13, heightMobileUI),
     color: colors.keempat,
     marginLeft: 17
   }

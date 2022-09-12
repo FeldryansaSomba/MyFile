@@ -21,6 +21,8 @@ import ObrolanCS from "./ObrolanCS";
 import ChattingCS from "./ChattingCS";
 import DetailPesananMbl from "./DetailPesananMbl";
 import MebelDetailMbl from "./MebelDetailMbl";
+import DetailKerjaMbl from "./DetailKerjaMbl";
+import DetailPesananCS from "./DetailPesananCS";
 
 export {
     Splash, 
@@ -45,5 +47,7 @@ export {
     ObrolanCS,
     ChattingCS,
     DetailPesananMbl,
-    MebelDetailMbl
+    MebelDetailMbl,
+    DetailKerjaMbl,
+    DetailPesananCS
 }

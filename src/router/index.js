@@ -4,6 +4,8 @@ import { BerandaCS,
          BuatAkunCS, 
          BuatAkunMebel, 
          ChattingCS, 
+         DetailKerjaMbl, 
+         DetailPesananCS, 
          DetailPesananMbl, 
          EditProfileCS, 
          EditProfilMbl, 
@@ -65,7 +67,7 @@ const MebelApp = () => {
 
 const Router = () => {
   return (
-    <Stack.Navigator initialRouteName='MebelApp'>
+    <Stack.Navigator initialRouteName='PilihUser'>
     <Stack.Screen 
       name="Splash" 
       component={Splash}
@@ -149,6 +151,16 @@ const Router = () => {
     <Stack.Screen 
       name="ChattingCS" 
       component={ChattingCS}
+      options={{headerShown: false}}
+    />
+    <Stack.Screen 
+      name="DetailKerjaMbl" 
+      component={DetailKerjaMbl}
+      options={{headerShown: false}}
+    />
+    <Stack.Screen 
+      name="DetailPesananCS" 
+      component={DetailPesananCS}
       options={{headerShown: false}}
     />
     </Stack.Navigator>

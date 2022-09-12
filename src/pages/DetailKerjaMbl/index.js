@@ -5,34 +5,33 @@ import { IconChat, IconKembali } from '../../assets'
 import { RFValue } from "react-native-responsive-fontsize";
 import { heightMobileUI } from '../../utils/constant';
 import {BottomPesan, Gap, Input, ProdukSlider} from '../../components';
+import { connect } from 'react-redux';
+import { getDetailProduk } from '../../actions/DetailProdukAction'
+import { masukKePesanan } from '../../actions/PesananAction'
+import { storeData } from '../../utils';
 import { getProsesPesananMbl } from '../../actions/ProsesMblAction';
 
-const DetailPesananMbl = (props) => {
+const DetailKerjaMbl = (props) => {
 
     const data = props.route.params.data.dataPesanan
     const idPesanan = props.route.params.data.idPesanan
     const idMebel = props.route.params.data.idMebel
     const idPembeli = props.route.params.data.idPembeli
     const dispatch = props.route.params.dispatch
-    // console.log('Data Pesanan: ', props)
+    console.log('Data Pesanan: ', props)
 
-    const terimaPesanan = () =>{
+    const selesaiPesanan = () =>{
       props.navigation.navigate('KerjaMbl')
-      dispatch(getProsesPesananMbl(idPesanan, idMebel, idPembeli, 'process'))
+      dispatch(getProsesPesananMbl(idPesanan, idMebel, idPembeli, 'selesai'))
     }
     
-    const tolakPesanan = () =>{
-      props.navigation.navigate('PesananMbl')
-      dispatch(getProsesPesananMbl(idPesanan, idMebel, idPembeli, 'ditolak'))
-    }
+    // const tolakPesanan = () =>{
+    //   props.navigation.navigate('PesananMbl')
+    //   dispatch(getProsesPesananMbl(idPesanan, idMebel, idPembeli, 'ditolak'))
+    // }
 
 
   return (
-    // <View>
-    //   <Image source={{uri: data.product.gambar[0]}} style={styles.gambar}/>
-    //   <Text>{data.product.nama}</Text>
-    // </View>
-
 
     <View style={styles.page}>
         <TouchableOpacity style={styles.icon} onPress={()=> props.navigation.goBack()}>
@@ -61,12 +60,12 @@ const DetailPesananMbl = (props) => {
         </View>
         <Gap height={10}/>
         </View>
-        <Text style={styles.text}>Deskripsi Produk:</Text>
+        <Text style={styles.text}>Deskripsi Produk :</Text>
         <Text style={styles.desc}>{data.product.desc}</Text>
         <Text style={styles.desc}>Panjang (cm) : {data.product.panjang}</Text>
         <Text style={styles.desc}>Lebar      (cm) : {data.product.lebar}</Text>
         <Text style={styles.desc}>Tinggi     (cm) : {data.product.tinggi}</Text>
-        <Text style={styles.desc}>Warna              : {data.product.warna}</Text>
+        <Text style={styles.desc}>Warana            : {data.product.warna}</Text>
         <Text style={styles.desc}>Kayu                 : {data.product.kayu}</Text>
         </View>
 
@@ -82,34 +81,21 @@ const DetailPesananMbl = (props) => {
         <Text style={styles.dataKustom }>No Telepon     : {data.noHp}</Text>
         <Text style={styles.dataKustom }>Alamat Lengkap : {data.alamat}</Text>
         <Text style={styles.dataKustom }>Catatan : {data.catatan}</Text>
-        <Text style={styles.dataKustom }>Catatan : {data.product.status}</Text>
         <Gap height={5}/>
         </View>
+        
         <Gap height={25}/>
         </View>
         </ScrollView>
-        {
-          data ? (
-            Object.keys(data.product.status = '-').map((key) => {
-              return <BottomPesan pesanan  onPressTerima={
-           ()=>terimaPesanan()
-          } 
-          onPressTolak ={()=>tolakPesanan()}/>
-        })
-          ): null 
-        }
 
-        {/* <BottomPesan pesanan  onPressTerima={
-           ()=>terimaPesanan()
-          } 
-          
-          // onPressTolak ={()=>props.navigation.navigate('PesananMbl') } title={"Terima"}/>
-          onPressTolak ={()=>tolakPesanan()}/> */}
+        <BottomPesan selesai  onPressSelesai={
+           ()=>selesaiPesanan()
+          }/>
       </View>
   )
 }
 
-export default DetailPesananMbl
+export default DetailKerjaMbl
 
 const styles = StyleSheet.create({
       contant: {

@@ -35,7 +35,7 @@ const allLooping = (getProdukResult, idMebel, dispatch) =>{
                      if(
                         getProdukResult[key].produk[key2][key3].uid != undefined 
                         && getProdukResult[key].produk[key2][key3].uid == idMebel 
-                        && getProdukResult[key].produk[key2][key3].status == '' || getProdukResult[key].produk[key2][key3].status == 'ditolak' 
+                        && getProdukResult[key].produk[key2][key3].status == '-' || getProdukResult[key].produk[key2][key3].status == 'ditolak' 
                         
                         ){
                         newArray.push({

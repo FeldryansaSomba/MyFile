@@ -2,6 +2,7 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { colors, heightMobileUI, responsiveHeight, responsiveWidth } from '../../../utils'
 import { RFValue } from 'react-native-responsive-fontsize'
+import Gap from '../Gap'
 
 const CardKerjaMbl = ({pesanan, navigation}) => {
 //   console.log("navigation di card:",navigation);
@@ -10,26 +11,29 @@ const CardKerjaMbl = ({pesanan, navigation}) => {
   
   return (
     <TouchableOpacity style={styles.card} 
-    onPress={() => navigation.navigate('DetailPesananMbl', {data:pesanan})}>
+    onPress={() => navigation.navigate('DetailKerjaMbl', {data:pesanan})}>
 
-
-    {/* <TouchableOpacity style={styles.card} > */}
-    {/* <Text style={styles.tgl}>{pesanan.dataPesanan.tanggalPemesanan}</Text>  */}
-    <Text style={styles.status}>{pesanan.dataPesanan.product.status}</Text>
-    <Text style={styles.status}>Nama pembeli : { pesanan.dataPesanan.namaUser? pesanan.dataPesanan.namaUser: null }</Text>
     <View style={styles.container}>
-    <Image source={{uri: pesanan.dataPesanan.product.gambar[0]}} style={styles.gambar}/>
-    <View style={styles.data}>
-    <Text style={styles.nama}>{pesanan.dataPesanan.product.nama}</Text>
-    <Text style={styles.harga}>{pesanan.dataPesanan.product.harga}</Text>
-    <Text style={styles.mebel}>{pesanan.dataPesanan.product.namaMebel}</Text>
-    <Text style={styles.lokasi}>{pesanan.dataPesanan.product.lokasi}</Text>
+    <View style={styles.content}>
+    <Text style={styles.dataMebel}>{pesanan.dataPesanan.product.nama}</Text>
+    <Gap height={3}/>
+    <Text style={styles.dataMebel}>Rp. {pesanan.dataPesanan.product.harga}</Text>
+    <Gap height={10}/>
+    <Text style={styles.dataPembeli}>Pembeli  : { pesanan.dataPesanan.namaUser? pesanan.dataPesanan.namaUser: null }</Text>
+    <Gap height={3}/>
+    <Text style={styles.dataPembeli}>No Hp      : {pesanan.dataPesanan.noHp}</Text>
     </View>
-    </View>
-    <View style={styles.wrapper}>
-    <Text style={styles.noHp}>No Hp Pelanggan : {pesanan.dataPesanan.noHp}</Text>
     
-    </View> 
+    <View style={styles.contentGambar}>
+    <Image source={{uri: pesanan.dataPesanan.product.gambar[0]}} style={styles.gambar}/>
+    </View>
+    </View>
+    {/* <View style={{justifyContent: 'flex-end'}}> */}
+    <View style={styles.containerStatus}>
+    <Text style={styles.status}>{pesanan.dataPesanan.product.status}</Text>
+    </View>
+    {/* </View> */}
+
     </TouchableOpacity>
   )
 }
@@ -43,95 +47,61 @@ export default CardKerjaMbl
 const styles = StyleSheet.create({
   card: {
     backgroundColor: colors.pertama,
-    // width: responsiveWidth(275),
-    height: responsiveHeight(170),
+    paddingHorizontal: 20,
+    paddingTop: 20,
+    height: responsiveHeight(147),
     marginBottom: 25,
-    borderRadius: 15,
+    borderRadius: 20,
     shadowColor: "#000",
     shadowOffset: {
     width: 0,
     height: 2,
-},
-shadowOpacity: 0.25,
-shadowRadius: 3.84,
-
-elevation: 5,
+  },
+  shadowOpacity: 0.25,
+  shadowRadius: 3.84,
+  elevation: 5,
+  },
+  containerStatus: {
+    backgroundColor: colors.kedua,
+    borderRadius: 5,
+    height: responsiveHeight(25),
+    width: responsiveWidth(70),
+    justifyContent: 'center',
+    position: 'absolute',
+    bottom: 23,
+    right: 15,
   },
   status: {
-    marginLeft: 30,
-    fontFamily: 'Montserrat-Bold',
-    fontSize: RFValue(15, heightMobileUI),
     color: colors.keempat,
-    textTransform: 'capitalize',
-    marginTop: 8,
-    marginBottom: 5
-  },
-  tgl: {
-    textAlign: 'center',
     fontFamily: 'Montserrat-SemiBold',
-    fontSize: RFValue(14, heightMobileUI),
-    color: 'black',
-    marginTop: 10
+    textTransform: 'capitalize',
+    alignSelf: 'center',
   },
   container: {
   flexDirection: 'row',
+  justifyContent: 'space-between'
   },
-  gambar: {
-    width: 102,
-    height: 102,
-    marginLeft: 30,
-    marginTop: 3
+  dataMebel: {
+    fontFamily: 'Montserrat-Bold',
+    fontSize: RFValue(16, heightMobileUI),
+    textTransform: 'capitalize',
+    color: colors.keempat,
   },
-  data: {
-    marginTop: 3,
-  },
-  nama: {
+  dataPembeli: {
     fontFamily: 'Montserrat-SemiBold',
+    textTransform: 'capitalize',
     fontSize: RFValue(15, heightMobileUI),
     color: colors.keempat,
-    textTransform: 'capitalize',
-    marginLeft: 25,
-    marginBottom: 5
   },
-  harga: {
-    fontFamily: 'Montserrat-Bold',
-    fontSize: RFValue(14, heightMobileUI),
-    color: colors.keempat,
-    marginLeft: 25,
-    marginBottom: 16
+  gambar: {
+    width: 72,
+    height: 72,
+    // marginLeft: 30,
+    // marginTop: 3
   },
-  mebel: {
-    fontFamily: 'Montserrat-SemiBold',
-    fontSize: RFValue(13, heightMobileUI),
-    color: colors.keempat,
-    marginLeft: 25,
-    marginBottom: 5
+  content: {
+    
   },
-  lokasi: {
-    fontFamily: 'Montserrat-SemiBold',
-    fontSize: RFValue(13, heightMobileUI),
-    color: colors.keempat,
-    marginLeft: 25
+  contentGambar: {
   },
-  wrapper: {
-    paddingLeft: 30,
-    marginTop: 9,
-    marginBottom: 10,
-    paddingRight: 30
-  },
-  kustom: {
-    fontFamily: 'Montserrat-SemiBold',
-    fontSize: RFValue(13, heightMobileUI),
-    color: colors.keempat,
-  },
-  kustoM: {
-    fontFamily: 'Montserrat-Medium',
-    fontSize: RFValue(13, heightMobileUI),
-    color: colors.keempat,
-  },
-  noHp: {
-    fontFamily: 'Montserrat-SemiBold',
-    fontSize: RFValue(13, heightMobileUI),
-    color: colors.keempat,
-  }
 })

@@ -1,4 +1,4 @@
-import { Text, StyleSheet, View, TouchableOpacity, Image, ScrollView, Alert } from 'react-native'
+import { Text, StyleSheet, View, TouchableOpacity, Image, ScrollView, Alert, Linking } from 'react-native'
 import React, { Component } from 'react'
 import { colors, getData, responsiveHeight, responsiveWidth } from '../../utils'
 import { IconChat, IconKembali } from '../../assets'
@@ -30,11 +30,11 @@ class MebelDetailCS extends Component {
         }
     }
 
-    componentDidMount() {
-        const { produk } = this.state
-        this.props.dispatch(getDetailProduk(produk.produk))
-        // console.log("data produk: ", produk)
-    }
+    // componentDidMount() {
+    //     const { produk } = this.state
+    //     this.props.dispatch(getDetailProduk(produk.produk))
+    //     // console.log("data produk: ", produk)
+    // }
     
     componentDidUpdate(prevProps) {
         const { savePesananResult } = this.props
@@ -72,6 +72,16 @@ class MebelDetailCS extends Component {
           })
     }
 
+    LinkingPage = () => {
+      const openUrl = async (url) => {
+        const isSupported = await Linking.canOpenURL(url);
+        if (isSupported) {
+          await Linking.openURL(url);
+        }else {
+          Alert.alert(`Don't know how to open this url: ${url}` );
+        }
+      }
+    }
 
   render() {
     const { navigation, savePesananLoading } = this.props
@@ -92,7 +102,18 @@ class MebelDetailCS extends Component {
         <Text style={styles.nama}>{produk.nama}</Text>
         </View>
 
-        <TouchableOpacity style={styles.chat} >
+        {/* <TouchableOpacity style={styles.chat} onPress={() => {
+          Linking.openURL(`https://wa.me/${produk.noHp}`)
+        }}>
+        <IconChat/>
+        </TouchableOpacity>
+        </View> */}
+
+        <TouchableOpacity style={styles.chat} 
+        // onPress={() => {
+        //   Linking.openURL(`whatsapp://send?phone=085298412851`)
+        // }}
+        >
         <IconChat/>
         </TouchableOpacity>
         </View>
@@ -104,7 +125,7 @@ class MebelDetailCS extends Component {
         <Text style={styles.lokasi}>{produk.lokasi}</Text>
         </View>
         <Gap height={10}/>
-        <Text style={styles.lokasi}>No Telepon : {produk.noHp}</Text>
+        <Text style={styles.lokasi}>No Hp : {produk.noHp}</Text>
         </View>
         <Text style={styles.text}>Deskripsi :</Text>
         <Text style={styles.desc}>{produk.desc}</Text>
@@ -129,7 +150,7 @@ class MebelDetailCS extends Component {
         <View style={{flexWrap: 'wrap', flexDirection: 'row', justifyContent: 'space-around'}}>
         <Input
         kustom
-        label={"Panjang"}
+        label={"Panjang (cm)"}
         keyboardType='numeric'
         width={responsiveWidth(100)}
         fontSize={RFValue(14, heightMobileUI)}
@@ -138,7 +159,7 @@ class MebelDetailCS extends Component {
 
         <Input
         kustom
-        label={"Lebar"}
+        label={"Lebar (cm)"}
         keyboardType='numeric'
         width={responsiveWidth(95)}
         fontSize={RFValue(14, heightMobileUI)}
@@ -147,7 +168,7 @@ class MebelDetailCS extends Component {
         
         <Input
         kustom
-        label={"Tinggi"}
+        label={"Tinggi (cm)"}
         keyboardType='numeric'
         width={responsiveWidth(99)}
         fontSize={RFValue(14, heightMobileUI)}

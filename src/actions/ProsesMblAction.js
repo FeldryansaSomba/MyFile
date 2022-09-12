@@ -86,7 +86,7 @@ const updateData = (data, status)=>{
             .ref(`pesanans/${data.idPembeli}/produk/${data.idPesanan}`)
             .update(dataBaru)
             .then((response) => {
-                console.log("response status:",response)
+                // console.log("response status:",response)
             //Success
             dispatchSuccess(data.dispatch, GET_PROSES_PESANAN, response ? response : [])
 
