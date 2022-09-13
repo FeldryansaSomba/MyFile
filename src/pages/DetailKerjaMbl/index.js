@@ -1,14 +1,10 @@
-import { Text, StyleSheet, View, TouchableOpacity, Image, ScrollView, Alert } from 'react-native'
+import { Text, StyleSheet, View, TouchableOpacity, Image, ScrollView, Alert, Linking } from 'react-native'
 import React, { Component } from 'react'
 import { colors, getData, responsiveHeight, responsiveWidth } from '../../utils'
 import { IconChat, IconKembali } from '../../assets'
 import { RFValue } from "react-native-responsive-fontsize";
 import { heightMobileUI } from '../../utils/constant';
 import {BottomPesan, Gap, Input, ProdukSlider} from '../../components';
-import { connect } from 'react-redux';
-import { getDetailProduk } from '../../actions/DetailProdukAction'
-import { masukKePesanan } from '../../actions/PesananAction'
-import { storeData } from '../../utils';
 import { getProsesPesananMbl } from '../../actions/ProsesMblAction';
 
 const DetailKerjaMbl = (props) => {
@@ -18,7 +14,7 @@ const DetailKerjaMbl = (props) => {
     const idMebel = props.route.params.data.idMebel
     const idPembeli = props.route.params.data.idPembeli
     const dispatch = props.route.params.dispatch
-    console.log('Data Pesanan: ', props)
+    // console.log('Data Pesanan: ', props)
 
     const selesaiPesanan = () =>{
       props.navigation.navigate('KerjaMbl')
@@ -29,6 +25,21 @@ const DetailKerjaMbl = (props) => {
     //   props.navigation.navigate('PesananMbl')
     //   dispatch(getProsesPesananMbl(idPesanan, idMebel, idPembeli, 'ditolak'))
     // }
+
+    const sendOnWa = () => {
+      let mobile = props.route.params.data.dataPesanan.noHp;
+      if(mobile){
+        // Kode negara 62 = Indonesia
+          let url = 'whatsapp://send?text=' + '&phone=62' + props.route.params.data.dataPesanan.noHp;
+          Linking.openURL(url).then((data) => {
+            console.log('WhatsApp Opened');
+          }).catch(() => {
+            alert('Make sure Whatsapp installed on your device');
+          });
+      } else {
+        alert('Nomor telepon pembeli tidak terdaftar di Whatsapp.')
+      }
+    }
 
 
   return (
@@ -47,7 +58,9 @@ const DetailKerjaMbl = (props) => {
         <Text style={styles.nama}>{data.product.nama}</Text>
         </View>
 
-        <TouchableOpacity style={styles.chat} >
+        <TouchableOpacity style={styles.chat} 
+        onPress={() => sendOnWa()}
+        >
         <IconChat/>
         </TouchableOpacity>
         </View>

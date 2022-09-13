@@ -72,14 +72,29 @@ class MebelDetailCS extends Component {
           })
     }
 
-    LinkingPage = () => {
-      const openUrl = async (url) => {
-        const isSupported = await Linking.canOpenURL(url);
-        if (isSupported) {
-          await Linking.openURL(url);
-        }else {
-          Alert.alert(`Don't know how to open this url: ${url}` );
-        }
+    // LinkingPage = () => {
+    //   const openUrl = async (url) => {
+    //     const isSupported = await Linking.canOpenURL(url);
+    //     if (isSupported) {
+    //       await Linking.openURL(url);
+    //     }else {
+    //       Alert.alert(`Don't know how to open this url: ${url}` );
+    //     }
+    //   }
+    // }
+
+    sendOnWa = () => {
+      let mobile = this.props.route.params.produk.noHp;
+      if(mobile){
+        // Kode negara 62 = Indonesia
+          let url = 'whatsapp://send?text=' + '&phone=62' + this.props.route.params.produk.noHp;
+          Linking.openURL(url).then((data) => {
+            console.log('WhatsApp Opened');
+          }).catch(() => {
+            alert('Make sure Whatsapp installed on your device');
+          });
+      } else {
+        alert('Nomor telepon ini tidak terdaftar di Whatsapp.')
       }
     }
 
@@ -108,15 +123,15 @@ class MebelDetailCS extends Component {
         <IconChat/>
         </TouchableOpacity>
         </View> */}
-
+        {/* <View style={{flexDirection: 'column'}}> */}
+        {/* <Text>WhatsApp</Text> */}
         <TouchableOpacity style={styles.chat} 
-        // onPress={() => {
-        //   Linking.openURL(`whatsapp://send?phone=085298412851`)
-        // }}
+        onPress={() => this.sendOnWa()}
         >
         <IconChat/>
         </TouchableOpacity>
         </View>
+        {/* </View> */}
 
         <Text style={styles.mebel}>{produk.namaMebel}</Text>
 

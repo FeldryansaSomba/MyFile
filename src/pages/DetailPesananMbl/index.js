@@ -1,4 +1,4 @@
-import { Text, StyleSheet, View, TouchableOpacity, Image, ScrollView, Alert } from 'react-native'
+import { Text, StyleSheet, View, TouchableOpacity, Image, ScrollView, Alert, Linking } from 'react-native'
 import React, { Component } from 'react'
 import { colors, getData, responsiveHeight, responsiveWidth } from '../../utils'
 import { IconChat, IconKembali } from '../../assets'
@@ -26,6 +26,21 @@ const DetailPesananMbl = (props) => {
       dispatch(getProsesPesananMbl(idPesanan, idMebel, idPembeli, 'ditolak'))
     }
 
+    const sendOnWa = () => {
+      let mobile = props.route.params.data.dataPesanan.noHp;
+      if(mobile){
+        // Kode negara 62 = Indonesia
+          let url = 'whatsapp://send?text=' + '&phone=62' + props.route.params.data.dataPesanan.noHp;
+          Linking.openURL(url).then((data) => {
+            console.log('WhatsApp Opened');
+          }).catch(() => {
+            alert('Make sure Whatsapp installed on your device');
+          });
+      } else {
+        alert('Nomor telepon pembeli tidak terdaftar di Whatsapp.')
+      }
+    }
+
 
   return (
     // <View>
@@ -48,7 +63,9 @@ const DetailPesananMbl = (props) => {
         <Text style={styles.nama}>{data.product.nama}</Text>
         </View>
 
-        <TouchableOpacity style={styles.chat} >
+        <TouchableOpacity style={styles.chat} 
+        onPress={() => sendOnWa()}
+        >
         <IconChat/>
         </TouchableOpacity>
         </View>

@@ -1,4 +1,4 @@
-import { Text, StyleSheet, View, TouchableOpacity, Image, ScrollView, Alert } from 'react-native'
+import { Text, StyleSheet, View, TouchableOpacity, Image, ScrollView, Alert, Linking } from 'react-native'
 import React, { Component } from 'react'
 import { colors, getData, responsiveHeight, responsiveWidth } from '../../utils'
 import { IconChat, IconKembali } from '../../assets'
@@ -14,6 +14,21 @@ class DetailPesananCS extends Component {
     this.state = {
       pesanan: this.props.route.params.pesanan,
       images: this.props.route.params.pesanan.product.gambar,
+    }
+  }
+
+  sendOnWa = () => {
+    let mobile = this.props.route.params.pesanan.product.noHp;
+    if(mobile){
+      // Kode negara 62 = Indonesia
+        let url = 'whatsapp://send?text=' + '&phone=62' + this.props.route.params.pesanan.product.noHp;
+        Linking.openURL(url).then((data) => {
+          console.log('WhatsApp Opened');
+        }).catch(() => {
+          alert('Make sure Whatsapp installed on your device');
+        });
+    } else {
+      alert('Nomor telepon ini tidak terdaftar di Whatsapp.')
     }
   }
 
@@ -36,7 +51,9 @@ class DetailPesananCS extends Component {
           <Text style={styles.nama}>{pesanan.product.nama}</Text>
           </View>
   
-          <TouchableOpacity style={styles.chat} >
+          <TouchableOpacity style={styles.chat} 
+          onPress={() => this.sendOnWa()}
+          >
           <IconChat/>
           </TouchableOpacity>
           </View>
