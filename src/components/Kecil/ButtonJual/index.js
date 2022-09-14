@@ -21,28 +21,31 @@ export default ButtonJual
 
 const styles = StyleSheet.create({
         container2: {
-            justifyContent: 'center'
+            justifyContent: 'center',
         },
         container: {
             backgroundColor: colors.pertama,
             height: responsiveHeight(30),
             borderRadius: 5,
             flexDirection: 'row',
-            justifyContent: 'space-between'
+            // justifyContent: 'space-evenly'
         },
         text: {
-            fontFamily: 'Montserrat-Medium',
+            fontFamily: 'Montserrat-SemiBold',
             fontSize: RFValue(14, heightMobileUI),
             color: 'white',
-            marginLeft: 49,
+            marginLeft: 40,
             borderRadius: 5,
             
         },
         button: {
             backgroundColor: colors.kedua,
-            width: responsiveWidth(95),
+            width: responsiveWidth(100),
+            height: '100%',
             alignItems: 'center',
             justifyContent: 'center',
-            borderRadius: 5
+            borderRadius: 5,
+            position: 'absolute',
+            right: 0
         }
 })

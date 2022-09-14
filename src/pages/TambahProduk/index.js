@@ -106,21 +106,22 @@ class TambahProduk extends Component {
         <TouchableOpacity style={styles.icon} onPress={() => navigation.goBack()}>
         <IconKembali onPress={()=> navigation.goBack()}/>
         </TouchableOpacity>
+        <Gap height={5}/>
         <ScrollView>
         {/* <Image source={TambahFoto} style={styles.foto}/> */}
 
         <View style={styles.contentWrapper}>
             <View style={styles.border}>
-        <View style={styles.foto}>
+        {/* <View style={styles.foto}> */}
         <Image source={gambar ? {uri: gambar} : DefaultImage} style={styles.avatar}/>
             {/* <Text style={styles.text}>Tambahkan Foto</Text> */}
-        </View>
+        {/* </View> */}
         </View>
         <Gap height={10}/>
         <Button
             onPress={() => this.getImage()}
             title={'Tambah Foto'} 
-            width={responsiveWidth(100)} 
+            width={responsiveWidth(125)} 
             height={responsiveHeight(25)} 
             fontSize={RFValue(14, heightMobileUI)} 
             borderRadius={5}
@@ -145,22 +146,10 @@ class TambahProduk extends Component {
         keyboardType='numeric'
         value={harga}
         onChangeText={(harga) => this.setState({harga})}/>
-        {/* <Input 
-        label={'Nama Mebel'}
-        height={responsiveHeight(35)}
-        value={namaMebel}
-        onChangeText={(namaMebel) => this.setState({namaMebel})}/> */}
-        {/* <Input 
-        label={'No Telepon'}
-        keyboardType='numeric'
-        height={responsiveHeight(35)}
-        value={noHp}
-        onChangeText={(noHp) => this.setState({noHp})}/> */}
-
-        
+        <Gap height={5}/>
         {/* Kustom Produk */}
         <View style={styles.contentKustom}>
-        <View style={{flexWrap: 'wrap', flexDirection: 'row', justifyContent: 'space-between'}}>
+        <View >
         <Input
         kustom
         label={"Panjang (cm)"}
@@ -170,41 +159,38 @@ class TambahProduk extends Component {
         value={panjang}
         onChangeText={(panjang) => this.setState({panjang})}
         />
-
         <Input
         kustom
-        label={"Lebar (cm)"}
+        label={"Lebar      (cm)"}
         keyboardType='numeric'
-        width={responsiveWidth(95)}
+        width={responsiveWidth(100)}
         fontSize={RFValue(14, heightMobileUI)}
         value={lebar}
         onChangeText={(lebar) => this.setState({lebar})}
         />
-        
         <Input
         kustom
-        label={"Tinggi (cm)"}
+        label={"Tinggi     (cm)"}
         keyboardType='numeric'
-        width={responsiveWidth(99)}
+        width={responsiveWidth(100)}
         fontSize={RFValue(14, heightMobileUI)}
         value={tinggi}
         onChangeText={(tinggi) => this.setState({tinggi})}
         />
-
+        </View>
+        <View>
         <Input
         kustom
         label={"Warna"}
-        width={responsiveWidth(95)}
+        width={responsiveWidth(120)}
         fontSize={RFValue(14, heightMobileUI)}
         value={warna}
         onChangeText={(warna) => this.setState({warna})}
         />
-        </View>
-        <View >
         <Input
         kustom
         label={"Jenis Kayu"}
-        width={responsiveWidth(125)}
+        width={responsiveWidth(120)}
         fontSize={RFValue(14, heightMobileUI)}
         value={kayu}
         onChangeText={(kayu) => this.setState({kayu})}
@@ -216,17 +202,20 @@ class TambahProduk extends Component {
         textArea
         label={'Penjelasan Produk'}
         height={responsiveHeight(35)}
+        fontSize={RFValue(14, heightMobileUI)} 
         value={desc}
         onChangeText={(desc) => this.setState({desc})}/>
         <Input 
         label={'Kecamatan'}
         height={responsiveHeight(35)}
+        fontSize={RFValue(14, heightMobileUI)} 
         value={lokasi}
         onChangeText={(lokasi) => this.setState({lokasi})}/>
         <Input 
         textArea
         label={'Alamat Lengkap'}
         height={responsiveHeight(35)}
+        fontSize={RFValue(14, heightMobileUI)} 
         value={alamat}
         onChangeText={(alamat) => this.setState({alamat})}/>
 
@@ -234,7 +223,7 @@ class TambahProduk extends Component {
         <Button title={"Jual"}
         onPress={() => this.onContinue()}
         type='secondary'
-        fontSize={RFValue(16, heightMobileUI)} 
+        fontSize={RFValue(14, heightMobileUI)} 
         borderRadius={5}
         height={responsiveHeight(36)} />
         <Gap height={30}/>
@@ -259,8 +248,8 @@ const styles = StyleSheet.create({
         backgroundColor: colors.keempat
     },
     avatar: {
-      width: responsiveWidth(150),
-      height: responsiveHeight(150),
+      width: responsiveWidth(140),
+      height: responsiveHeight(140),
       borderRadius: 15,
 
   },
@@ -269,18 +258,7 @@ const styles = StyleSheet.create({
         marginTop: 30
     },
     container: {
-        paddingHorizontal: 30
-    },
-    foto: {
-        width: responsiveWidth(150),
-        height: responsiveHeight(150),
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginBottom: 10,
-        marginTop: 10,
-        backgroundColor: colors.ketiga,
-        borderRadius: 15,
-        borderStyle: 'dashed'
+        paddingHorizontal: 28
     },
     text: {
         fontFamily: 'Montserrat-SemiBold',
@@ -293,8 +271,8 @@ const styles = StyleSheet.create({
         marginBottom: 15
     },
     border: {
-        width: responsiveWidth(170),
-        height: responsiveHeight(170),
+        width: responsiveWidth(150),
+        height: responsiveHeight(150),
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 20,
@@ -303,12 +281,12 @@ const styles = StyleSheet.create({
         borderColor: colors.kedua
     },
     contentKustom: {
-        backgroundColor: colors.ketiga,
-        borderRadius: 5,
-        paddingHorizontal: 25,
-        paddingTop: 5,
-        paddingBottom: 20,
-        marginTop: 10,
-        marginBottom: 5
+      backgroundColor: colors.ketiga,
+      borderRadius: 5,
+      paddingHorizontal: 25,
+      paddingTop: 5,
+      paddingBottom: 20,
+      flexDirection: 'row',
+      justifyContent: 'space-between'
       },
 })

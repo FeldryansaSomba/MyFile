@@ -36,7 +36,7 @@ export default class ProdukSlider extends Component {
         <View style={styles.containerBG}>
         <SliderBox 
         images={images} 
-        sliderBoxHeight={responsiveHeight(223)}
+        sliderBoxHeight={responsiveHeight(200)}
         circleLoop
         ImageComponentStyle={styles.slider}
         dotStyle={styles.dotStyle} 
@@ -59,13 +59,13 @@ export default class ProdukSlider extends Component {
 
 const styles = StyleSheet.create({
     slider: {
-        width: responsiveWidth(223),
+        width: responsiveWidth(200),
         alignSelf: 'center',
     },
     containerBG: {
         backgroundColor: colors.pertama,
         marginTop: 8,
-        height: responsiveHeight(225),
+        height: responsiveHeight(200),
         width: '100%',
         justifyContent: 'center'
     },

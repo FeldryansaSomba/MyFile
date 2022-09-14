@@ -35,7 +35,7 @@ export default CardProduk
 const styles = StyleSheet.create({
   card: {
     backgroundColor: colors.pertama,
-    width: responsiveWidth(275),
+    // width: responsiveWidth(275),
     height: responsiveHeight(140),
     flexDirection: 'row',
     marginBottom: 25,
@@ -51,28 +51,29 @@ shadowRadius: 3.84,
 elevation: 5,
   },
   gambar: {
-    width: 102,
-    height: 102,
-    marginLeft: 20,
+    width: responsiveWidth(90),
+    height: responsiveHeight(90),
+    marginLeft: 25,
     marginTop: 22
   },
   data: {
     // marginTop:
     marginTop: 22,
+    width: '60%'
   },
   nama: {
     fontFamily: 'Montserrat-SemiBold',
     textTransform: 'capitalize',
     fontSize: RFValue(14, heightMobileUI),
     color: colors.keempat,
-    marginLeft: 17,
+    marginLeft: 20,
     marginBottom: 5
   },
   harga: {
     fontFamily: 'Montserrat-Bold',
     fontSize: RFValue(13, heightMobileUI),
     color: colors.keempat,
-    marginLeft: 17,
+    marginLeft: 20,
     marginBottom: 16
   },
   mebel: {
@@ -80,7 +81,7 @@ elevation: 5,
     textTransform: 'capitalize',
     fontSize: RFValue(13, heightMobileUI),
     color: colors.keempat,
-    marginLeft: 17,
+    marginLeft: 20,
     marginBottom: 5
   },
   lokasi: {
@@ -88,6 +89,6 @@ elevation: 5,
     textTransform: 'capitalize',
     fontSize: RFValue(12, heightMobileUI),
     color: colors.keempat,
-    marginLeft: 17
+    marginLeft: 20
   }
 })

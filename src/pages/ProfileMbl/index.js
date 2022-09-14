@@ -4,7 +4,7 @@ import { RFValue } from "react-native-responsive-fontsize";
 import { colors, getData, responsiveHeight, responsiveWidth } from '../../utils'
 import { dummeProfile, dummyMenu, dummyMenuMbl } from '../../data'
 import { heightMobileUI } from '../../utils/constant';
-import { ListMenuMbl } from '../../components';
+import { Gap, ListMenuMbl } from '../../components';
 import { DefaultImage } from '../../assets';
 
 export default class ProfileMbl extends Component {
@@ -46,8 +46,9 @@ export default class ProfileMbl extends Component {
     const {profile, menus} = this.state
     return (
       <View style={styles.page}>
-        <Image source={profile.avatar ? {uri: profile.avatar} : DefaultImage} style={styles.foto}/>
         <View style={styles.profile}>
+        <Image source={profile.avatar ? {uri: profile.avatar} : DefaultImage} style={styles.foto}/>
+        <Gap height={5}/>
         <Text style={styles.nama}>{profile.nama} </Text>
         <Text style={styles.nohp}>No HP : {profile.noHp} </Text>
         </View>
@@ -74,19 +75,19 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 30
   },
   foto: {
-    width: responsiveWidth(100),
-    height: responsiveHeight(100),
-    borderRadius: 30,
-    alignSelf: 'center',
+    width: responsiveWidth(110),
+    height: responsiveHeight(110),
+    borderRadius: 15,
+    // alignSelf: 'center',
     marginTop: 40
   },
   profile: {
     alignItems: 'center',
-    marginTop: 10
+    // marginTop: 10
   },
   nama: {
     fontFamily: 'Montserrat-Bold',
-    fontSize: RFValue(19, heightMobileUI),
+    fontSize: RFValue(18, heightMobileUI),
     textTransform: 'capitalize',
     color: colors.keempat,
     marginBottom: 5

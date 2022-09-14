@@ -43,24 +43,21 @@ const DetailPesananMbl = (props) => {
 
 
   return (
-    // <View>
-    //   <Image source={{uri: data.product.gambar[0]}} style={styles.gambar}/>
-    //   <Text>{data.product.nama}</Text>
-    // </View>
-
-
     <View style={styles.page}>
         <TouchableOpacity style={styles.icon} onPress={()=> props.navigation.goBack()}>
         <IconKembali />
         </TouchableOpacity>
+
         <ScrollView showsVerticalScrollIndicator={false}>
         <ProdukSlider images={data.product.gambar}/>
         <View style={styles.scrol}>
+
         <View style={styles.container}>
-        <View style={styles.contant}>
+        <View style={{flexDirection: 'row'}}>
         
         <View style={{flex: 1}}>
         <Text style={styles.nama}>{data.product.nama}</Text>
+        <Text style={styles.mebel}>{data.product.namaMebel}</Text>
         </View>
 
         <TouchableOpacity style={styles.chat} 
@@ -70,13 +67,13 @@ const DetailPesananMbl = (props) => {
         </TouchableOpacity>
         </View>
 
-        <Text style={styles.mebel}>{data.product.namaMebel}</Text>
 
         <View style={styles.garis}>
         <Text style={styles.harga}>{data.product.harga}</Text>
         <Text style={styles.lokasi}>{data.product.lokasi}</Text>
         </View>
         <Gap height={10}/>
+        {/* <Text style={styles.lokasi}>No Hp : {data.product.noHp}</Text> */}
         </View>
         <Text style={styles.text}>Deskripsi Produk:</Text>
         <Text style={styles.desc}>{data.product.desc}</Text>
@@ -85,6 +82,7 @@ const DetailPesananMbl = (props) => {
         <Text style={styles.desc}>Tinggi     (cm) : {data.product.tinggi}</Text>
         <Text style={styles.desc}>Warna              : {data.product.warna}</Text>
         <Text style={styles.desc}>Kayu                 : {data.product.kayu}</Text>
+        <Text style={styles.desc}>Alamat             : {data.product.alamat}</Text>
         </View>
 
         <Text style={styles.textKustom}>Keterangan Pesanan  :</Text>
@@ -99,7 +97,6 @@ const DetailPesananMbl = (props) => {
         <Text style={styles.dataKustom }>No Telepon     : {data.noHp}</Text>
         <Text style={styles.dataKustom }>Alamat Lengkap : {data.alamat}</Text>
         <Text style={styles.dataKustom }>Catatan : {data.catatan}</Text>
-        <Text style={styles.dataKustom }>Catatan : {data.product.status}</Text>
         <Gap height={5}/>
         </View>
         <Gap height={25}/>
@@ -148,13 +145,13 @@ const styles = StyleSheet.create({
           justifyContent: 'center',
           borderRadius: 6,
           borderRadius: 10,
-          marginTop: 10
+          marginTop: 25
       },
         nama: {
             fontFamily: 'Montserrat-SemiBold',
             color: colors.kedua,
-            fontSize: RFValue(20, heightMobileUI),
-            marginBottom: 4,
+            fontSize: RFValue(19, heightMobileUI),
+            marginBottom: 5,
             marginTop: 17
         },
         mebel: {
@@ -166,7 +163,7 @@ const styles = StyleSheet.create({
         harga: {
             fontFamily: 'Montserrat-Bold',
             color: colors.kedua,
-            fontSize: RFValue(22, heightMobileUI),
+            fontSize: RFValue(19, heightMobileUI),
         },
         lokasi: {
             fontFamily: 'Montserrat-SemiBold',
@@ -180,10 +177,10 @@ const styles = StyleSheet.create({
             alignItems: 'center'
         },
         container: {
-            paddingHorizontal: 34,
+            paddingHorizontal: 25,
         },
         text: {
-            paddingHorizontal: 50,
+            paddingHorizontal: 30,
             marginTop: 13,
             fontFamily: 'Montserrat-Medium',
             color: colors.kedua,
@@ -191,7 +188,7 @@ const styles = StyleSheet.create({
             marginBottom: 4
         },
         desc: {
-            paddingHorizontal: 50,
+            paddingHorizontal: 30,
             fontFamily: 'Montserrat-Medium',
             color: colors.kedua,
             fontSize: RFValue(15, heightMobileUI),
@@ -209,7 +206,7 @@ const styles = StyleSheet.create({
           fontFamily: 'Montserrat-SemiBold',
           color: colors.kedua,
           fontSize: RFValue(15, heightMobileUI),
-          paddingLeft: 34,
+          paddingLeft: 30,
           marginBottom: 3
         }
 })

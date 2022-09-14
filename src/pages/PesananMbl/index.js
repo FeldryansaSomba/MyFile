@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontFamily: 'Montserrat-Bold',
-    fontSize: RFValue(19, heightMobileUI),
+    fontSize: RFValue(17, heightMobileUI),
     color: 'white'
   },
   page: {
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
   container: {
     // flex: 1,
     // backgroundColor: colors.keempat,
-    paddingHorizontal: 48
+    paddingHorizontal: 28
   },
   chat: {
     backgroundColor: colors.kedua,

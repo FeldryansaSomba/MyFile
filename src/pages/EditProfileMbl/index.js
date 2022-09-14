@@ -113,7 +113,7 @@ class EditProfilMbl extends Component {
         onChangeText={(nama) => this.setState({nama})} 
         width={responsiveWidth(313)} 
         height={responsiveHeight(33)} 
-        fontSize={RFValue(16, heightMobileUI)}/>
+        fontSize={RFValue(15, heightMobileUI)}/>
 
         <Input 
         label={"No Telepon"} 
@@ -121,7 +121,7 @@ class EditProfilMbl extends Component {
         onChangeText={(noHp) => this.setState({noHp})} 
         width={responsiveWidth(313)} 
         height={responsiveHeight(33)} 
-        fontSize={RFValue(16, heightMobileUI)}
+        fontSize={RFValue(15, heightMobileUI)}
         keyboardType='numeric'/>
 
         <Input 
@@ -131,7 +131,7 @@ class EditProfilMbl extends Component {
         disabled 
         width={responsiveWidth(313)} 
         height={responsiveHeight(33)} 
-        fontSize={RFValue(16, heightMobileUI)}/>
+        fontSize={RFValue(15, heightMobileUI)}/>
         </View>
 
         <View style={styles.button}>
@@ -169,9 +169,9 @@ const styles = StyleSheet.create({
         marginTop: 30
     },
     avatar: {
-        width: responsiveWidth(100),
-        height: responsiveHeight(100),
-        borderRadius: 30,
+        width: responsiveWidth(110),
+        height: responsiveHeight(110),
+        borderRadius: 15,
     },
     container: {
         alignItems: 'center',

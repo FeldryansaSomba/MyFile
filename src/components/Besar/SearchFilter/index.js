@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         borderRadius: 8,
-        width: responsiveWidth(310)
+        // width: responsiveWidth(310)
     },
     wrapper: {
         flexDirection: 'row',

@@ -34,14 +34,13 @@ class MebelDetailMbl extends Component {
         <TouchableOpacity style={styles.icon}>
         <IconKembali onPress={()=> navigation.goBack()}/>
         </TouchableOpacity>
+        <Gap height={10}/>
         <ScrollView showsVerticalScrollIndicator={false}>
         <ProdukSlider images={images}/>
         <View style={styles.container}>
         <View style={styles.contant}>
         
-        <View style={{flex: 1}}>
         <Text style={styles.nama}>{produk.nama}</Text>
-        </View>
         </View>
 
         <Text style={styles.mebel}>{produk.namaMebel}</Text>
@@ -55,11 +54,12 @@ class MebelDetailMbl extends Component {
         </View>
         <Text style={styles.text}>Deskripsi :</Text>
         <Text style={styles.desc}>{produk.desc}</Text>
-        <Text style={styles.desc}>Panjang : {produk.panjang}</Text>
-        <Text style={styles.desc}>Lebar : {produk.lebar}</Text>
-        <Text style={styles.desc}>Tinggi : {produk.tinggi}</Text>
-        <Text style={styles.desc}>Warana : {produk.warna}</Text>
-        <Text style={styles.desc}>Kayu : {produk.kayu}</Text>
+        <Text style={styles.desc}>Panjang (cm) : {produk.panjang}</Text>
+        <Text style={styles.desc}>Lebar      (cm) : {produk.lebar}</Text>
+        <Text style={styles.desc}>Tinggi     (cm) : {produk.tinggi}</Text>
+        <Text style={styles.desc}>Warna              : {produk.warna}</Text>
+        <Text style={styles.desc}>Kayu                 : {produk.kayu}</Text>
+        <Text style={styles.desc}>Alamat             : {produk.alamat}</Text>
         </ScrollView>
       </View>
     )
@@ -87,21 +87,11 @@ const styles = StyleSheet.create({
         marginLeft: 28,
         marginTop: 30
     },
-    chat: {
-      backgroundColor: colors.kedua,
-      width: responsiveWidth(45),
-      height: responsiveHeight(38),
-      alignItems: 'center',
-      justifyContent: 'center',
-      borderRadius: 6,
-      borderRadius: 10,
-      marginTop: 10
-  },
     nama: {
         fontFamily: 'Montserrat-SemiBold',
         textTransform: 'capitalize',
         color: colors.kedua,
-        fontSize: RFValue(20, heightMobileUI),
+        fontSize: RFValue(19, heightMobileUI),
         marginBottom: 4,
         marginTop: 17
     },
@@ -115,7 +105,7 @@ const styles = StyleSheet.create({
     harga: {
         fontFamily: 'Montserrat-Bold',
         color: colors.kedua,
-        fontSize: RFValue(22, heightMobileUI),
+        fontSize: RFValue(19, heightMobileUI),
     },
     lokasi: {
         fontFamily: 'Montserrat-SemiBold',
@@ -130,10 +120,10 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     container: {
-        paddingHorizontal: 34,
+        paddingHorizontal: 25,
     },
     text: {
-        paddingHorizontal: 50,
+        paddingHorizontal: 30,
         marginTop: 13,
         fontFamily: 'Montserrat-Medium',
         color: colors.kedua,
@@ -141,7 +131,7 @@ const styles = StyleSheet.create({
         marginBottom: 4
     },
     desc: {
-        paddingHorizontal: 50,
+        paddingHorizontal: 30,
         fontFamily: 'Montserrat-Medium',
         color: colors.kedua,
         fontSize: RFValue(15, heightMobileUI),

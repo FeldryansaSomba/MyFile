@@ -45,7 +45,7 @@ class BerandaCS extends Component {
       <View style={styles.pages}>
         <View style={styles.containerAtas}>
         <Text style={styles.text}>Selamat Berbelanja</Text>
-        <Gap height={22}/>
+        <Gap height={18}/>
         <SearchFilter page="BerandaCS"/>
         <Text style={styles.filter}>Filter Produk</Text>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
@@ -77,17 +77,17 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     containerAtas: {
-      paddingTop: 50,
+      paddingTop: 40,
       marginHorizontal: 28
     },
     text: {
         fontSize: RFValue(16, heightMobileUI),
         fontFamily: 'Montserrat-Bold',
-        color: colors.kedua
+        color: colors.kedua,
     },
     listProduk: {
       paddingTop: 10,
-      marginHorizontal: 48
+      marginHorizontal: 30
     },
     filter: {
       fontFamily: 'Montserrat-SemiBold',

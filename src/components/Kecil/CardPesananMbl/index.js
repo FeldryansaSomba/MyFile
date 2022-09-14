@@ -5,8 +5,6 @@ import { RFValue } from 'react-native-responsive-fontsize'
 import Gap from '../Gap'
 
 const CardPesananMbl = ({pesanan, navigation, dispatch}) => {
-  // console.log("navigation di card:",navigation);
-
   // console.log("data di card:",pesanan);
   return (
     <TouchableOpacity style={styles.card} 
@@ -41,19 +39,19 @@ export default CardPesananMbl
 const styles = StyleSheet.create({
   card: {
     backgroundColor: colors.pertama,
-    paddingHorizontal: 20,
+    paddingHorizontal: 25,
     paddingTop: 20,
     height: responsiveHeight(147),
     marginBottom: 25,
     borderRadius: 20,
-    shadowColor: "#000",
-    shadowOffset: {
-    width: 0,
-    height: 2,
-  },
-  shadowOpacity: 0.25,
-  shadowRadius: 3.84,
-  elevation: 5,
+    // shadowColor: "#000",
+  //   shadowOffset: {
+  //   width: 0,
+  //   height: 2,
+  // },
+  // shadowOpacity: 0.25,
+  // shadowRadius: 3.84,
+  // elevation: 5,
   },
   containerStatus: {
     backgroundColor: colors.kedua,
@@ -63,7 +61,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     position: 'absolute',
     bottom: 23,
-    right: 15,
+    right: 25,
   },
   status: {
     color: colors.keempat,
@@ -71,30 +69,31 @@ const styles = StyleSheet.create({
     textTransform: 'capitalize',
     alignSelf: 'center',
   },
-  container: {
-  flexDirection: 'row',
-  justifyContent: 'space-between'
-  },
+  // container: {
+  // flexDirection: 'row',
+  // justifyContent: 'space-between'
+  // },
   dataMebel: {
     fontFamily: 'Montserrat-Bold',
-    fontSize: RFValue(16, heightMobileUI),
+    fontSize: RFValue(14, heightMobileUI),
     textTransform: 'capitalize',
     color: colors.keempat,
   },
   dataPembeli: {
     fontFamily: 'Montserrat-SemiBold',
     textTransform: 'capitalize',
-    fontSize: RFValue(15, heightMobileUI),
+    fontSize: RFValue(14, heightMobileUI),
     color: colors.keempat,
   },
   gambar: {
-    width: 72,
-    height: 72,
-    // marginLeft: 30,
-    // marginTop: 3
+    width: responsiveWidth(72),
+    height: responsiveHeight(72),
+    position: 'absolute',
+    bottom: 15,
+    right: 0,
   },
   content: {
-    
+    width: '70%'
   },
   contentGambar: {
   },

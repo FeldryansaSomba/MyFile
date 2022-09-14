@@ -56,7 +56,7 @@ class BerandaMbl extends Component {
     return (
       <View style={styles.pages}>
         <View style={styles.containerAtas}>
-        <Text style={styles.text}>Selamat Berbelanja</Text>
+        <Text style={styles.text}>Hallo, </Text>
         <Gap height={22}/>
         <ButtonJual navigation={navigation}/>
         <Gap height={10}/>
@@ -83,8 +83,8 @@ const styles = StyleSheet.create({
     flex: 1,
 },
 containerAtas: {
-  paddingTop: 50,
-  marginHorizontal: 35
+  paddingTop: 40,
+  marginHorizontal: 28
 },
 text: {
     fontSize: RFValue(16, heightMobileUI),
@@ -92,14 +92,7 @@ text: {
     color: colors.kedua
 },
 listProduk: {
-  paddingTop: 17,
-  marginHorizontal: 48
+  paddingTop: 10,
+  marginHorizontal: 35
 },
-filter: {
-  fontFamily: 'Montserrat-SemiBold',
-  color: colors.kedua,
-  fontSize: RFValue(15, heightMobileUI),
-  marginTop: 16,
-  marginBottom: 7
-}
 })

@@ -32,16 +32,9 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: colors.pertama,
         shadowColor: "#000",
-        // shadowOffset: {
-	      //   width: 0,
-	      //   height: 2,
-        // },
-        // shadowOpacity: 0.25,
-        // shadowRadius: 3.84,
-        // elevation: 5,
         padding: 5,
         width: responsiveWidth(80),
-        height: responsiveHeight(35),
+        height: responsiveHeight(30),
         borderRadius: 5,
         marginRight: 10,
         justifyContent: 'center',
@@ -55,7 +48,7 @@ const styles = StyleSheet.create({
       color: 'white',
       textTransform:'capitalize',
       fontFamily: 'Montserrat-SemiBold',
-      fontSize: RFValue(16, heightMobileUI)
+      fontSize: RFValue(14, heightMobileUI)
     }
 })
 

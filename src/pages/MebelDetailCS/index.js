@@ -107,33 +107,26 @@ class MebelDetailCS extends Component {
         <TouchableOpacity style={styles.icon}>
         <IconKembali onPress={()=> navigation.goBack()}/>
         </TouchableOpacity>
+        <Gap height={10}/>
         <ScrollView showsVerticalScrollIndicator={false}>
         <ProdukSlider images={images}/>
         <View style={styles.scrol}>
+          
         <View style={styles.container}>
-        <View style={styles.contant}>
+        <View style={{flexDirection: 'row'}}>
         
-        <View style={{flex: 1}}>
+        <View style={{flex: 1,}}>
         <Text style={styles.nama}>{produk.nama}</Text>
+        <Text style={styles.mebel}>{produk.namaMebel}</Text>
         </View>
 
-        {/* <TouchableOpacity style={styles.chat} onPress={() => {
-          Linking.openURL(`https://wa.me/${produk.noHp}`)
-        }}>
-        <IconChat/>
-        </TouchableOpacity>
-        </View> */}
-        {/* <View style={{flexDirection: 'column'}}> */}
-        {/* <Text>WhatsApp</Text> */}
         <TouchableOpacity style={styles.chat} 
         onPress={() => this.sendOnWa()}
         >
         <IconChat/>
         </TouchableOpacity>
         </View>
-        {/* </View> */}
 
-        <Text style={styles.mebel}>{produk.namaMebel}</Text>
 
         <View style={styles.garis}>
         <Text style={styles.harga}>{produk.harga}</Text>
@@ -144,11 +137,12 @@ class MebelDetailCS extends Component {
         </View>
         <Text style={styles.text}>Deskripsi :</Text>
         <Text style={styles.desc}>{produk.desc}</Text>
-        <Text style={styles.desc}>Panjang : {produk.panjang}</Text>
-        <Text style={styles.desc}>Lebar : {produk.lebar}</Text>
-        <Text style={styles.desc}>Tinggi : {produk.tinggi}</Text>
-        <Text style={styles.desc}>Warana : {produk.warna}</Text>
-        <Text style={styles.desc}>Kayu : {produk.kayu}</Text>
+        <Text style={styles.desc}>Panjang (cm) : {produk.panjang}</Text>
+        <Text style={styles.desc}>Lebar      (cm) : {produk.lebar}</Text>
+        <Text style={styles.desc}>Tinggi     (cm) : {produk.tinggi}</Text>
+        <Text style={styles.desc}>Warna              : {produk.warna}</Text>
+        <Text style={styles.desc}>Kayu                 : {produk.kayu}</Text>
+        <Text style={styles.desc}>Alamat             : {produk.alamat}</Text>
         </View>
 
         <Text style={styles.textKustom}>Kustom produk anda (
@@ -162,7 +156,7 @@ class MebelDetailCS extends Component {
         <View style={styles.container}>
         {/* Kustom Produk */}
         <View style={styles.contentKustom}>
-        <View style={{flexWrap: 'wrap', flexDirection: 'row', justifyContent: 'space-around'}}>
+        <View >
         <Input
         kustom
         label={"Panjang (cm)"}
@@ -171,50 +165,41 @@ class MebelDetailCS extends Component {
         fontSize={RFValue(14, heightMobileUI)}
         value={panjang}
         onChangeText={(panjang) => this.setState({panjang})}/>
-
         <Input
         kustom
-        label={"Lebar (cm)"}
+        label={"Lebar      (cm)"}
         keyboardType='numeric'
-        width={responsiveWidth(95)}
+        width={responsiveWidth(100)}
         fontSize={RFValue(14, heightMobileUI)}
         value={lebar}
-        onChangeText={(lebar) => this.setState({lebar})}/>
-        
+        onChangeText={(lebar) => this.setState({lebar})}/>       
         <Input
         kustom
-        label={"Tinggi (cm)"}
+        label={"Tinggi     (cm)"}
         keyboardType='numeric'
-        width={responsiveWidth(99)}
+        width={responsiveWidth(100)}
         fontSize={RFValue(14, heightMobileUI)}
         value={tinggi}
         onChangeText={(tinggi) => this.setState({tinggi})}/>
-
+        </View>
+        {/* <Gap width={50}/> */}
+        <View >
         <Input
         kustom
         label={"Warna"}
-        width={responsiveWidth(95)}
+        width={responsiveWidth(120)}
         fontSize={RFValue(14, heightMobileUI)}
         value={warna}
         onChangeText={(warna) => this.setState({warna})}/>
-        </View>
-        <View style={{paddingHorizontal: 18}}>
         <Input
         kustom
         label={"Jenis Kayu"}
-        width={responsiveWidth(125)}
+        width={responsiveWidth(120)}
         fontSize={RFValue(14, heightMobileUI)}
         value={kayu}
         onChangeText={(kayu) => this.setState({kayu})}/>
         </View>
         </View>
-
-        {/* <Input 
-        label={"No Hp Anda"}
-        keyboardType='numeric'
-        fontSize={RFValue(14, heightMobileUI)}
-        value={noHp}
-        onChangeText={(noHp) => this.setState({noHp})}/> */}
         <Input 
         label={"Alamat Lengkap Anda"}
         textArea
@@ -246,16 +231,16 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, null)(MebelDetailCS)
 
 const styles = StyleSheet.create({
-  contant: {
-    flexDirection: 'row',
-  },
+  // contant: {
+  //   flexDirection: 'row',
+  // },
     page: {
         flex: 1,
         backgroundColor: colors.keempat
     },
     icon: {
         marginLeft: 28,
-        marginTop: 30
+        marginTop: 25
     },
     chat: {
       backgroundColor: colors.kedua,
@@ -265,14 +250,14 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       borderRadius: 6,
       borderRadius: 10,
-      marginTop: 10
+      marginTop: 25
   },
     nama: {
         fontFamily: 'Montserrat-SemiBold',
         textTransform: 'capitalize',
         color: colors.kedua,
-        fontSize: RFValue(20, heightMobileUI),
-        marginBottom: 4,
+        fontSize: RFValue(19, heightMobileUI),
+        marginBottom: 5,
         marginTop: 17
     },
     mebel: {
@@ -285,7 +270,7 @@ const styles = StyleSheet.create({
     harga: {
         fontFamily: 'Montserrat-Bold',
         color: colors.kedua,
-        fontSize: RFValue(22, heightMobileUI),
+        fontSize: RFValue(19, heightMobileUI),
     },
     lokasi: {
         fontFamily: 'Montserrat-SemiBold',
@@ -300,10 +285,10 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     container: {
-        paddingHorizontal: 34,
+        paddingHorizontal: 25,
     },
     text: {
-        paddingHorizontal: 50,
+        paddingHorizontal: 30,
         marginTop: 13,
         fontFamily: 'Montserrat-Medium',
         color: colors.kedua,
@@ -311,7 +296,7 @@ const styles = StyleSheet.create({
         marginBottom: 4
     },
     desc: {
-        paddingHorizontal: 50,
+        paddingHorizontal: 30,
         fontFamily: 'Montserrat-Medium',
         color: colors.kedua,
         fontSize: RFValue(15, heightMobileUI),
@@ -322,15 +307,17 @@ const styles = StyleSheet.create({
     contentKustom: {
       backgroundColor: colors.ketiga,
       borderRadius: 5,
-      paddingHorizontal: 27,
+      paddingHorizontal: 25,
       paddingTop: 5,
-      paddingBottom: 20
+      paddingBottom: 20,
+      flexDirection: 'row',
+      justifyContent: 'space-between'
     },
     textKustom: {
       fontFamily: 'Montserrat-SemiBold',
       color: colors.kedua,
       fontSize: RFValue(14, heightMobileUI),
-      paddingLeft: 34,
+      paddingLeft: 30,
       marginBottom: 3
     }
 }
