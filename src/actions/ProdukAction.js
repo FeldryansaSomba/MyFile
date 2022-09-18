@@ -202,13 +202,13 @@ export const saveKeywordProduk = (search) => ({
     }
 })
 
-function filterObjLokasi(data, kataKunci, dispatch){
+function filterObjLokasi(data, keyword, dispatch){
+    const kataKunci = keyword.toUpperCase()
     let newArray = [];
     Object.keys(data).map((key) => {
         Object.keys(data[key]).map((key2) => {
             const { nama } = data[key][key2]; 
-             let MyNama = nama.split(" ")
-
+             let MyNama = nama.toUpperCase().split(" ")
              if (
                    nama === kataKunci ||
                    MyNama[0] === kataKunci|| 

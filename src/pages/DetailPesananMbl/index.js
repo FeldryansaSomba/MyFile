@@ -14,8 +14,9 @@ const DetailPesananMbl = (props) => {
     const idMebel = props.route.params.data.idMebel
     const idPembeli = props.route.params.data.idPembeli
     const dispatch = props.route.params.dispatch
-    // console.log('Data Pesanan: ', props)
+    console.log('Data Pesanan mebel: ', props)
 
+    // console.log("data1:",data)
     const terimaPesanan = () =>{
       props.navigation.navigate('KerjaMbl')
       dispatch(getProsesPesananMbl(idPesanan, idMebel, idPembeli, 'process'))
@@ -102,7 +103,7 @@ const DetailPesananMbl = (props) => {
         <Gap height={25}/>
         </View>
         </ScrollView>
-        {
+        {/* {
           data ? (
             Object.keys(data.product.status = '-').map((key) => {
               return <BottomPesan pesanan  onPressTerima={
@@ -111,14 +112,20 @@ const DetailPesananMbl = (props) => {
           onPressTolak ={()=>tolakPesanan()}/>
         })
           ): null 
-        }
+        } */}
 
-        {/* <BottomPesan pesanan  onPressTerima={
-           ()=>terimaPesanan()
+    {
+      data.product.status == 'ditolak'? null
+      :
+        <BottomPesan pesanan  onPressTerima={
+          ()=>terimaPesanan()
           } 
-          
           // onPressTolak ={()=>props.navigation.navigate('PesananMbl') } title={"Terima"}/>
-          onPressTolak ={()=>tolakPesanan()}/> */}
+          onPressTolak ={()=>tolakPesanan()}/>
+
+    }
+
+
       </View>
   )
 }

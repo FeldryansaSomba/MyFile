@@ -4,14 +4,14 @@ import { colors, heightMobileUI, responsiveHeight, responsiveWidth } from '../..
 import { RFValue } from 'react-native-responsive-fontsize'
 import Gap from '../Gap'
 
-const CardKerjaMbl = ({pesanan, navigation}) => {
+const CardKerjaMbl = ({pesanan, navigation, dispatch}) => {
 //   console.log("navigation di card:",navigation);
 
   console.log("data di card kerja:",pesanan);
   
   return (
     <TouchableOpacity style={styles.card} 
-    onPress={() => navigation.navigate('DetailKerjaMbl', {data:pesanan})}>
+    onPress={() => navigation.navigate('DetailKerjaMbl', {data:pesanan, dispatch: dispatch})}>
 
     <View style={styles.container}>
     <View style={styles.content}>

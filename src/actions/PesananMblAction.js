@@ -61,6 +61,7 @@ export const GET_TERIMA_PESANANMBL = "GET_TERIMA_PESANANMBL";
 export const getTerimaPesananMbl = (id) => {
 
     const process = 'process'
+    const selesai = 'selesai'
     return (dispatch) => {
 
         dispatchLoading(dispatch, GET_TERIMA_PESANANMBL);
@@ -71,7 +72,7 @@ export const getTerimaPesananMbl = (id) => {
                     //Hasil
                     let data = querySnapshot.val();
                     // console.log("data di getListPesananMbl:", data)
-                   allLooping2(data, id, process, dispatch);
+                   allLooping2(data, id, process, selesai, dispatch);
                 })
                 .catch((error) => {
                     
@@ -82,7 +83,7 @@ export const getTerimaPesananMbl = (id) => {
     }
 }
 
-const allLooping2 = (getProdukResult, idMebel, process , dispatch) =>{
+const allLooping2 = (getProdukResult, idMebel, process,selesai, dispatch) =>{
     console.log("Get produk by result di kerja:",getProdukResult)
 
     let newArray = []
@@ -93,6 +94,7 @@ const allLooping2 = (getProdukResult, idMebel, process , dispatch) =>{
                         getProdukResult[key].produk[key2][key3].uid != undefined 
                         && getProdukResult[key].produk[key2][key3].uid == idMebel
                         && getProdukResult[key].produk[key2][key3].status == process
+                        || getProdukResult[key].produk[key2][key3].status == selesai
                         ){
                         newArray.push({
                         idPesanan: key2,

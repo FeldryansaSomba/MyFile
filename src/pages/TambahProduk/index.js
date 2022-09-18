@@ -2,13 +2,14 @@ import { Image, Text, Alert, StyleSheet, View, TouchableOpacity, ScrollView } fr
 import React, { Component } from 'react'
 import { colors, responsiveHeight, responsiveWidth, getData } from '../../utils'
 import { IconKembali, TambahFoto } from '../../assets'
-import { Button, Gap, Input } from '../../components'
+import { Button, Gap, Input, JenisProduk } from '../../components'
 import { RFValue } from 'react-native-responsive-fontsize'
 import { heightMobileUI } from '../../utils'
 import { connect } from 'react-redux'
 import { addProduk } from '../../actions/AddProdukAction'
 import {launchImageLibrary} from 'react-native-image-picker';
 import {DefaultImage} from '../../assets'
+
 
 class TambahProduk extends Component {
     constructor(props) {
@@ -59,6 +60,7 @@ class TambahProduk extends Component {
         // this._unsubscribe = this.props.navigation.addListener('focus', () => {
         //   do something
           this.getUserData();
+          // this.handleCategory()
         // });
       }
 
@@ -97,10 +99,16 @@ class TambahProduk extends Component {
         })
       }
 
+     
+
+     
+
   render() {
     const { navigation} = this.props
     // console.log("uid di tambah produk: ", route.params.uid)
     const { jenisProduk, gambar, nama, harga, panjang, lebar, tinggi, warna, kayu, desc, lokasi, alamat } = this.state
+  
+  
     return (
       <View style={styles.page}>
         <TouchableOpacity style={styles.icon} onPress={() => navigation.goBack()}>
@@ -130,11 +138,26 @@ class TambahProduk extends Component {
 
         {/* Input data */}
         <View style={styles.container}>
-        <Input 
-        label={'Jenis Produk'}
-        height={responsiveHeight(35)}
-        value={jenisProduk}
-        onChangeText={(jenisProduk) => this.setState({jenisProduk})}/>
+
+        {/* <Input 
+          label={'Jenis Produk'}
+          height={responsiveHeight(35)}
+          value={jenisProduk}
+          onChangeText={(jenisProduk) => this.setState({jenisProduk})}
+        /> */}
+
+        <JenisProduk 
+        label="Pilih Ukuran"
+        // width={responsiveWidth(166)}
+        // height={responsiveHeight(43)}
+        // fontSize={13}
+        // datas={jersey.ukuran}
+        onValueChange={(jenisProduk) => this.setState({jenisProduk})}
+        selectedValue={jenisProduk}
+        
+        />
+
+
         <Input 
         label={'Nama Produk'}
         height={responsiveHeight(35)}

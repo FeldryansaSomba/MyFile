@@ -14,7 +14,8 @@ const DetailKerjaMbl = (props) => {
     const idMebel = props.route.params.data.idMebel
     const idPembeli = props.route.params.data.idPembeli
     const dispatch = props.route.params.dispatch
-    // console.log('Data Pesanan: ', props)
+    // console.log('Detail Kerja mebel: ', props)
+    // console.log("dispatch:",dispatch)
 
     const selesaiPesanan = () =>{
       props.navigation.navigate('KerjaMbl')
@@ -103,9 +104,13 @@ const DetailKerjaMbl = (props) => {
         </View>
         </ScrollView>
 
+    {
+        data.product.status == 'selesai'? null
+        :
         <BottomPesan selesai  onPressSelesai={
-           ()=>selesaiPesanan()
-          }/>
+          ()=>selesaiPesanan()
+        }/>
+      }
       </View>
   )
 }
