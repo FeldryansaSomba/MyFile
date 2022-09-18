@@ -11,6 +11,7 @@ import CardMenuMbl from "./CardMenuMbl";
 import CardPesananMbl from "./CardPesananMbl";
 import CardProdukMbl from "./CardProdukMbl";
 import CardKerjaMbl from "./CardKerjaMbl";
+import JenisProduk from "./JenisProduk";
 
 export { Gap, 
         CardProduk, 
@@ -24,4 +25,5 @@ export { Gap,
         CardMenuMbl,
         CardPesananMbl,
         CardProdukMbl,
-        CardKerjaMbl };
+        CardKerjaMbl,
+        JenisProduk };

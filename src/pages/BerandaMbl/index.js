@@ -8,27 +8,38 @@ import { getData, heightMobileUI } from '../../utils'
 import { RFValue } from 'react-native-responsive-fontsize'
 
 class BerandaMbl extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      profile: false,
+    }
+  }
 
   componentDidMount() {
     this._unsubscribe = this.props.navigation.addListener('focus', () => {
-      // const {idFilter, keyword} = this.props
+      const {idFilter, keyword} = this.props
       // do something
       getData('userMebel').then((res) => {
           //sudah login
           // console.log("res:",res)
           this.props.dispatch(getProdukMbl(res.uid))
       }).catch((error)=>console.log("error:",error))
+
+      // this.getUserData();
     });
   }
 
-  //  getData =()=>{
-  //   getData('userMebel').then((res) => {
-  //     if(res) {
-  //       //sudah login
-  //       this.props.dispatch(getProdukMbl(res.uid))
+  // getUserData = () => {
+  //   getData('userMebel').then(res => {
+  //     const data = res
+
+  //     if(data) {
+  //       this.setState({
+  //         profile: data
+  //       })
   //     }else {
-  //       //belum login
-  //       this.props.navigation.replace('PilihUser')
+  //       this.props.navigation.replace('MasukMebel')
   //     }
   //   })
   // }
@@ -53,10 +64,11 @@ class BerandaMbl extends Component {
 
   render() {
     const { navigation, namaProduk, keyword } = this.props
+    const {profile} = this.state
     return (
       <View style={styles.pages}>
         <View style={styles.containerAtas}>
-        <Text style={styles.text}>Hallo, </Text>
+        <Text style={styles.text}>Hallo, {profile.nama}</Text>
         <Gap height={22}/>
         <ButtonJual navigation={navigation}/>
         <Gap height={10}/>
