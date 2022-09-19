@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
         fontFamily: 'Montserrat-SemiBold',
         textTransform: 'capitalize',
         color: colors.kedua,
-        fontSize: RFValue(19, heightMobileUI),
+        fontSize: RFValue(18, heightMobileUI),
         marginBottom: 4,
         marginTop: 17
     },
@@ -99,19 +99,19 @@ const styles = StyleSheet.create({
         fontFamily: 'Montserrat-SemiBold',
         textTransform: 'capitalize',
         color: colors.kedua,
-        fontSize: RFValue(16, heightMobileUI),
+        fontSize: RFValue(15, heightMobileUI),
         marginBottom: 16
     },
     harga: {
         fontFamily: 'Montserrat-Bold',
         color: colors.kedua,
-        fontSize: RFValue(19, heightMobileUI),
+        fontSize: RFValue(18, heightMobileUI),
     },
     lokasi: {
         fontFamily: 'Montserrat-SemiBold',
         textTransform: 'capitalize',
         color: colors.kedua,
-        fontSize: RFValue(15, heightMobileUI),
+        fontSize: RFValue(14, heightMobileUI),
     },
     garis: {
         flexDirection: 'row',
@@ -127,14 +127,14 @@ const styles = StyleSheet.create({
         marginTop: 13,
         fontFamily: 'Montserrat-Medium',
         color: colors.kedua,
-        fontSize: RFValue(15, heightMobileUI),
+        fontSize: RFValue(14, heightMobileUI),
         marginBottom: 4
     },
     desc: {
         paddingHorizontal: 30,
         fontFamily: 'Montserrat-Medium',
         color: colors.kedua,
-        fontSize: RFValue(15, heightMobileUI),
+        fontSize: RFValue(14, heightMobileUI),
     },
 }
 )

@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     button: {
         backgroundColor: colors.pertama,
         width: responsiveWidth(250),
-        height: responsiveHeight(38),
+        height: responsiveHeight(35),
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 10,
@@ -89,8 +89,8 @@ const styles = StyleSheet.create({
     },
     button2: {
       backgroundColor: colors.pertama,
-      width: responsiveWidth(150),
-      height: responsiveHeight(38),
+      width: responsiveWidth(140),
+      height: responsiveHeight(35),
       alignItems: 'center',
       justifyContent: 'center',
       borderRadius: 10,
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     button3: {
       backgroundColor: colors.pertama,
       width: responsiveWidth(255),
-      height: responsiveHeight(38),
+      height: responsiveHeight(35),
       alignItems: 'center',
       justifyContent: 'center',
       borderRadius: 10,
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
         fontFamily: 'Montserrat-SemiBold',
         // paddingHorizontal: 125,
         paddingVertical: 10,
-        fontSize: RFValue(16, heightMobileUI)
+        fontSize: RFValue(15, heightMobileUI)
     },
     icon: {
         

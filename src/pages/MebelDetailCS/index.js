@@ -162,7 +162,7 @@ class MebelDetailCS extends Component {
         label={"Panjang (cm)"}
         keyboardType='numeric'
         width={responsiveWidth(100)}
-        fontSize={RFValue(14, heightMobileUI)}
+        fontSize={RFValue(13, heightMobileUI)}
         value={panjang}
         onChangeText={(panjang) => this.setState({panjang})}/>
         <Input
@@ -170,7 +170,7 @@ class MebelDetailCS extends Component {
         label={"Lebar      (cm)"}
         keyboardType='numeric'
         width={responsiveWidth(100)}
-        fontSize={RFValue(14, heightMobileUI)}
+        fontSize={RFValue(13, heightMobileUI)}
         value={lebar}
         onChangeText={(lebar) => this.setState({lebar})}/>       
         <Input
@@ -178,7 +178,7 @@ class MebelDetailCS extends Component {
         label={"Tinggi     (cm)"}
         keyboardType='numeric'
         width={responsiveWidth(100)}
-        fontSize={RFValue(14, heightMobileUI)}
+        fontSize={RFValue(13, heightMobileUI)}
         value={tinggi}
         onChangeText={(tinggi) => this.setState({tinggi})}/>
         </View>
@@ -188,14 +188,14 @@ class MebelDetailCS extends Component {
         kustom
         label={"Warna"}
         width={responsiveWidth(120)}
-        fontSize={RFValue(14, heightMobileUI)}
+        fontSize={RFValue(13, heightMobileUI)}
         value={warna}
         onChangeText={(warna) => this.setState({warna})}/>
         <Input
         kustom
         label={"Jenis Kayu"}
         width={responsiveWidth(120)}
-        fontSize={RFValue(14, heightMobileUI)}
+        fontSize={RFValue(13, heightMobileUI)}
         value={kayu}
         onChangeText={(kayu) => this.setState({kayu})}/>
         </View>
@@ -203,13 +203,13 @@ class MebelDetailCS extends Component {
         <Input 
         label={"Alamat Lengkap Anda"}
         textArea
-        fontSize={RFValue(14, heightMobileUI)}
+        fontSize={RFValue(13, heightMobileUI)}
         value={alamat}
         onChangeText={(alamat) => this.setState({alamat})}/>
         <Input 
         label={"Catatan"}
         textArea
-        fontSize={RFValue(14, heightMobileUI)}
+        fontSize={RFValue(13, heightMobileUI)}
         value={catatan}
         onChangeText={(catatan) => this.setState({catatan})}/>
         <Gap height={15}/>
@@ -256,7 +256,7 @@ const styles = StyleSheet.create({
         fontFamily: 'Montserrat-SemiBold',
         textTransform: 'capitalize',
         color: colors.kedua,
-        fontSize: RFValue(19, heightMobileUI),
+        fontSize: RFValue(18, heightMobileUI),
         marginBottom: 5,
         marginTop: 17
     },
@@ -264,19 +264,19 @@ const styles = StyleSheet.create({
         fontFamily: 'Montserrat-SemiBold',
         textTransform: 'capitalize',
         color: colors.kedua,
-        fontSize: RFValue(16, heightMobileUI),
+        fontSize: RFValue(15, heightMobileUI),
         marginBottom: 16
     },
     harga: {
         fontFamily: 'Montserrat-Bold',
         color: colors.kedua,
-        fontSize: RFValue(19, heightMobileUI),
+        fontSize: RFValue(18, heightMobileUI),
     },
     lokasi: {
         fontFamily: 'Montserrat-SemiBold',
         textTransform: 'capitalize',
         color: colors.kedua,
-        fontSize: RFValue(15, heightMobileUI),
+        fontSize: RFValue(14, heightMobileUI),
     },
     garis: {
         flexDirection: 'row',
@@ -292,14 +292,14 @@ const styles = StyleSheet.create({
         marginTop: 13,
         fontFamily: 'Montserrat-Medium',
         color: colors.kedua,
-        fontSize: RFValue(15, heightMobileUI),
+        fontSize: RFValue(14, heightMobileUI),
         marginBottom: 4
     },
     desc: {
         paddingHorizontal: 30,
         fontFamily: 'Montserrat-Medium',
         color: colors.kedua,
-        fontSize: RFValue(15, heightMobileUI),
+        fontSize: RFValue(14, heightMobileUI),
     },
     scrol: {
         marginBottom: 17

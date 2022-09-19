@@ -147,10 +147,10 @@ class TambahProduk extends Component {
         /> */}
 
         <JenisProduk 
-        label="Pilih Ukuran"
+        label="Jenis Produk"
         // width={responsiveWidth(166)}
-        // height={responsiveHeight(43)}
-        // fontSize={13}
+        height={responsiveHeight(30)}
+        fontSize={RFValue(14)}
         // datas={jersey.ukuran}
         onValueChange={(jenisProduk) => this.setState({jenisProduk})}
         selectedValue={jenisProduk}
@@ -160,12 +160,14 @@ class TambahProduk extends Component {
 
         <Input 
         label={'Nama Produk'}
-        height={responsiveHeight(35)}
+        fontSize={RFValue(14)}
+        height={responsiveHeight(30)}
         value={nama}
         onChangeText={(nama) => this.setState({nama})}/>
         <Input 
         label={'Harga'}
-        height={responsiveHeight(35)}
+        fontSize={RFValue(14)}
+        height={responsiveHeight(30)}
         keyboardType='numeric'
         value={harga}
         onChangeText={(harga) => this.setState({harga})}/>
@@ -177,6 +179,7 @@ class TambahProduk extends Component {
         kustom
         label={"Panjang (cm)"}
         width={responsiveWidth(100)}
+        height={responsiveHeight(30)}
         fontSize={RFValue(14, heightMobileUI)}
         keyboardType='numeric'
         value={panjang}
@@ -187,6 +190,7 @@ class TambahProduk extends Component {
         label={"Lebar      (cm)"}
         keyboardType='numeric'
         width={responsiveWidth(100)}
+        height={responsiveHeight(30)}
         fontSize={RFValue(14, heightMobileUI)}
         value={lebar}
         onChangeText={(lebar) => this.setState({lebar})}
@@ -196,6 +200,7 @@ class TambahProduk extends Component {
         label={"Tinggi     (cm)"}
         keyboardType='numeric'
         width={responsiveWidth(100)}
+        height={responsiveHeight(30)}
         fontSize={RFValue(14, heightMobileUI)}
         value={tinggi}
         onChangeText={(tinggi) => this.setState({tinggi})}
@@ -206,6 +211,7 @@ class TambahProduk extends Component {
         kustom
         label={"Warna"}
         width={responsiveWidth(120)}
+        height={responsiveHeight(30)}
         fontSize={RFValue(14, heightMobileUI)}
         value={warna}
         onChangeText={(warna) => this.setState({warna})}
@@ -214,6 +220,7 @@ class TambahProduk extends Component {
         kustom
         label={"Jenis Kayu"}
         width={responsiveWidth(120)}
+        height={responsiveHeight(30)}
         fontSize={RFValue(14, heightMobileUI)}
         value={kayu}
         onChangeText={(kayu) => this.setState({kayu})}
@@ -224,20 +231,20 @@ class TambahProduk extends Component {
         <Input 
         textArea
         label={'Penjelasan Produk'}
-        height={responsiveHeight(35)}
+        height={responsiveHeight(30)}
         fontSize={RFValue(14, heightMobileUI)} 
         value={desc}
         onChangeText={(desc) => this.setState({desc})}/>
         <Input 
         label={'Kecamatan'}
-        height={responsiveHeight(35)}
+        height={responsiveHeight(30)}
         fontSize={RFValue(14, heightMobileUI)} 
         value={lokasi}
         onChangeText={(lokasi) => this.setState({lokasi})}/>
         <Input 
         textArea
         label={'Alamat Lengkap'}
-        height={responsiveHeight(35)}
+        height={responsiveHeight(30)}
         fontSize={RFValue(14, heightMobileUI)} 
         value={alamat}
         onChangeText={(alamat) => this.setState({alamat})}/>

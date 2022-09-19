@@ -49,10 +49,10 @@ class MasukMebel extends Component {
 
         <View style={styles.container}>
             <Input 
-            label={"Email"}
+            label={"Email (Mebel)"}
             width={responsiveWidth(285)} 
             height={responsiveHeight(36)} 
-            fontSize={RFValue(16, heightMobileUI)}
+            fontSize={RFValue(15, heightMobileUI)}
             value={email}
             onChangeText={(email) => this.setState({email})}/>
 
@@ -60,7 +60,7 @@ class MasukMebel extends Component {
             label={"Kata Sandi"}
             width={responsiveWidth(285)} 
             height={responsiveHeight(36)} 
-            fontSize={RFValue(16, heightMobileUI)}
+            fontSize={RFValue(15, heightMobileUI)}
             secureTextEntry
             value={password}
             onChangeText={(password) => this.setState({password})}/>
@@ -72,12 +72,12 @@ class MasukMebel extends Component {
             title={"Masuk"}
             width={responsiveWidth(282)} 
             height={responsiveHeight(36)} 
-            fontSize={RFValue(16, heightMobileUI)} 
+            fontSize={RFValue(15, heightMobileUI)} 
             borderRadius={5}/>
             <Gap height={30}/>
 
             <Linking onPress={() => navigation.navigate("BuatAkunMebel")}
-            title="Buat Akun" 
+            title="Buat Akun Mebel" 
             size={RFValue(15, heightMobileUI)} />
             <Gap height={40}/>
             </View>

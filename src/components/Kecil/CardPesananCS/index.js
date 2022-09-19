@@ -20,13 +20,15 @@ const CardPesananCS = ({pesanan, navigation}) => {
     <Gap height={3}/>
     <Text style={styles.dataPembeli}>No Hp : {pesanan.product.noHp}</Text>
     </View>
-    
+    <View>
     <View style={styles.contentGambar}>
     <Image source={{uri: pesanan.product.gambar[0]}} style={styles.gambar}/>
     </View>
-    </View>
+    <Gap height={10}/>
     <View style={styles.containerStatus}>
     <Text style={styles.status}>{pesanan.product.status}</Text>
+    </View>
+    </View>
     </View>
     
     </TouchableOpacity>
@@ -39,8 +41,9 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: colors.pertama,
     paddingHorizontal: 25,
-    paddingTop: 20,
-    height: responsiveHeight(147),
+    // paddingVertical: 20,
+    justifyContent: 'center',
+    height: responsiveHeight(135),
     marginBottom: 25,
     borderRadius: 20,
   //   shadowColor: "#000",
@@ -58,9 +61,9 @@ const styles = StyleSheet.create({
     height: responsiveHeight(25),
     width: responsiveWidth(70),
     justifyContent: 'center',
-    position: 'absolute',
-    bottom: 23,
-    right: 25,
+    // position: 'absolute',
+    // bottom: 23,
+    // right: 25,
   },
   status: {
     color: colors.keempat,
@@ -68,33 +71,37 @@ const styles = StyleSheet.create({
     textTransform: 'capitalize',
     alignSelf: 'center',
   },
-  // container: {
-  // flexDirection: 'row',
-  // justifyContent: 'space-between'
-  // },
+  container: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    // backgroundColor: 'blue'
+  },
   dataMebel: {
     fontFamily: 'Montserrat-Bold',
-    fontSize: RFValue(14, heightMobileUI),
+    fontSize: RFValue(13, heightMobileUI),
     textTransform: 'capitalize',
     color: colors.keempat,
+    
   },
   dataPembeli: {
     fontFamily: 'Montserrat-SemiBold',
     textTransform: 'capitalize',
-    fontSize: RFValue(14, heightMobileUI),
+    fontSize: RFValue(13, heightMobileUI),
     color: colors.keempat,
+    
   },
   gambar: {
-    width: responsiveWidth(72),
-    height: responsiveHeight(72),
-    position: 'absolute',
-    bottom: 15,
-    right: 0,
-    // marginLeft: 30,
-    // marginTop: 3
+    width: responsiveWidth(65),
+    height: responsiveHeight(65),
+    // position: 'absolute',
+    // bottom: 15,
+    // right: 0,
+    marginLeft: 2,
+    marginTop: 5
   },
   content: {
-    width: '70%'
+    width: '70%',
+    // backgroundColor:'blue'
   },
   contentGambar: {
   },

@@ -87,7 +87,7 @@ const DetailKerjaMbl = (props) => {
 
         <Text style={styles.textKustom}>Keterangan Pesanan  :</Text>
         <View style={styles.container}>
-        <View style={{borderWidth : 2, borderColor: colors.pertama, height: responsiveHeight(180), borderRadius: 10}}>
+        <View style={{borderWidth : 2, borderColor: colors.pertama, borderRadius: 10}}>
         <Gap height={5}/>
         <Text style={styles.dataKustom}>Panjang (cm) : {data.panjang}</Text>
         <Text style={styles.dataKustom}>Lebar      (cm) : {data.lebar}</Text>
@@ -142,25 +142,25 @@ const styles = StyleSheet.create({
         nama: {
             fontFamily: 'Montserrat-SemiBold',
             color: colors.kedua,
-            fontSize: RFValue(19, heightMobileUI),
+            fontSize: RFValue(18, heightMobileUI),
             marginBottom: 5,
             marginTop: 17
         },
         mebel: {
             fontFamily: 'Montserrat-SemiBold',
             color: colors.kedua,
-            fontSize: RFValue(16, heightMobileUI),
+            fontSize: RFValue(15, heightMobileUI),
             marginBottom: 16
         },
         harga: {
             fontFamily: 'Montserrat-Bold',
             color: colors.kedua,
-            fontSize: RFValue(19, heightMobileUI),
+            fontSize: RFValue(18, heightMobileUI),
         },
         lokasi: {
             fontFamily: 'Montserrat-SemiBold',
             color: colors.kedua,
-            fontSize: RFValue(15, heightMobileUI),
+            fontSize: RFValue(14, heightMobileUI),
         },
         garis: {
             flexDirection: 'row',
@@ -176,14 +176,14 @@ const styles = StyleSheet.create({
             marginTop: 13,
             fontFamily: 'Montserrat-Medium',
             color: colors.kedua,
-            fontSize: RFValue(15, heightMobileUI),
+            fontSize: RFValue(14, heightMobileUI),
             marginBottom: 4
         },
         desc: {
             paddingHorizontal: 30,
             fontFamily: 'Montserrat-Medium',
             color: colors.kedua,
-            fontSize: RFValue(15, heightMobileUI),
+            fontSize: RFValue(14, heightMobileUI),
         },
         scrol: {
             marginBottom: 17
@@ -192,12 +192,13 @@ const styles = StyleSheet.create({
           paddingHorizontal: 10,
           fontFamily: 'Montserrat-Bold',
           color: colors.kedua,
+          fontSize: RFValue(14, heightMobileUI),
           marginTop: 2
         },
         textKustom: {
           fontFamily: 'Montserrat-SemiBold',
           color: colors.kedua,
-          fontSize: RFValue(15, heightMobileUI),
+          fontSize: RFValue(14, heightMobileUI),
           paddingLeft: 30,
           marginBottom: 3
         }

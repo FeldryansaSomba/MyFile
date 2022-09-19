@@ -6,9 +6,16 @@ import { connect } from 'react-redux'
 import { getProduk, getProdukByFilter } from '../../actions/ProdukAction'
 import { getFilter } from '../../actions/FilterAction'
 import { RFValue } from 'react-native-responsive-fontsize'
-import { heightMobileUI } from '../../utils'
+import { heightMobileUI, getData } from '../../utils'
 
 class BerandaCS extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      profile: false,
+    }
+  }
 
   componentDidMount() {
     this._unsubscribe = this.props.navigation.addListener('focus', () => {
@@ -17,8 +24,23 @@ class BerandaCS extends Component {
       // do something
       this.props.dispatch(getFilter());
       this.props.dispatch(getProduk(idFilter, keyword));
+      this.getUserData();
       // this.props.dispatch(getProdukByFilter(filterProduk))
     });
+  }
+
+  getUserData = () => {
+    getData('user').then(res => {
+      const data = res
+      let myData = data.nama.split(" ")
+      if(data) {
+        this.setState({
+          profile: myData[0]
+        })
+      }else {
+        this.props.navigation.replace('MasukCS')
+      }
+    })
   }
 
   componentWillUnmount() {
@@ -41,10 +63,11 @@ class BerandaCS extends Component {
 
   render() {
     const { navigation, namaProduk, keyword } = this.props
+    const {profile} = this.state
     return (
       <View style={styles.pages}>
         <View style={styles.containerAtas}>
-        <Text style={styles.text}>Selamat Berbelanja</Text>
+        <Text style={styles.text}>Hallo, {profile}</Text>
         <Gap height={18}/>
         <SearchFilter page="BerandaCS"/>
         <Text style={styles.filter}>Filter Produk</Text>
@@ -77,7 +100,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     containerAtas: {
-      paddingTop: 40,
+      paddingTop: 20,
       marginHorizontal: 28
     },
     text: {
@@ -87,7 +110,7 @@ const styles = StyleSheet.create({
     },
     listProduk: {
       paddingTop: 10,
-      marginHorizontal: 30
+      paddingHorizontal: 30
     },
     filter: {
       fontFamily: 'Montserrat-SemiBold',

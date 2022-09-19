@@ -60,7 +60,7 @@ class BuatAkunCS extends Component {
             label={"Nama"}
             width={responsiveWidth(285)} 
             height={responsiveHeight(36)} 
-            fontSize={RFValue(16, heightMobileUI)}
+            fontSize={RFValue(14, heightMobileUI)}
             value={nama}
             onChangeText={(nama) => this.setState({nama})}/>
 
@@ -68,7 +68,7 @@ class BuatAkunCS extends Component {
             label={"No. Telepon"}
             width={responsiveWidth(285)} 
             height={responsiveHeight(36)} 
-            fontSize={RFValue(16, heightMobileUI)}
+            fontSize={RFValue(14, heightMobileUI)}
             value={noHp}
             onChangeText={(noHp) => this.setState({noHp})}/>
 
@@ -76,7 +76,7 @@ class BuatAkunCS extends Component {
             label={"Email"}
             width={responsiveWidth(285)} 
             height={responsiveHeight(36)} 
-            fontSize={RFValue(16, heightMobileUI)}
+            fontSize={RFValue(14, heightMobileUI)}
             value={email}
             onChangeText={(email) => this.setState({email})}/>
 
@@ -84,7 +84,7 @@ class BuatAkunCS extends Component {
             label={"Kata Sandi"}
             width={responsiveWidth(285)} 
             height={responsiveHeight(36)} 
-            fontSize={RFValue(16, heightMobileUI)}
+            fontSize={RFValue(14, heightMobileUI)}
             secureTextEntry
             value={password}
             onChangeText={(password) => this.setState({password})}/>
@@ -96,7 +96,7 @@ class BuatAkunCS extends Component {
             title={"Daftar"}
             width={responsiveWidth(282)} 
             height={responsiveHeight(36)} 
-            fontSize={RFValue(16, heightMobileUI)} 
+            fontSize={RFValue(14, heightMobileUI)} 
             borderRadius={5}/>
             <Gap height={30}/>
         </View>
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     text: {
         color: colors.kedua,
         fontFamily: 'Montserrat-Bold',
-        fontSize: RFValue(22, heightMobileUI),
+        fontSize: RFValue(20, heightMobileUI),
         marginTop: 25,
         textAlign: 'center'
     },

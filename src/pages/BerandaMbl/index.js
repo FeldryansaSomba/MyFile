@@ -21,28 +21,29 @@ class BerandaMbl extends Component {
       const {idFilter, keyword} = this.props
       // do something
       getData('userMebel').then((res) => {
-          //sudah login
-          // console.log("res:",res)
-          this.props.dispatch(getProdukMbl(res.uid))
-      }).catch((error)=>console.log("error:",error))
+        //sudah login
+        // console.log("res:",res)
+        
+        this.props.dispatch(getProdukMbl(res.uid))
+    }).catch((error)=>console.log("error:",error))
 
-      // this.getUserData();
+      this.getUserData();
     });
   }
 
-  // getUserData = () => {
-  //   getData('userMebel').then(res => {
-  //     const data = res
-
-  //     if(data) {
-  //       this.setState({
-  //         profile: data
-  //       })
-  //     }else {
-  //       this.props.navigation.replace('MasukMebel')
-  //     }
-  //   })
-  // }
+  getUserData = () => {
+    getData('userMebel').then(res => {
+      const data = res
+      let myData = data.nama.split(" ")
+      if(data) {
+        this.setState({
+          profile: myData[0]
+        })
+      }else {
+        this.props.navigation.replace('MasukMebel')
+      }
+    })
+  }
 
   componentWillUnmount() {
     this._unsubscribe();
@@ -68,8 +69,8 @@ class BerandaMbl extends Component {
     return (
       <View style={styles.pages}>
         <View style={styles.containerAtas}>
-        <Text style={styles.text}>Hallo, {profile.nama}</Text>
-        <Gap height={22}/>
+        <Text style={styles.text}>Hallo, {profile}</Text>
+        <Gap height={20}/>
         <ButtonJual navigation={navigation}/>
         <Gap height={10}/>
         </View>
@@ -95,7 +96,7 @@ const styles = StyleSheet.create({
     flex: 1,
 },
 containerAtas: {
-  paddingTop: 40,
+  paddingTop: 30,
   marginHorizontal: 28
 },
 text: {
@@ -105,6 +106,6 @@ text: {
 },
 listProduk: {
   paddingTop: 10,
-  marginHorizontal: 35
+  paddingHorizontal: 30
 },
 })
