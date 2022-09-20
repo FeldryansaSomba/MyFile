@@ -10,13 +10,17 @@ export const updateProfile = (data) => {
         //LOADING
         dispatchLoading(dispatch, UPDATE_PROFILE)
 
+        console.log("data:",data)
+
         const dataBaru = {
             uid: data.uid,
             nama: data.nama,
             noHp: data.noHp,
             email: data.email,
             status: 'user',
-            avatar: data.updateAvatar ? data.avatarForDB : data.avatarLama
+            avatar: data.avatar? 
+                    data.updateAvatar ? data.avatarForDB : data.avatarLama
+                    :null
         }
 
         FIREBASE.database()
