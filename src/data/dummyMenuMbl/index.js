@@ -1,5 +1,5 @@
 import React from "react";
-import { IconEdit, IconGantiPass, IconKeluar } from "../../assets";
+import { IconEdit, IconGantiPass, IconInfo, IconKeluar } from "../../assets";
 
 export const dummyMenuMbl = [
     {
@@ -16,6 +16,12 @@ export const dummyMenuMbl = [
     },
     {
         id: 3,
+        nama: 'Informasi Aplikasi',
+        gambar: <IconInfo/>,
+        halaman: 'InfoApp'
+    },
+    {
+        id: 4,
         nama: 'Keluar',
         gambar: <IconKeluar/>,
         halaman: 'MasukMebel'

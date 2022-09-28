@@ -23,6 +23,7 @@ import DetailPesananMbl from "./DetailPesananMbl";
 import MebelDetailMbl from "./MebelDetailMbl";
 import DetailKerjaMbl from "./DetailKerjaMbl";
 import DetailPesananCS from "./DetailPesananCS";
+import InfoApp from "./InfoApp";
 
 export {
     Splash, 
@@ -49,5 +50,6 @@ export {
     DetailPesananMbl,
     MebelDetailMbl,
     DetailKerjaMbl,
-    DetailPesananCS
+    DetailPesananCS,
+    InfoApp
 }

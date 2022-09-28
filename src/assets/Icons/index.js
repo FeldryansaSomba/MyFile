@@ -18,6 +18,7 @@ import IconTambah from './IconTambah.svg'
 import IconObrolan from './IconObrolan.svg'
 import IconObrolanActive from './IconObrolanActive.svg'
 import IconSend from './IconSend.svg'
+import IconInfo from './Information.svg'
 
 export {
     IconBeranda, 
@@ -39,5 +40,6 @@ export {
     IconTambah,
     IconObrolan,
     IconObrolanActive,
-    IconSend
+    IconSend,
+    IconInfo
 }

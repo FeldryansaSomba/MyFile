@@ -81,13 +81,20 @@ class DetailPesananCS extends Component {
   
           <Text style={styles.textKustom}>Keterangan Pesanan  :</Text>
           <View style={styles.container}>
-          <View style={{borderWidth : 2, borderColor: colors.pertama,  borderRadius: 10}}>
+          <View style={{borderWidth : 2, borderColor: colors.pertama,  borderRadius: 10, padding: 5}}>
           <Gap height={5}/>
+          {/* <View style={{flexDirection: 'row', }}> */}
+          <View >
           <Text style={styles.dataKustom}>Panjang (cm) : {pesanan.panjang}</Text>
           <Text style={styles.dataKustom}>Lebar      (cm) : {pesanan.lebar}</Text>
           <Text style={styles.dataKustom}>Tinggi     (cm) : {pesanan.tinggi}</Text>
+          </View>
+          {/* <View style={{marginLeft: 40}}> */}
           <Text style={styles.dataKustom}>Warna              : {pesanan.warna}</Text>
           <Text style={styles.dataKustom}>Kayu                 : {pesanan.kayu}</Text>
+          {/* </View> */}
+          {/* </View> */}
+          <Gap height={10}/>
           <Text style={styles.dataKustom }>No Telepon     : {pesanan.noHp}</Text>
           <Text style={styles.dataKustom }>Alamat Lengkap : {pesanan.alamat}</Text>
           <Text style={styles.dataKustom }>Catatan : {pesanan.catatan}</Text>

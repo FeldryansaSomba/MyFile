@@ -11,6 +11,7 @@ import { BerandaCS,
          EditProfilMbl, 
          GantiPassCS, 
          GantiPassMbl, 
+         InfoApp, 
          KerjaMbl, MasukCS, 
          MasukMebel, 
          MebelDetailCS, 
@@ -67,7 +68,7 @@ const MebelApp = () => {
 
 const Router = () => {
   return (
-    <Stack.Navigator initialRouteName='MainApp'>
+    <Stack.Navigator initialRouteName=''>
     <Stack.Screen 
       name="Splash" 
       component={Splash}
@@ -161,6 +162,11 @@ const Router = () => {
     <Stack.Screen 
       name="DetailPesananCS" 
       component={DetailPesananCS}
+      options={{headerShown: false}}
+    />
+    <Stack.Screen 
+      name="InfoApp" 
+      component={InfoApp}
       options={{headerShown: false}}
     />
     </Stack.Navigator>

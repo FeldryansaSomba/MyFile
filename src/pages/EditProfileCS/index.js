@@ -34,7 +34,7 @@ class EditProfileCS extends Component {
 
         if(updateProfileResult && prevProps.updateProfileResult !== updateProfileResult)
         {
-            Alert.alert("Sukses", "Berhasil memperbaharui profil")
+            Alert.alert("Sukses", "Berhasil memperbaharui profil!")
             this.props.navigation.replace('MainApp')
         }
     }

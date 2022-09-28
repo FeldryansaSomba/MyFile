@@ -15,7 +15,9 @@ export const updateProfileMbl = (data) => {
             noHp: data.noHp,
             email: data.email,
             status: 'userMebel',
-            avatar: data.updateAvatar ? data.avatarForDB : data.avatarLama
+            avatar: data.avatar?
+                    data.updateAvatar ? data.avatarForDB : data.avatarLama
+                    :null
         }
 
         FIREBASE.database()

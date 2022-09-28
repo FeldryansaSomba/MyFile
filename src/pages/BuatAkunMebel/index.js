@@ -25,7 +25,8 @@ class BuatAkunMebel extends Component {
 
         if(registerMebelResult && prevProps.registerMebelResult !== registerMebelResult)
         {
-            this.props.navigation.replace('MebelApp')
+            Alert.alert("Sukses", "Akun berhasil di buat.")
+            this.props.navigation.replace('MasukMebel')
         }
     }
 

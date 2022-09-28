@@ -88,13 +88,20 @@ const DetailPesananMbl = (props) => {
 
         <Text style={styles.textKustom}>Keterangan Pesanan  :</Text>
         <View style={styles.container}>
-        <View style={{borderWidth : 2, borderColor: colors.pertama, borderRadius: 10}}>
+        <View style={{borderWidth : 2, borderColor: colors.pertama, borderRadius: 10, padding: 5}}>
         <Gap height={5}/>
+        {/* <View style={{flexDirection: 'row', }}> */}
+        <View >
         <Text style={styles.dataKustom}>Panjang (cm) : {data.panjang}</Text>
         <Text style={styles.dataKustom}>Lebar      (cm) : {data.lebar}</Text>
         <Text style={styles.dataKustom}>Tinggi     (cm) : {data.tinggi}</Text>
+        </View>
+        {/* <View style={{marginLeft: 40}}> */}
         <Text style={styles.dataKustom}>Warna              : {data.warna}</Text>
         <Text style={styles.dataKustom}>Kayu                 : {data.kayu}</Text>
+        {/* </View> */}
+        {/* </View> */}
+        <Gap height={10}/>
         <Text style={styles.dataKustom }>No Telepon     : {data.noHp}</Text>
         <Text style={styles.dataKustom }>Alamat Lengkap : {data.alamat}</Text>
         <Text style={styles.dataKustom }>Catatan : {data.catatan}</Text>

@@ -25,7 +25,8 @@ class BuatAkunCS extends Component {
 
         if(registerResult && prevProps.registerResult !== registerResult)
         {
-            this.props.navigation.replace('MainApp')
+            Alert.alert("Sukses", "Akun berhasil di buat.")
+            this.props.navigation.replace('MasukCS')
         }
     }
 

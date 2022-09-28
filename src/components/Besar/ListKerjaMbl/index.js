@@ -40,7 +40,7 @@ return (
         
     ) : (
 
-        <Text>Tidak Ada Pesanan Masuk</Text>
+        <Text>Tidak Ada Kerja</Text>
 
     )
     }

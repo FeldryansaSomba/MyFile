@@ -31,7 +31,7 @@ const ListProdukMbl = ({
             
         ) : (
 
-            <Text>Produk Kosong</Text>
+            <Text>Anda tidak memiliki produk</Text>
 
         )}
     </View>

@@ -96,7 +96,7 @@ class EditProfilMbl extends Component {
             <Button
             onPress={() => this.getImage()}
             title={'Ganti Foto'} 
-            width={responsiveWidth(85)} 
+            width={responsiveWidth(95)} 
             height={responsiveHeight(19)} 
             fontSize={RFValue(13, heightMobileUI)} 
             borderRadius={5}

@@ -1,7 +1,7 @@
 import { Image, Text, Alert, StyleSheet, View, TouchableOpacity, ScrollView } from 'react-native'
 import React, { Component } from 'react'
 import { colors, responsiveHeight, responsiveWidth, getData } from '../../utils'
-import { IconKembali, TambahFoto } from '../../assets'
+import { GambarAdd, IconKembali, TambahFoto } from '../../assets'
 import { Button, Gap, Input, JenisProduk } from '../../components'
 import { RFValue } from 'react-native-responsive-fontsize'
 import { heightMobileUI } from '../../utils'
@@ -43,6 +43,7 @@ class TambahProduk extends Component {
 
         if(addProdukResult && prevProps.addProdukResult !== addProdukResult)
         {
+          Alert.alert("Sukses", "Berhasil dijual!")
             this.props.navigation.replace('MebelApp')
         }
     }
@@ -59,7 +60,7 @@ class TambahProduk extends Component {
     componentDidMount() {
         // this._unsubscribe = this.props.navigation.addListener('focus', () => {
         //   do something
-          this.getUserData();
+        this.getUserData();
           // this.handleCategory()
         // });
       }
@@ -121,7 +122,7 @@ class TambahProduk extends Component {
         <View style={styles.contentWrapper}>
             <View style={styles.border}>
         {/* <View style={styles.foto}> */}
-        <Image source={gambar ? {uri: gambar} : DefaultImage} style={styles.avatar}/>
+        <Image source={gambar ? {uri: gambar} : TambahFoto} style={styles.avatar}/>
             {/* <Text style={styles.text}>Tambahkan Foto</Text> */}
         {/* </View> */}
         </View>
@@ -134,6 +135,9 @@ class TambahProduk extends Component {
             fontSize={RFValue(14, heightMobileUI)} 
             borderRadius={5}
             type='secondary'/>
+          {/* <Image source={GambarAdd} 
+          style={{width: responsiveWidth(200),
+          height: responsiveHeight(200),}}/> */}
         </View>
 
         {/* Input data */}
@@ -157,20 +161,24 @@ class TambahProduk extends Component {
         
         />
 
-
+        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
         <Input 
         label={'Nama Produk'}
         fontSize={RFValue(14)}
         height={responsiveHeight(30)}
+        width={responsiveWidth(137)}
         value={nama}
         onChangeText={(nama) => this.setState({nama})}/>
         <Input 
         label={'Harga'}
         fontSize={RFValue(14)}
         height={responsiveHeight(30)}
+        width={responsiveWidth(137)}
         keyboardType='numeric'
         value={harga}
         onChangeText={(harga) => this.setState({harga})}/>
+        </View>
+
         <Gap height={5}/>
         {/* Kustom Produk */}
         <View style={styles.contentKustom}>

@@ -84,7 +84,7 @@ export const getTerimaPesananMbl = (id) => {
 }
 
 const allLooping2 = (getProdukResult, idMebel, process,selesai, dispatch) =>{
-    console.log("Get produk by result di kerja:",getProdukResult)
+    // console.log("Get produk by result di kerja:",getProdukResult)
 
     let newArray = []
     Object.keys(getProdukResult).map((key) => {

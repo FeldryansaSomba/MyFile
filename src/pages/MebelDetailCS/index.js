@@ -41,6 +41,7 @@ class MebelDetailCS extends Component {
     
         if(savePesananResult && prevProps.savePesananResult !== savePesananResult)
         {
+          Alert.alert("Sukses", "Pesanan Anda Berhasil!")
           this.props.navigation.navigate('PesananCS');
         }
     }

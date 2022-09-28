@@ -44,7 +44,7 @@ class GantiPassCS extends Component {
 
       if(changePassResult && prevProps.changePassResult !== changePassResult)
       {
-        Alert.alert('Sukses', "Berhasil Ganti Kata Sandi Baru")
+        Alert.alert('Sukses', "Berhasil Ganti Kata Sandi Baru!")
           this.props.navigation.replace('MainApp')
       }
   }
