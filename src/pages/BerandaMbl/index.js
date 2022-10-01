@@ -26,7 +26,7 @@ class BerandaMbl extends Component {
 
   componentDidMount() {
     this._unsubscribe = this.props.navigation.addListener('focus', () => {
-      const {idFilter, keyword} = this.props
+
       // do something
       getData('userMebel').then((res) => {
         //sudah login
@@ -55,22 +55,8 @@ class BerandaMbl extends Component {
     this._unsubscribe();
   }
 
-//   componentDidUpdate(prevProps) {
-//     const { idFilter, keyword } = this.props
-
-//     if(idFilter && prevProps.idFilter !== idFilter)
-//     {
-//       this.props.dispatch(getProduk(idFilter, keyword));
-//     }
-
-//     if(keyword && prevProps.keyword !== keyword)
-//     {
-//       this.props.dispatch(getProduk(idFilter, keyword));
-//     }
-// }
-
   render() {
-    const { navigation, namaProduk, keyword } = this.props
+    const { navigation } = this.props
     const {profile} = this.state
     return (
       <View style={styles.pages}>

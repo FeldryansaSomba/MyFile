@@ -10,12 +10,8 @@ import { RFValue } from 'react-native-responsive-fontsize'
 const CardFilter = ({filter, id, dispatch}) => {
   const toProdukByFilter = (id, namaProduk) => {
     //ke produk action
-    console.log("get filter:",filter)
     dispatch(getProduk(filter))
-  
   }
-
-  console.log("filter:",filter)
   return (
     <>
     <TouchableOpacity style={styles.container} onPress={() => toProdukByFilter(id, filter)}>

@@ -58,17 +58,12 @@ class TambahProduk extends Component {
     }
 
     componentDidMount() {
-        // this._unsubscribe = this.props.navigation.addListener('focus', () => {
-        //   do something
         this.getUserData();
-          // this.handleCategory()
-        // });
       }
 
     getUserData = () => {
         getData('userMebel').then(res => {
           const data = res
-            console.log('data tambah produk:',data)
           if(data) {
             this.setState({
              uid: data.uid,
@@ -88,9 +83,7 @@ class TambahProduk extends Component {
             }else {
                 const source = response.assets[0].uri;
                 const fileString = `data:${response.assets[0].type};base64,${response.assets[0].base64}`;
-                // const arrayFoto = []
-                // arrayFoto.push(fileString)
-                // console.log("array foto:", arrayFoto)
+
                 this.setState({
                   gambar: source,
                   gambarForDB: fileString,

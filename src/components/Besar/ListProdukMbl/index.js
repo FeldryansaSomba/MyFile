@@ -11,7 +11,6 @@ const ListProdukMbl = ({
     navigation
     }) => {
 
-      console.log("get product result mbl:",getProdukMblResult);
   return (
     <View>
       { getProdukMblResult[0] ? ( 

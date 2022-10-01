@@ -11,11 +11,6 @@ import Filter from "./Filter";
 import TabItemMbl from "./TabItemMbl";
 import BottomNavigatorMbl from "./BottomNavigatorMbl";
 import ListMenuMbl from "./ListMenuMbl";
-import ListObrolanCS from "./ListObrolanCS";
-import ChatItem from "./ChatItem";
-import InputChatCS from "./InputChatCS";
-import ContohBottom from "./ContohBottom";
-import ContohTab from "./ContohTab";
 import ListPesananMbl from "./ListPesananMbl";
 import ListProdukMbl from "./ListProdukMbl";
 import ListKerjaMbl from "./ListKerjaMbl";
@@ -33,11 +28,6 @@ export { BottomNavigatorCS,
         BottomNavigatorMbl,
         TabItemMbl,
         ListMenuMbl,
-        ListObrolanCS,
-        ChatItem,
-        InputChatCS,
-        ContohBottom,
-        ContohTab,
         ListPesananMbl,
         ListProdukMbl,
         ListKerjaMbl
