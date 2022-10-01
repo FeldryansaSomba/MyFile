@@ -1,20 +1,37 @@
-import { Text, StyleSheet, View, ScrollView, TouchableOpacity } from 'react-native'
+import { Text, StyleSheet, View, ScrollView, RefreshControl } from 'react-native'
 import React, { Component } from 'react'
 import { colors, getData, responsiveHeight } from '../../utils'
 import { ListKerjaMbl } from '../../components'
 import { RFValue } from "react-native-responsive-fontsize";
 import { heightMobileUI } from '../../utils/constant';
-import { IconChat } from '../../assets'
-import { getProsesPesananMbl } from '../../actions/ProsesMblAction'
 import { getTerimaPesananMbl } from '../../actions/PesananMblAction';
 import { connect } from 'react-redux'
 
 class KerjaMbl extends Component {
+
+  constructor(props) {
+    super(props)
+  
+    this.state = {
+    loading: false   
+    }
+  }
+
+  updateHalaman = () => {
+    getData('userMebel').then((res) => {
+      if(res) {
+        //sudah login
+        this.props.dispatch(getTerimaPesananMbl(res.uid))
+      }else {
+        //belum login
+        this.props.navigation.replace('PilihUser')
+      }
+    })
+  }
  
   componentDidMount(){
     getData('userMebel').then((res) => {
       if(res) {
-        // console.log('res.uid:',res.uid)
         //sudah login
         this.props.dispatch(getTerimaPesananMbl(res.uid))
       }else {
@@ -26,26 +43,25 @@ class KerjaMbl extends Component {
 
 
   render() {
-    const { pesanans, navigation } = this.props
-
-    // console.log("This.props di kerja mbl:",this.props)
+ 
     return (
       <>
       <View style={styles.header}>
         <Text style={styles.text}>Pekerjaan Saya</Text>
       </View>
       <View style={styles.page}>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView showsVerticalScrollIndicator={false} 
+      refreshControl={
+        <RefreshControl
+        refreshing={this.state.loading}
+        onRefresh={() => this.updateHalaman()}
+        />}
+      >
       <View style={styles.container}>
-        {/* <ListPesananCS pesanans={pesanans}/> */}
-        {/* <ListPesananCS {...this.props}/> */}
         <ListKerjaMbl allData={this.props}/>
       </View>
       </ScrollView>
 
-      {/* <TouchableOpacity style={styles.chat} >
-      <IconChat onPress={() => navigation.navigate('EdsonApp')}/>
-      </TouchableOpacity> */}
       </View>
       </>
     )
@@ -77,8 +93,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.keempat,
   },
   container: {
-    // flex: 1,
-    // backgroundColor: colors.keempat,
     paddingHorizontal: 28
   },
   chat: {

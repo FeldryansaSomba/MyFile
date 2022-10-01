@@ -4,11 +4,7 @@ import { CardKerjaMbl } from '../../Kecil'
 import { colors } from '../../../utils'
 
 const ListKerjaMbl = (props) => {
-
-    // console.log("props di pesanan mebel:",props)
-    const {getTerimaPesananMblLoading, getTerimaPesananMblResult, getTerimaPesananMblError, navigation, dispatch } = props.allData;
-  console.log("props wkwk:",props)
-
+const {getTerimaPesananMblLoading, getTerimaPesananMblResult, getTerimaPesananMblError, navigation, dispatch } = props.allData;
 
 return (
 <ScrollView showsVerticalScrollIndicator={false}>
@@ -40,7 +36,7 @@ return (
         
     ) : (
 
-        <Text>Tidak Ada Kerja</Text>
+        <Text>Tidak Ada Pekerjaan</Text>
 
     )
     }

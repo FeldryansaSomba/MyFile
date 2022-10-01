@@ -1,7 +1,7 @@
-import { StyleSheet, View, TextInput, TouchableOpacity } from 'react-native'
+import { StyleSheet, View, TextInput } from 'react-native'
 import React, { Component } from 'react'
-import { IconFilter, IconSearch } from '../../../assets'
-import { colors, heightMobileUI, responsiveWidth } from '../../../utils'
+import { IconSearch } from '../../../assets'
+import { colors, heightMobileUI } from '../../../utils'
 import { saveKeywordProduk } from '../../../actions/ProdukAction'
 import { connect } from 'react-redux'
 import { RFValue } from 'react-native-responsive-fontsize'
@@ -16,7 +16,7 @@ class SearchFilter extends Component {
   }
 
   selesaiCari = () => {
-    const {page, dispatch} = this.props
+    const {dispatch} = this.props
     const {search} = this.state
     //jalankan action save keyword
     dispatch(saveKeywordProduk(search))
@@ -34,6 +34,7 @@ class SearchFilter extends Component {
         <IconSearch/>
         <TextInput 
         placeholder='Cari produk anda. . .' 
+        placeholderTextColor={colors.kedua}
         style={styles.input}
         value={search}
         onChangeText={(search) => this.setState({search})}
@@ -54,7 +55,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         borderRadius: 8,
-        // width: responsiveWidth(310)
     },
     wrapper: {
         flexDirection: 'row',

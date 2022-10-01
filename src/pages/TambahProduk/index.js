@@ -49,8 +49,8 @@ class TambahProduk extends Component {
     }
 
     onContinue = () => {
-        const { gambar, nama, harga, panjang, lebar, tinggi, warna, kayu, desc, lokasi, alamat, jenisProduk } = this.state
-        if(gambar && nama && harga &&  panjang && lebar && tinggi && warna && kayu && desc && lokasi && alamat && jenisProduk ) {
+        const { gambar, nama, harga, lebar, tinggi, warna, kayu, desc, lokasi, alamat, jenisProduk } = this.state
+        if(gambar && nama && harga && lebar && tinggi && warna && kayu && desc && lokasi && alamat && jenisProduk ) {
             this.props.dispatch(addProduk(this.state))
         } else {
             Alert.alert("Error", "Semua Data Harus Diisi!!")
@@ -105,8 +105,7 @@ class TambahProduk extends Component {
      
 
   render() {
-    const { navigation} = this.props
-    // console.log("uid di tambah produk: ", route.params.uid)
+    const { navigation, addProdukLoading} = this.props
     const { jenisProduk, gambar, nama, harga, panjang, lebar, tinggi, warna, kayu, desc, lokasi, alamat } = this.state
   
   
@@ -117,14 +116,10 @@ class TambahProduk extends Component {
         </TouchableOpacity>
         <Gap height={5}/>
         <ScrollView>
-        {/* <Image source={TambahFoto} style={styles.foto}/> */}
 
         <View style={styles.contentWrapper}>
             <View style={styles.border}>
-        {/* <View style={styles.foto}> */}
         <Image source={gambar ? {uri: gambar} : TambahFoto} style={styles.avatar}/>
-            {/* <Text style={styles.text}>Tambahkan Foto</Text> */}
-        {/* </View> */}
         </View>
         <Gap height={10}/>
         <Button
@@ -135,31 +130,17 @@ class TambahProduk extends Component {
             fontSize={RFValue(14, heightMobileUI)} 
             borderRadius={5}
             type='secondary'/>
-          {/* <Image source={GambarAdd} 
-          style={{width: responsiveWidth(200),
-          height: responsiveHeight(200),}}/> */}
         </View>
 
         {/* Input data */}
         <View style={styles.container}>
 
-        {/* <Input 
-          label={'Jenis Produk'}
-          height={responsiveHeight(35)}
-          value={jenisProduk}
-          onChangeText={(jenisProduk) => this.setState({jenisProduk})}
-        /> */}
-
         <JenisProduk 
         label="Jenis Produk"
-        // width={responsiveWidth(166)}
         height={responsiveHeight(30)}
         fontSize={RFValue(14)}
-        // datas={jersey.ukuran}
         onValueChange={(jenisProduk) => this.setState({jenisProduk})}
-        selectedValue={jenisProduk}
-        
-        />
+        selectedValue={jenisProduk}/>
 
         <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
         <Input 
@@ -258,13 +239,17 @@ class TambahProduk extends Component {
         onChangeText={(alamat) => this.setState({alamat})}/>
 
         <Gap height={30}/>
+        <View style={{alignItems: 'center'}}>
         <Button title={"Jual"}
         onPress={() => this.onContinue()}
+        loading={addProdukLoading}
         type='secondary'
+        width={responsiveWidth(282)}
         fontSize={RFValue(14, heightMobileUI)} 
         borderRadius={5}
         height={responsiveHeight(36)} />
         <Gap height={30}/>
+        </View>
         </View>
         </ScrollView>
       </View>

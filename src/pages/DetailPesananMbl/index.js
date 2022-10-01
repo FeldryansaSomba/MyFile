@@ -1,10 +1,10 @@
 import { Text, StyleSheet, View, TouchableOpacity, Image, ScrollView, Alert, Linking } from 'react-native'
 import React, { Component } from 'react'
-import { colors, getData, responsiveHeight, responsiveWidth } from '../../utils'
+import { colors, responsiveHeight, responsiveWidth } from '../../utils'
 import { IconChat, IconKembali } from '../../assets'
 import { RFValue } from "react-native-responsive-fontsize";
 import { heightMobileUI } from '../../utils/constant';
-import {BottomPesan, Gap, Input, ProdukSlider} from '../../components';
+import {BottomPesan, Gap, ProdukSlider} from '../../components';
 import { getProsesPesananMbl } from '../../actions/ProsesMblAction';
 
 const DetailPesananMbl = (props) => {
@@ -14,9 +14,7 @@ const DetailPesananMbl = (props) => {
     const idMebel = props.route.params.data.idMebel
     const idPembeli = props.route.params.data.idPembeli
     const dispatch = props.route.params.dispatch
-    console.log('Data Pesanan mebel: ', props)
 
-    // console.log("data1:",data)
     const terimaPesanan = () =>{
       props.navigation.navigate('KerjaMbl')
       dispatch(getProsesPesananMbl(idPesanan, idMebel, idPembeli, 'process'))
@@ -70,11 +68,10 @@ const DetailPesananMbl = (props) => {
 
 
         <View style={styles.garis}>
-        <Text style={styles.harga}>{data.product.harga}</Text>
+        <Text style={styles.harga}>Rp. {data.product.harga}</Text>
         <Text style={styles.lokasi}>{data.product.lokasi}</Text>
         </View>
         <Gap height={10}/>
-        {/* <Text style={styles.lokasi}>No Hp : {data.product.noHp}</Text> */}
         </View>
         <Text style={styles.text}>Deskripsi Produk:</Text>
         <Text style={styles.desc}>{data.product.desc}</Text>
@@ -90,17 +87,15 @@ const DetailPesananMbl = (props) => {
         <View style={styles.container}>
         <View style={{borderWidth : 2, borderColor: colors.pertama, borderRadius: 10, padding: 5}}>
         <Gap height={5}/>
-        {/* <View style={{flexDirection: 'row', }}> */}
+
         <View >
         <Text style={styles.dataKustom}>Panjang (cm) : {data.panjang}</Text>
         <Text style={styles.dataKustom}>Lebar      (cm) : {data.lebar}</Text>
         <Text style={styles.dataKustom}>Tinggi     (cm) : {data.tinggi}</Text>
         </View>
-        {/* <View style={{marginLeft: 40}}> */}
         <Text style={styles.dataKustom}>Warna              : {data.warna}</Text>
         <Text style={styles.dataKustom}>Kayu                 : {data.kayu}</Text>
-        {/* </View> */}
-        {/* </View> */}
+
         <Gap height={10}/>
         <Text style={styles.dataKustom }>No Telepon     : {data.noHp}</Text>
         <Text style={styles.dataKustom }>Alamat Lengkap : {data.alamat}</Text>
@@ -110,16 +105,6 @@ const DetailPesananMbl = (props) => {
         <Gap height={25}/>
         </View>
         </ScrollView>
-        {/* {
-          data ? (
-            Object.keys(data.product.status = '-').map((key) => {
-              return <BottomPesan pesanan  onPressTerima={
-           ()=>terimaPesanan()
-          } 
-          onPressTolak ={()=>tolakPesanan()}/>
-        })
-          ): null 
-        } */}
 
     {
       data.product.status == 'ditolak'? null
@@ -127,7 +112,6 @@ const DetailPesananMbl = (props) => {
         <BottomPesan pesanan  onPressTerima={
           ()=>terimaPesanan()
           } 
-          // onPressTolak ={()=>props.navigation.navigate('PesananMbl') } title={"Terima"}/>
           onPressTolak ={()=>tolakPesanan()}/>
 
     }

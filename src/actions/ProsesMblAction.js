@@ -1,11 +1,10 @@
 import FIREBASE from '../config/FIREBASE'
 import { dispatchLoading, dispatchError, dispatchSuccess } from '../utils';
 
-// export const PROSES_PESANAN = "PROSES_PESANAN";
 export const GET_PROSES_PESANAN = "GET_LIST_PESANAN";
 
 export const getProsesPesananMbl = (idPesanan, idMebel, idPembeli, status) => {
-    // console.log("id pesanan:",id)
+
     return (dispatch) => {
         dispatchLoading(dispatch, GET_PROSES_PESANAN);
 
@@ -14,14 +13,9 @@ export const getProsesPesananMbl = (idPesanan, idMebel, idPembeli, status) => {
                 .once('value', (querySnapshot) => {
                     //Hasil
                     let data = querySnapshot.val();
-                    // console.log("data di getListPesananMbl:", data)
                    allLooping(data, idPesanan, idMebel, idPembeli, dispatch, status);
-                //    dispatch(allLooping(data, id))
-                    // dispatchSuccess(dispatch, GET_PROSES_PESANAN, data)
                 })
                 .catch((error) => {
-                    
-                    // dispatchError(dispatch, GET_PROSES_PESANAN, error);
                     alert(error)
                 })
         
@@ -29,8 +23,6 @@ export const getProsesPesananMbl = (idPesanan, idMebel, idPembeli, status) => {
 }
 
 const allLooping = (getProsesPesananResult, idPesanan, idMebel, idPembeli, dispatch, status) =>{
-    // console.log("id Pembeli:", idPembeli)
-    // console.log("id Pesanan:", idPesanan)
 
     Object.keys(getProsesPesananResult).map((key) => {
         if(key == idPembeli){
@@ -50,9 +42,6 @@ const allLooping = (getProsesPesananResult, idPesanan, idMebel, idPembeli, dispa
 }
 
 const updateData = (data, status)=>{
-    // console.log("update data:",data)
-// console.log("id pembeli:", data.idPembeli)
-// console.log("id pesanan:", data.idPesanan)
 
     const dataBaru = {
         alamat: data.allData.alamat,
@@ -86,12 +75,8 @@ const updateData = (data, status)=>{
             .ref(`pesanans/${data.idPembeli}/produk/${data.idPesanan}`)
             .update(dataBaru)
             .then((response) => {
-                // console.log("response status:",response)
             //Success
             dispatchSuccess(data.dispatch, GET_PROSES_PESANAN, response ? response : [])
-
-            // Simpan ke local storage(Async Storage)
-            // storeData('userMebel', dataBaru)
             })
             .catch((error) => {
                 console.log("response status error:",error)
@@ -102,29 +87,3 @@ const updateData = (data, status)=>{
             alert("Data User tidak ada")
     })
 }
-
-
-// const allLooping = (getProsesPesananResult, idMebel, dispatch) =>{
-
-//     let newArray = []
-//     Object.keys(getProsesPesananResult).map((key) => {
-//         Object.keys(getProsesPesananResult[key].produk).map((key2) => {
-//                 Object.keys(getProsesPesananResult[key].produk[key2]).map((key3) => {
-//                      if(getProsesPesananResult[key].produk[key2][key3].uid != undefined && getProsesPesananResult[key].produk[key2][key3].uid == idMebel ){
-//                         newArray.push({
-//                         idPesanan: key2,
-//                         idPembeli:getProsesPesananResult[key].user,
-//                         idMebel: getProsesPesananResult[key].produk[key2][key3].uid,
-//                         dataPesanan: getProsesPesananResult[key].produk[key2],
-//                     })
-//                  } 
-//             })
-//         })
-//     })
-
-//     // console.log(newArray)
-//     if(newArray!==null){
-//     //    console.log(newArray)
-//         return (dispatchSuccess(dispatch, GET_PROSES_PESANAN, newArray))
-//     }
-// }

@@ -13,12 +13,9 @@ export const getListPesananMbl = (id) => {
                 .once('value', (querySnapshot) => {
                     //Hasil
                     let data = querySnapshot.val();
-                    // console.log("data di getListPesananMbl:", data)
                    allLooping(data, id, dispatch);
                 })
                 .catch((error) => {
-                    
-                    // dispatchError(dispatch, GET_PRODUK_PESANANMBL, error);
                     alert(error)
                 })
         
@@ -72,12 +69,9 @@ export const getTerimaPesananMbl = (id) => {
                 .once('value', (querySnapshot) => {
                     //Hasil
                     let data = querySnapshot.val();
-                    // console.log("data di getListPesananMbl:", data)
                    allLooping2(data, id, process, selesai, dispatch);
                 })
                 .catch((error) => {
-                    
-                    // dispatchError(dispatch, GET_PRODUK_PESANANMBL, error);
                     alert(error)
                 })
         
@@ -85,7 +79,6 @@ export const getTerimaPesananMbl = (id) => {
 }
 
 const allLooping2 = (getProdukResult, idMebel, process,selesai, dispatch) =>{
-    // console.log("Get produk by result di kerja:",getProdukResult)
 
     let newArray = []
     Object.keys(getProdukResult).map((key) => {

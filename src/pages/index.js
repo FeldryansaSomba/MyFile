@@ -17,8 +17,6 @@ import PesananMbl from "./PesananMbl";
 import EditProfilMbl from "./EditProfileMbl";
 import GantiPassMbl from "./GantiPassMbl";
 import TambahProduk from "./TambahProduk";
-import ObrolanCS from "./ObrolanCS";
-import ChattingCS from "./ChattingCS";
 import DetailPesananMbl from "./DetailPesananMbl";
 import MebelDetailMbl from "./MebelDetailMbl";
 import DetailKerjaMbl from "./DetailKerjaMbl";
@@ -45,8 +43,6 @@ export {
     EditProfilMbl,
     GantiPassMbl,
     TambahProduk,
-    ObrolanCS,
-    ChattingCS,
     DetailPesananMbl,
     MebelDetailMbl,
     DetailKerjaMbl,

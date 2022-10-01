@@ -33,9 +33,6 @@ const ListPesananCS = ({pesanans, getListPesananResult, getListPesananLoading, g
 
         )}
 
-    {/* {pesanans.map((pesanan) => {
-        return <CardPesananCS pesanan={pesanan} key={pesanan.id}/>
-    })} */}
     </View>
     </ScrollView>
   )

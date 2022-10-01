@@ -14,7 +14,6 @@ const ListProdukMbl = ({
       console.log("get product result mbl:",getProdukMblResult);
   return (
     <View>
-      {/* <Text>tes</Text> */}
       { getProdukMblResult[0] ? ( 
             Object.keys(getProdukMblResult[0]).map((key) => {
             return <CardProdukMbl key={key} produk={getProdukMblResult[0][key]} navigation={navigation}/>
@@ -35,34 +34,6 @@ const ListProdukMbl = ({
 
         )}
     </View>
-
-    // <View>
-    //   {/* <Text>tes</Text> */}
-    //   { getProdukResult ? ( 
-    //         Object.keys(getProdukResult).map((key) => {
-    //             Object.keys(getProdukResult[key]).map((key2) => {
-    //                 return (
-    //                     <View></View>
-    //                 )
-
-    //             })
-    //     })
-    //     ) : getProdukLoading ? (
-
-    //         <View style={styles.loading}>
-    //             <ActivityIndicator color={colors.pertama}/>
-    //         </View>
-
-    //     ) : getProdukError ? (
-            
-    //         <Text>{getProdukError}</Text>
-            
-    //     ) : (
-
-    //         <Text>Produk Kosong</Text>
-
-    //     )}
-    // </View>
   )
 }
 

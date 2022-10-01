@@ -5,7 +5,7 @@ import { RFValue } from 'react-native-responsive-fontsize'
 import Gap from '../Gap'
 
 const CardPesananMbl = ({pesanan, navigation, dispatch}) => {
-  // console.log("data di card:",pesanan);
+  
   return (
     <TouchableOpacity style={styles.card} 
     onPress={() => navigation.navigate('DetailPesananMbl', {data:pesanan, dispatch:dispatch})}>
@@ -41,19 +41,10 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: colors.pertama,
     paddingHorizontal: 25,
-    // paddingVertical: 20,
     justifyContent: 'center',
     height: responsiveHeight(135),
     marginBottom: 25,
     borderRadius: 20,
-  //   shadowColor: "#000",
-  //   shadowOffset: {
-  //   width: 0,
-  //   height: 2,
-  // },
-  // shadowOpacity: 0.25,
-  // shadowRadius: 3.84,
-  // elevation: 5,
   },
   containerStatus: {
     backgroundColor: colors.kedua,
@@ -61,9 +52,6 @@ const styles = StyleSheet.create({
     height: responsiveHeight(25),
     width: responsiveWidth(70),
     justifyContent: 'center',
-    // position: 'absolute',
-    // bottom: 23,
-    // right: 25,
   },
   status: {
     color: colors.keempat,
@@ -74,7 +62,6 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    // backgroundColor: 'blue'
   },
   dataMebel: {
     fontFamily: 'Montserrat-Bold',
@@ -91,9 +78,6 @@ const styles = StyleSheet.create({
   gambar: {
     width: responsiveWidth(65),
     height: responsiveHeight(65),
-    // position: 'absolute',
-    // bottom: 15,
-    // right: 0,
     marginLeft: 2,
     marginTop: 5
   },

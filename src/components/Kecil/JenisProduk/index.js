@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {colors, fonts, responsiveHeight} from '../../../utils';
+import {colors} from '../../../utils';
 import { Picker } from '@react-native-picker/picker';
 import Gap from '../Gap';
 
-const JenisProduk = ({label, datas, width, height, fontSize, selectedValue, onValueChange}) => {
+const JenisProduk = ({label, width, height, fontSize, selectedValue, onValueChange}) => {
  
 
   return (
@@ -35,7 +35,6 @@ export default JenisProduk;
 
 const styles = StyleSheet.create({
   container: {
-    // marginTop: 10,
     
   },
   label: (fontSize) => ({
@@ -49,10 +48,8 @@ const styles = StyleSheet.create({
     width: width,
     height: height,
     color: colors.kedua,
-    // justifyContent: 'center'
     marginTop: -10,
     marginBottom: 10,
-    // alignSelf: 'center'
   }),
   wrapperPicker: {
     borderWidth: 1,

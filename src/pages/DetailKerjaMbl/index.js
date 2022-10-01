@@ -1,10 +1,10 @@
-import { Text, StyleSheet, View, TouchableOpacity, Image, ScrollView, Alert, Linking } from 'react-native'
+import { Text, StyleSheet, View, TouchableOpacity, ScrollView, Linking } from 'react-native'
 import React, { Component } from 'react'
-import { colors, getData, responsiveHeight, responsiveWidth } from '../../utils'
+import { colors, responsiveHeight, responsiveWidth } from '../../utils'
 import { IconChat, IconKembali } from '../../assets'
 import { RFValue } from "react-native-responsive-fontsize";
 import { heightMobileUI } from '../../utils/constant';
-import {BottomPesan, Gap, Input, ProdukSlider} from '../../components';
+import {BottomPesan, Gap, ProdukSlider} from '../../components';
 import { getProsesPesananMbl } from '../../actions/ProsesMblAction';
 
 const DetailKerjaMbl = (props) => {
@@ -14,18 +14,11 @@ const DetailKerjaMbl = (props) => {
     const idMebel = props.route.params.data.idMebel
     const idPembeli = props.route.params.data.idPembeli
     const dispatch = props.route.params.dispatch
-    // console.log('Detail Kerja mebel: ', props)
-    // console.log("dispatch:",dispatch)
 
     const selesaiPesanan = () =>{
       props.navigation.navigate('KerjaMbl')
       dispatch(getProsesPesananMbl(idPesanan, idMebel, idPembeli, 'selesai'))
     }
-    
-    // const tolakPesanan = () =>{
-    //   props.navigation.navigate('PesananMbl')
-    //   dispatch(getProsesPesananMbl(idPesanan, idMebel, idPembeli, 'ditolak'))
-    // }
 
     const sendOnWa = () => {
       let mobile = props.route.params.data.dataPesanan.noHp;
@@ -70,7 +63,7 @@ const DetailKerjaMbl = (props) => {
 
 
         <View style={styles.garis}>
-        <Text style={styles.harga}>{data.product.harga}</Text>
+        <Text style={styles.harga}>Rp. {data.product.harga}</Text>
         <Text style={styles.lokasi}>{data.product.lokasi}</Text>
         </View>
         <Gap height={10}/>
@@ -89,17 +82,15 @@ const DetailKerjaMbl = (props) => {
         <View style={styles.container}>
         <View style={{borderWidth : 2, borderColor: colors.pertama, borderRadius: 10, padding: 5}}>
         <Gap height={5}/>
-        {/* <View style={{flexDirection: 'row', }}> */}
+        
         <View >
         <Text style={styles.dataKustom}>Panjang (cm) : {data.panjang}</Text>
         <Text style={styles.dataKustom}>Lebar      (cm) : {data.lebar}</Text>
         <Text style={styles.dataKustom}>Tinggi     (cm) : {data.tinggi}</Text>
         </View>
-        {/* <View style={{marginLeft: 40}}> */}
         <Text style={styles.dataKustom}>Warna              : {data.warna}</Text>
         <Text style={styles.dataKustom}>Kayu                 : {data.kayu}</Text>
-        {/* </View> */}
-        {/* </View> */}
+
         <Gap height={10}/>
         <Text style={styles.dataKustom }>No Telepon     : {data.noHp}</Text>
         <Text style={styles.dataKustom }>Alamat Lengkap : {data.alamat}</Text>

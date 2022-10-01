@@ -5,10 +5,7 @@ import { colors } from '../../../utils'
 
 const ListPesananMbl = (props) => {
 
-    // console.log("props di pesanan mebel:",props)
-    const {getProdukPesananMblLoading, getProdukPesananMblResult, getProdukPesananMblError, navigation } = props.allData;
-//   console.log("props di pesanan mebel:",getProdukPesananMblResult)
-
+const {getProdukPesananMblLoading, getProdukPesananMblResult, getProdukPesananMblError, navigation } = props.allData;
 
 return (
 <ScrollView showsVerticalScrollIndicator={false}>

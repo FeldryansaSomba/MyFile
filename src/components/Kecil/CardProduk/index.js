@@ -1,11 +1,10 @@
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 import { colors, heightMobileUI, responsiveHeight, responsiveWidth } from '../../../utils';
-import { connect } from 'react-redux';
 import { RFValue } from 'react-native-responsive-fontsize';
 import Gap from '../Gap';
 
-const CardProduk = ({produk, navigation, dataUser}) => {
+const CardProduk = ({produk, navigation}) => {
  
   return (
     <View>
@@ -30,10 +29,6 @@ const CardProduk = ({produk, navigation, dataUser}) => {
   )
 }
 
-// const mapStatetoProps = (state) => ({
-//   dataUser: state.UserReducer.dataUser
-// })
-
 export default CardProduk
 
 const styles = StyleSheet.create({
@@ -45,15 +40,6 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     paddingHorizontal: 20,
     alignItems: 'center'
-//     shadowColor: "#000",
-//   shadowOffset: {
-// 	width: 0,
-// 	height: 2,
-// },
-// shadowOpacity: 0.25,
-// shadowRadius: 3.84,
-
-// elevation: 5,
   },
   gambar: {
     width: responsiveWidth(90),
@@ -62,10 +48,6 @@ const styles = StyleSheet.create({
   data: {
     flex: 1,
     marginLeft: 10
-    // marginTop:
-    // marginTop: 22,
-    // maxWidth: '90%',
-    // backgroundColor: "blue",
   },
   nama: {
     fontFamily: 'Montserrat-SemiBold',

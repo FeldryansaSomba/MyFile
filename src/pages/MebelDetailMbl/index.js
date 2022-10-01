@@ -1,6 +1,6 @@
 import { Text, StyleSheet, View, TouchableOpacity, ScrollView } from 'react-native'
 import React, { Component } from 'react'
-import { colors, responsiveHeight, responsiveWidth } from '../../utils'
+import { colors } from '../../utils'
 import { IconKembali } from '../../assets'
 import { RFValue } from "react-native-responsive-fontsize";
 import { heightMobileUI } from '../../utils/constant';
@@ -22,13 +22,11 @@ class MebelDetailMbl extends Component {
     componentDidMount() {
         const { produk } = this.state
         this.props.dispatch(getDetailProduk(produk.produk))
-        // console.log("data produk: ", produk)
     }
 
   render() {
-    const { navigation, savePesananLoading } = this.props
+    const { navigation } = this.props
     const {produk, images } = this.state
-    // console.log("paramater : ", this.props.route.params);
     return (
       <View style={styles.page}>
         <TouchableOpacity style={styles.icon}>
@@ -46,11 +44,11 @@ class MebelDetailMbl extends Component {
         <Text style={styles.mebel}>{produk.namaMebel}</Text>
 
         <View style={styles.garis}>
-        <Text style={styles.harga}>{produk.harga}</Text>
+        <Text style={styles.harga}>Rp. {produk.harga}</Text>
         <Text style={styles.lokasi}>{produk.lokasi}</Text>
         </View>
         <Gap height={10}/>
-        <Text style={styles.lokasi}>No Telepon : {produk.noHp}</Text>
+        <Text style={styles.lokasi}>No Hp : {produk.noHp}</Text>
         </View>
         <Text style={styles.text}>Deskripsi :</Text>
         <Text style={styles.desc}>{produk.desc}</Text>

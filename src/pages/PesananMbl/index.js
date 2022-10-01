@@ -1,10 +1,9 @@
-import { Text, StyleSheet, View, ScrollView, TouchableOpacity, RefreshControl } from 'react-native'
+import { Text, StyleSheet, View, ScrollView, RefreshControl } from 'react-native'
 import React, { Component } from 'react'
 import { colors, getData, responsiveHeight } from '../../utils'
 import { ListPesananMbl } from '../../components'
 import { RFValue } from "react-native-responsive-fontsize";
 import { heightMobileUI } from '../../utils/constant';
-import { IconChat } from '../../assets'
 import { connect } from 'react-redux'
 import { getListPesananMbl} from '../../actions/PesananMblAction'
 
@@ -19,10 +18,6 @@ class PesananMbl extends Component {
   }
 
   updateHalaman = () => {
-    // // this.setState({loading: true});
-    // // fetch().then(() => {
-    //   this.setState({loading: false})
-    // // })
     getData('userMebel').then((res) => {
       if(res) {
         //sudah login
@@ -48,7 +43,7 @@ class PesananMbl extends Component {
 }
 
   render() {
-    const { pesanans, navigation, namaProduk, keyword } = this.props
+
     return (
       <>
       <View style={styles.header}>
@@ -63,15 +58,9 @@ class PesananMbl extends Component {
         />}
       >
       <View style={styles.container}>
-        {/* <ListPesananMbl pesanans={pesanans}/> */}
-        {/* <ListPesananMbl {...this.props}/> */}
         <ListPesananMbl allData={this.props}/>
       </View>
       </ScrollView>
-
-      {/* <TouchableOpacity style={styles.chat}>
-      <IconChat/>
-      </TouchableOpacity> */}
       </View>
       </>
     )

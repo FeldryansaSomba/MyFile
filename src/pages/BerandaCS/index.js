@@ -1,4 +1,4 @@
-import { Text, StyleSheet, View, ScrollView } from 'react-native'
+import { Text, StyleSheet, View, ScrollView, RefreshControl } from 'react-native'
 import React, { Component } from 'react'
 import { colors } from '../../utils/colors'
 import { Gap, ListProduk, SearchFilter, Filter } from '../../components'
@@ -14,7 +14,12 @@ class BerandaCS extends Component {
 
     this.state = {
       profile: false,
+      loading: false   
     }
+  }
+
+  updateHalaman = () => {
+    this.props.dispatch(getProduk());
   }
 
   componentDidMount() {
@@ -62,7 +67,7 @@ class BerandaCS extends Component {
 }
 
   render() {
-    const { navigation, namaProduk, keyword } = this.props
+    const { navigation } = this.props
     const {profile} = this.state
     return (
       <View style={styles.pages}>
@@ -76,7 +81,13 @@ class BerandaCS extends Component {
         </ScrollView>
         <Gap height={10}/>
         </View>
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView showsVerticalScrollIndicator={false} 
+        refreshControl={
+        <RefreshControl
+        refreshing={this.state.loading}
+        onRefresh={() => this.updateHalaman()}
+        />}
+        >
         <View style={styles.listProduk}>
         <ListProduk  navigation={navigation}/>
         </View>

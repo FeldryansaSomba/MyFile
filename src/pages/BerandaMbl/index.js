@@ -1,4 +1,4 @@
-import { Text, StyleSheet, View, ScrollView } from 'react-native'
+import { Text, StyleSheet, View, ScrollView, RefreshControl } from 'react-native'
 import React, { Component } from 'react'
 import { colors } from '../../utils/colors'
 import { Gap, ListProdukMbl, ButtonJual } from '../../components'
@@ -13,7 +13,15 @@ class BerandaMbl extends Component {
 
     this.state = {
       profile: false,
+      loading: false   
     }
+  }
+
+  updateHalaman = () => {
+    getData('userMebel').then((res) => {
+      //sudah login
+      this.props.dispatch(getProdukMbl(res.uid))
+  })
   }
 
   componentDidMount() {
@@ -22,8 +30,6 @@ class BerandaMbl extends Component {
       // do something
       getData('userMebel').then((res) => {
         //sudah login
-        // console.log("res:",res)
-        
         this.props.dispatch(getProdukMbl(res.uid))
     }).catch((error)=>console.log("error:",error))
 
@@ -74,7 +80,13 @@ class BerandaMbl extends Component {
         <ButtonJual navigation={navigation}/>
         <Gap height={10}/>
         </View>
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView showsVerticalScrollIndicator={false} 
+        refreshControl={
+        <RefreshControl
+        refreshing={this.state.loading}
+        onRefresh={() => this.updateHalaman()}
+        />}
+        >
         <View style={styles.listProduk}>
         <ListProdukMbl  navigation={navigation}/>
         </View>

@@ -42,7 +42,7 @@ export const masukKePesanan = (data) => {
                         //simpan ke halaman pesanan
                         const pesananUtama = {
                             user: data.uid,
-                            tanggal: new Date().toDateString(),
+                            // tanggal: new Date().toDateString(),
                             namaUser: data.namaUser,
                             // harga: data.harga,
                             noHp: data.noHp,

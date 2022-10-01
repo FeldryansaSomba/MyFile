@@ -4,9 +4,8 @@ import { colors, heightMobileUI, responsiveHeight, responsiveWidth } from '../..
 import { RFValue } from 'react-native-responsive-fontsize';
 import Gap from '../Gap';
 
-const CardProdukMbl = ({produk, navigation, dataUser}) => {
-// const CardProdukMbl = (props) => {
-  // console.log("produk:",props)
+const CardProdukMbl = ({produk, navigation}) => {
+
   return (
     <View>
       <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('MebelDetailMbl', {produk})}>
@@ -41,15 +40,6 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     paddingHorizontal: 20,
     alignItems: 'center'
-//     shadowColor: "#000",
-//   shadowOffset: {
-// 	width: 0,
-// 	height: 2,
-// },
-// shadowOpacity: 0.25,
-// shadowRadius: 3.84,
-
-// elevation: 5,
   },
   gambar: {
     width: responsiveWidth(90),

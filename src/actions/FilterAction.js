@@ -44,7 +44,6 @@ export const getFilter = () => {
 
                     //Hasil
                     let data = querySnapshot.val();
-                    // console.log("data di filter:",data)
 
                     allLooping2(dispatch, data)
 
@@ -71,10 +70,8 @@ const allLooping2 = (dispatch, data) =>{
         return arr.filter((item,
             index) => arr.indexOf(item) === index);
     }
-    // console.log("new array filter:",newArray)
     if(newArray!==null){
-       
-        // return (dispatchSuccess(dispatch, GET_PRODUK, newArray))
+  
         return (dispatchSuccess(dispatch, GET_FILTER, removeDuplicates(newArray)))
     }
 }

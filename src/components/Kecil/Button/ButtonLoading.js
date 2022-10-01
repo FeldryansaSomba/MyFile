@@ -18,19 +18,19 @@ export default ButtonLoading
 
 const styles = StyleSheet.create({
     button: (width, height, borderRadius) => ({
-        width: width,
-        height: height,
+        // width: width,
+        // height: height,
         backgroundColor: colors.kedua,
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: borderRadius,
+        // borderRadius: borderRadius,
         width: responsiveWidth(282),
         height: responsiveHeight(36),
         flexDirection: 'row',
         borderRadius: 5
     }),
     text: (fontSize) => ({
-        fontSize: fontSize,
+        fontSize: 14,
         fontFamily: 'Montserrat-SemiBold',
         color: colors.keempat
     })
