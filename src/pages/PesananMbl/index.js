@@ -1,4 +1,4 @@
-import { Text, StyleSheet, View, ScrollView, TouchableOpacity } from 'react-native'
+import { Text, StyleSheet, View, ScrollView, TouchableOpacity, RefreshControl } from 'react-native'
 import React, { Component } from 'react'
 import { colors, getData, responsiveHeight } from '../../utils'
 import { ListPesananMbl } from '../../components'
@@ -8,7 +8,31 @@ import { IconChat } from '../../assets'
 import { connect } from 'react-redux'
 import { getListPesananMbl} from '../../actions/PesananMblAction'
 
+
 class PesananMbl extends Component {
+  constructor(props) {
+    super(props)
+  
+    this.state = {
+    loading: false   
+    }
+  }
+
+  updateHalaman = () => {
+    // // this.setState({loading: true});
+    // // fetch().then(() => {
+    //   this.setState({loading: false})
+    // // })
+    getData('userMebel').then((res) => {
+      if(res) {
+        //sudah login
+        this.props.dispatch(getListPesananMbl(res.uid))
+      }else {
+        //belum login
+        this.props.navigation.replace('PilihUser')
+      }
+    })
+  }
 
   componentDidMount() {
 
@@ -31,7 +55,13 @@ class PesananMbl extends Component {
         <Text style={styles.text}>Pesanan Masuk</Text>
       </View>
       <View style={styles.page}>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView showsVerticalScrollIndicator={false} 
+      refreshControl={
+        <RefreshControl
+        refreshing={this.state.loading}
+        onRefresh={() => this.updateHalaman()}
+        />}
+      >
       <View style={styles.container}>
         {/* <ListPesananMbl pesanans={pesanans}/> */}
         {/* <ListPesananMbl {...this.props}/> */}

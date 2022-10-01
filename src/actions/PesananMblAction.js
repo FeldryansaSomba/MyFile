@@ -32,18 +32,19 @@ const allLooping = (getProdukResult, idMebel, dispatch) =>{
     Object.keys(getProdukResult).map((key) => {
         Object.keys(getProdukResult[key].produk).map((key2) => {
                 Object.keys(getProdukResult[key].produk[key2]).map((key3) => {
-                     if(
+                     if(getProdukResult[key].produk[key2][key3].uid == idMebel){
+                        if(
                         getProdukResult[key].produk[key2][key3].uid != undefined 
-                        && getProdukResult[key].produk[key2][key3].uid == idMebel 
-                        && getProdukResult[key].produk[key2][key3].status == '-' || getProdukResult[key].produk[key2][key3].status == 'ditolak' 
-                        
+                        && getProdukResult[key].produk[key2][key3].status == '-' 
+                        || getProdukResult[key].produk[key2][key3].status == 'ditolak' 
                         ){
-                        newArray.push({
-                        idPesanan: key2,
-                        idPembeli:getProdukResult[key].user,
-                        idMebel: getProdukResult[key].produk[key2][key3].uid,
-                        dataPesanan: getProdukResult[key].produk[key2],
-                    })
+                            newArray.push({
+                                idPesanan: key2,
+                                idPembeli:getProdukResult[key].user,
+                                idMebel: getProdukResult[key].produk[key2][key3].uid,
+                                dataPesanan: getProdukResult[key].produk[key2],
+                            })
+                        }
                  } 
             })
         })
@@ -90,18 +91,19 @@ const allLooping2 = (getProdukResult, idMebel, process,selesai, dispatch) =>{
     Object.keys(getProdukResult).map((key) => {
         Object.keys(getProdukResult[key].produk).map((key2) => {
                 Object.keys(getProdukResult[key].produk[key2]).map((key3) => {
-                     if(
-                        getProdukResult[key].produk[key2][key3].uid != undefined 
-                        && getProdukResult[key].produk[key2][key3].uid == idMebel
-                        && getProdukResult[key].produk[key2][key3].status == process
-                        || getProdukResult[key].produk[key2][key3].status == selesai
-                        ){
-                        newArray.push({
-                        idPesanan: key2,
-                        idPembeli:getProdukResult[key].user,
-                        idMebel: getProdukResult[key].produk[key2][key3].uid,
-                        dataPesanan: getProdukResult[key].produk[key2],
-                    })
+                     if(getProdukResult[key].produk[key2][key3].uid == idMebel){
+                            if(
+                                getProdukResult[key].produk[key2][key3].uid != undefined 
+                                && getProdukResult[key].produk[key2][key3].status == process
+                                || getProdukResult[key].produk[key2][key3].status == selesai
+                            ){
+                                newArray.push({
+                                idPesanan: key2,
+                                idPembeli:getProdukResult[key].user,
+                                idMebel: getProdukResult[key].produk[key2][key3].uid,
+                                dataPesanan: getProdukResult[key].produk[key2],
+                            })
+                            }
                  } 
             })
         })
