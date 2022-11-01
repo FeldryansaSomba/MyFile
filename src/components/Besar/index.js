@@ -14,6 +14,7 @@ import ListMenuMbl from "./ListMenuMbl";
 import ListPesananMbl from "./ListPesananMbl";
 import ListProdukMbl from "./ListProdukMbl";
 import ListKerjaMbl from "./ListKerjaMbl";
+import SearchdiKerja from "./SearchdiKerja";
 
 export { BottomNavigatorCS, 
         TabItemCS, 
@@ -30,5 +31,6 @@ export { BottomNavigatorCS,
         ListMenuMbl,
         ListPesananMbl,
         ListProdukMbl,
-        ListKerjaMbl
+        ListKerjaMbl,
+        SearchdiKerja
     }

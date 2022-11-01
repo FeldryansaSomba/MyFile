@@ -1,4 +1,4 @@
-import { GET_PRODUK_PESANANMBL, GET_TERIMA_PESANANMBL } from '../../actions/PesananMblAction'
+import { GET_PRODUK_PESANANMBL, GET_TERIMA_PESANANMBL, SAVE_KEYWORD_KERJA } from '../../actions/PesananMblAction'
 
 const initialState = {
     getProdukPesananMblLoading: false,
@@ -8,6 +8,8 @@ const initialState = {
     getTerimaPesananMblLoading: false,
     getTerimaPesananMblResult: false,
     getTerimaPesananMblError: false,
+
+    keyword: false,
 
 }
 
@@ -28,6 +30,12 @@ export default function (state = initialState, action) {
                 getTerimaPesananMblResult: action.payload.data,
                 getTerimaPesananMblError: action.payload.errorMessage,
             };
+
+            case SAVE_KEYWORD_KERJA:
+            return {
+                ...state,
+                keyword: action.payload.data
+                }
 
             default:
                 return state;

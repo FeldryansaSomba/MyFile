@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
         color: isFocused ? colors.kedua : colors.keenam,
         fontFamily: 'Montserrat-Medium',
         fontSize: RFValue(11, heightMobileUI),
-        marginTop: 2
+        marginTop: 2,
+        alignSelf: 'center'
     })
 })

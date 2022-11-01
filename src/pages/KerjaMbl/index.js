@@ -1,7 +1,7 @@
 import { Text, StyleSheet, View, ScrollView, RefreshControl } from 'react-native'
 import React, { Component } from 'react'
 import { colors, getData, responsiveHeight } from '../../utils'
-import { ListKerjaMbl } from '../../components'
+import { Gap, ListKerjaMbl, SearchdiKerja } from '../../components'
 import { RFValue } from "react-native-responsive-fontsize";
 import { heightMobileUI } from '../../utils/constant';
 import { getTerimaPesananMbl } from '../../actions/PesananMblAction';
@@ -30,16 +30,40 @@ class KerjaMbl extends Component {
   }
  
   componentDidMount(){
+    const {keyword} = this.props
     getData('userMebel').then((res) => {
       if(res) {
         //sudah login
-        this.props.dispatch(getTerimaPesananMbl(res.uid))
+        this.props.dispatch(getTerimaPesananMbl(res.uid, keyword))
       }else {
         //belum login
         this.props.navigation.replace('PilihUser')
       }
     })
   }
+  
+
+  // componentWillUnmount() {
+  //   this._unsubscribe();
+  // }
+
+  componentDidUpdate(prevProps) {
+    const { keyword } = this.props
+
+    if(keyword && prevProps.keyword !== keyword)
+    {
+      // this.props.dispatch(getTerimaPesananMbl(keyword));
+      getData('userMebel').then((res) => {
+        if(res) {
+          //sudah login
+          this.props.dispatch(getTerimaPesananMbl(res.uid, keyword))
+        }else {
+          //belum login
+          this.props.navigation.replace('PilihUser')
+        }
+      })
+    }
+}
 
 
   render() {
@@ -50,6 +74,10 @@ class KerjaMbl extends Component {
         <Text style={styles.text}>Pekerjaan Saya</Text>
       </View>
       <View style={styles.page}>
+      <Gap height={20}/>
+      <View style={{paddingHorizontal: 28}}>  
+      <SearchdiKerja/>
+      </View>
       <ScrollView showsVerticalScrollIndicator={false} 
       refreshControl={
         <RefreshControl
@@ -72,6 +100,7 @@ const mapStateToProps = (state) => ({
   getTerimaPesananMblLoading: state.PesananMblReducer.getTerimPesananMblLoading,
   getTerimaPesananMblResult: state.PesananMblReducer.getTerimaPesananMblResult,
   getTerimaPesananMblError: state.PesananMblReducer.getTerimaPesananMblError,
+  keyword: state.PesananMblReducer.keyword
 })
 
 export default connect(mapStateToProps, null) (KerjaMbl)
