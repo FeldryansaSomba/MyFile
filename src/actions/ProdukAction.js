@@ -159,7 +159,8 @@ function filterObjLokasi(data, keyword, dispatch){
     let newArray = [];
     Object.keys(data).map((key) => {
         Object.keys(data[key]).map((key2) => {
-            const { nama } = data[key][key2]; 
+            const { nama } = data[key][key2];
+            // console.log("nama di search:", data[key][key2]) 
              let MyNama = nama.toUpperCase().split(" ")
              if (
                    nama === kataKunci ||

@@ -1,4 +1,4 @@
-import { GET_PRODUK_PESANANMBL, GET_TERIMA_PESANANMBL, SAVE_KEYWORD_KERJA } from '../../actions/PesananMblAction'
+import { GET_PRODUK_PESANANMBL, GET_TERIMA_PESANANMBL, SAVE_KEYWORD_KERJA, DELETE_PARAMETER_FILTER } from '../../actions/PesananMblAction'
 
 const initialState = {
     getProdukPesananMblLoading: false,
@@ -30,6 +30,12 @@ export default function (state = initialState, action) {
                 getTerimaPesananMblResult: action.payload.data,
                 getTerimaPesananMblError: action.payload.errorMessage,
             };
+
+            case DELETE_PARAMETER_FILTER:
+            return {
+                ...state,
+                keyword: false
+            }
 
             case SAVE_KEYWORD_KERJA:
             return {

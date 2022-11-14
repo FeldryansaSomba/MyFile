@@ -24,7 +24,7 @@ export const addProduk = (data) => {
             lokasi: data.lokasi,
             alamat: data.alamat,
             jenisProduk: data.jenisProduk,
-            status: '-',
+            status: 'Menunggu',
         }
 
         FIREBASE.database()
