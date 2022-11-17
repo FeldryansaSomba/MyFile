@@ -19,6 +19,7 @@ class SearchdiKerja extends Component {
     const {dispatch} = this.props
     const {search} = this.state
     //jalankan action save keyword
+    // console.log("search di kerja:",search);
     dispatch(saveKeywordKerja(search))
 
     //kembalikan state ke string kosong

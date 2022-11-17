@@ -5,7 +5,7 @@ import { RFValue } from 'react-native-responsive-fontsize'
 import Gap from '../Gap'
 
 const CardKerjaMbl = ({pesanan, navigation, dispatch}) => {
-  // console.log("pesanan di kerja:", pesanan)
+  console.log("pesanan di kerja:", pesanan)
   return (
     <TouchableOpacity style={styles.card} 
     onPress={() => navigation.navigate('DetailKerjaMbl', {data:pesanan, dispatch: dispatch})}>
