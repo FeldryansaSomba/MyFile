@@ -35,6 +35,7 @@ class TambahProduk extends Component {
         lokasi: '',
         alamat: '',
         jenisProduk: '',
+        map: '',
     }
     }
 
@@ -49,8 +50,8 @@ class TambahProduk extends Component {
     }
 
     onContinue = () => {
-        const { gambar, nama, harga, lebar, tinggi, warna, kayu, desc, lokasi, alamat, jenisProduk } = this.state
-        if(gambar && nama && harga && lebar && tinggi && warna && kayu && desc && lokasi && alamat && jenisProduk ) {
+        const { gambar, nama, harga, lebar, tinggi, warna, kayu, desc, lokasi, alamat, jenisProduk, map } = this.state
+        if(gambar && nama && harga && lebar && tinggi && warna && kayu && desc && lokasi && alamat && jenisProduk && map ) {
             this.props.dispatch(addProduk(this.state))
         } else {
             Alert.alert("Error", "Semua Data Harus Diisi!!")
@@ -99,7 +100,7 @@ class TambahProduk extends Component {
 
   render() {
     const { navigation, addProdukLoading} = this.props
-    const { jenisProduk, gambar, nama, harga, panjang, lebar, tinggi, warna, kayu, desc, lokasi, alamat } = this.state
+    const { jenisProduk, gambar, nama, harga, panjang, lebar, tinggi, warna, kayu, desc, lokasi, alamat, map } = this.state
   
   
     return (
@@ -230,6 +231,12 @@ class TambahProduk extends Component {
         fontSize={RFValue(14, heightMobileUI)} 
         value={alamat}
         onChangeText={(alamat) => this.setState({alamat})}/>
+        <Input 
+        label={'URL Alamat Google Map'}
+        height={responsiveHeight(30)}
+        fontSize={RFValue(14, heightMobileUI)} 
+        value={map}
+        onChangeText={(map) => this.setState({map})}/>
 
         <Gap height={30}/>
         <View style={{alignItems: 'center'}}>

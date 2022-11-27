@@ -24,6 +24,7 @@ export const addProduk = (data) => {
             lokasi: data.lokasi,
             alamat: data.alamat,
             jenisProduk: data.jenisProduk,
+            map: data.map,
             status: 'Menunggu',
         }
 

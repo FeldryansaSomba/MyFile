@@ -1,5 +1,5 @@
 import { Text, StyleSheet, View, TouchableOpacity, ScrollView, Alert, Linking } from 'react-native'
-import React, { Component } from 'react'
+import React, { Component, useCallback } from 'react'
 import { colors, getData, responsiveHeight, responsiveWidth } from '../../utils'
 import { IconChat, IconKembali } from '../../assets'
 import { RFValue } from "react-native-responsive-fontsize";
@@ -66,6 +66,27 @@ class MebelDetailCS extends Component {
           })
     }
 
+      
+      // supportedURL = "https://goo.gl/maps/";
+    
+      OpenURLButton = ({ url, children }) => {
+        const handlePress = useCallback(async () => {
+          const supported = await Linking.canOpenURL(url);
+    
+          if (supported) {
+            await Linking.openURL(url);
+          } else {
+            await Linking.openURL(url);
+          }
+        }, [url]);
+    
+        return <View>
+                <TouchableOpacity title={children} onPress={handlePress}>
+                  <Text style={styles.map}>[Buka Map]</Text>
+                 </TouchableOpacity>
+               </View>;
+      };
+
     sendOnWa = () => {
       let mobile = this.props.route.params.produk.noHp;
       if(mobile){
@@ -125,7 +146,11 @@ class MebelDetailCS extends Component {
         <Text style={styles.desc}>Tinggi     (cm) : {produk.tinggi}</Text>
         <Text style={styles.desc}>Warna              : {produk.warna}</Text>
         <Text style={styles.desc}>Kayu                 : {produk.kayu}</Text>
-        <Text style={styles.desc}>Alamat             : {produk.alamat}</Text>
+        <Text style={styles.desc}>Alamat             : {produk.alamat}
+        {/* <View style={{backgroundColor: 'yellow'}}> */}
+          <this.OpenURLButton url={produk.map} />
+        {/* </View> */}
+        </Text>
         </View>
 
         <Text style={styles.textKustom}>Kustom produk anda (
@@ -283,6 +308,14 @@ const styles = StyleSheet.create({
         fontFamily: 'Montserrat-Medium',
         color: colors.kedua,
         fontSize: RFValue(14, heightMobileUI),
+    },
+    map: {
+      marginLeft: 2,
+      // marginTop: 5,
+      fontFamily: 'Montserrat-Medium',
+      color: colors.kedua,
+      fontSize: RFValue(14, heightMobileUI),
+      color: 'blue'
     },
     scrol: {
         marginBottom: 17
